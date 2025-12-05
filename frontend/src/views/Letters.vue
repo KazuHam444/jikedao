@@ -175,7 +175,29 @@ onMounted(() => {
 <style scoped>
 .letters-page {
   min-height: 100vh;
-  background: #f5f5f5;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  /* 我的信件页面背景 - 信件和书架主题 */
+  background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.letters-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(245, 247, 250, 0.85) 0%, rgba(195, 207, 226, 0.85) 100%);
+  z-index: 0;
+}
+
+.letters-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .header-content {
@@ -186,15 +208,33 @@ onMounted(() => {
 }
 
 .el-header {
-  background: #fff;
-  border-bottom: 1px solid #e4e7ed;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(228, 231, 237, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .el-main {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   margin: 20px;
-  border-radius: 4px;
-  padding: 20px;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+:deep(.el-table) {
+  background: transparent;
+}
+
+:deep(.el-table th) {
+  background: rgba(245, 247, 250, 0.5);
+}
+
+:deep(.el-button--primary) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
 }
 </style>
 

@@ -164,6 +164,28 @@ onMounted(() => {
 .home {
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* 首页背景 - 历史人物和古代建筑主题 */
+  background-image: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%);
+  z-index: 0;
+}
+
+.home > * {
+  position: relative;
+  z-index: 1;
 }
 
 .header-content {
@@ -230,19 +252,34 @@ onMounted(() => {
 .banner {
   text-align: center;
   color: #fff;
-  padding: 60px 0;
+  padding: 80px 0;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .banner h2 {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 52px;
+  margin-bottom: 24px;
   font-weight: 700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
 }
 
 .banner p {
-  font-size: 20px;
-  margin-bottom: 30px;
-  opacity: 0.9;
+  font-size: 22px;
+  margin-bottom: 40px;
+  opacity: 0.95;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .featured-letters {
@@ -259,11 +296,16 @@ onMounted(() => {
 .letter-card {
   margin-bottom: 20px;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .letter-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .card-header {

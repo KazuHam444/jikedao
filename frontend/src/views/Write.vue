@@ -221,27 +221,76 @@ onMounted(() => {
 <style scoped>
 .write-page {
   min-height: 100vh;
-  background: #f5f5f5;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  /* 写信页面背景 - 古典书房和书写场景 */
+  background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.write-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(245, 247, 250, 0.85) 0%, rgba(195, 207, 226, 0.85) 100%);
+  z-index: 0;
+}
+
+.write-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .el-header {
-  background: #fff;
-  border-bottom: 1px solid #e4e7ed;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(228, 231, 237, 0.5);
   display: flex;
   align-items: center;
   padding: 0 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .el-header h2 {
   margin: 0;
+  color: #333;
+  font-weight: 600;
 }
 
 .el-main {
-  max-width: 800px;
-  margin: 20px auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 4px;
+  max-width: 900px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+:deep(.el-input__wrapper) {
+  border-radius: 8px;
+}
+
+:deep(.el-textarea__inner) {
+  border-radius: 8px;
+}
+
+:deep(.el-button--primary) {
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+:deep(.el-button--primary:hover) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 </style>
 

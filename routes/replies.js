@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { query } = require('../config/database');
 const { authenticate } = require('../middleware/auth');
-const axios = require('axios');
+const aiService = require('../utils/aiService');
 
 // 生成AI回信
 router.post('/generate/:letterId', authenticate, async (req, res) => {
@@ -45,59 +45,58 @@ router.post('/generate/:letterId', authenticate, async (req, res) => {
       });
     }
 
-    // 构建AI提示词
-    let prompt = letter.prompt_template || `你是一位来自${letter.era}的历史人物${letter.figure_name}。`;
-    if (letter.biography) {
-      prompt += `你的生平简介：${letter.biography}。`;
-    }
-    prompt += `\n\n你收到了一封来自现代的信件：\n标题：${letter.title}\n内容：${letter.content}\n\n请以${letter.figure_name}的身份和语气，用符合${letter.era}时代背景的语言风格，给这封信写一封回信。回信应该真诚、有深度，体现历史人物的性格特点。`;
-
-    // 调用AI API生成回信
+    // 调用AI服务生成回信
     let replyContent = '';
-    try {
-      // 这里使用OpenAI API作为示例，你可以替换为其他AI服务
-      if (process.env.AI_API_KEY && process.env.AI_API_URL) {
-        const response = await axios.post(
-          process.env.AI_API_URL,
-          {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'system',
-                content: '你是一位历史人物，需要以该历史人物的身份和语气回信。'
-              },
-              {
-                role: 'user',
-                content: prompt
-              }
-            ],
-            max_tokens: 1000,
-            temperature: 0.7
-          },
-          {
-            headers: {
-              'Authorization': `Bearer ${process.env.AI_API_KEY}`,
-              'Content-Type': 'application/json'
-            }
-          }
-        );
+    let aiModel = 'fallback';
+    let useAI = false;
 
-        replyContent = response.data.choices[0].message.content;
-      } else {
-        // 如果没有配置AI API，使用模拟回信
-        replyContent = `亲爱的朋友，\n\n感谢你的来信。作为${letter.figure_name}，我很高兴能收到你的问候。\n\n${letter.content}\n\n你的来信让我深感欣慰。希望你能继续传承我们的精神，为这个世界带来更多的美好。\n\n此致\n敬礼\n\n${letter.figure_name}\n${new Date().toLocaleDateString('zh-CN')}`;
-      }
+    try {
+      // 尝试使用AI服务生成回信
+      replyContent = await aiService.generateReply(
+        {
+          title: letter.title,
+          content: letter.content
+        },
+        {
+          name: letter.figure_name,
+          era: letter.era,
+          biography: letter.biography,
+          prompt_template: letter.prompt_template
+        }
+      );
+      aiModel = process.env.AI_MODEL || 'gpt-3.5-turbo';
+      useAI = true;
     } catch (aiError) {
       console.error('AI生成回信错误:', aiError);
-      // 如果AI调用失败，使用默认回信
-      replyContent = `亲爱的朋友，\n\n感谢你的来信。作为${letter.figure_name}，我很高兴能收到你的问候。\n\n你的来信让我深感欣慰。希望你能继续传承我们的精神，为这个世界带来更多的美好。\n\n此致\n敬礼\n\n${letter.figure_name}\n${new Date().toLocaleDateString('zh-CN')}`;
+      
+      // 如果AI服务不可用，使用模拟回信
+      replyContent = aiService.generateFallbackReply(
+        {
+          title: letter.title,
+          content: letter.content
+        },
+        {
+          name: letter.figure_name,
+          era: letter.era
+        }
+      );
+      
+      // 记录错误信息（但不返回给用户，避免暴露配置信息）
+      console.warn('使用模拟回信，原因:', aiError.message);
     }
 
     // 保存回信到数据库
     const [result] = await query(`
       INSERT INTO replies (letter_id, content, ai_model, sentiment_analysis)
       VALUES (?, ?, ?, ?)
-    `, [letterId, replyContent, 'gpt-3.5-turbo', 'positive']);
+    `, [letterId, replyContent, aiModel, 'positive']);
+    
+    // 如果使用了AI，在响应中提示
+    if (useAI) {
+      console.log(`✅ 成功使用AI生成回信，模型: ${aiModel}`);
+    } else {
+      console.warn('⚠️ 使用模拟回信，请配置AI API以使用真实AI生成');
+    }
 
     // 更新信件状态
     await query(

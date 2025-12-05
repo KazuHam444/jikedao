@@ -63,16 +63,43 @@ function handleLogout() {
 <style scoped>
 .admin-layout {
   min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  /* 管理员后台背景 - 简洁的办公场景 */
+  background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.admin-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(245, 247, 250, 0.9) 0%, rgba(195, 207, 226, 0.9) 100%);
+  z-index: 0;
+}
+
+.admin-layout > * {
+  position: relative;
+  z-index: 1;
 }
 
 .admin-menu {
   height: 100vh;
-  border-right: 1px solid #e4e7ed;
+  border-right: 1px solid rgba(228, 231, 237, 0.5);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
 }
 
 .el-header {
-  background: #fff;
-  border-bottom: 1px solid #e4e7ed;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(228, 231, 237, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .header-content {
@@ -85,11 +112,17 @@ function handleLogout() {
 
 .header-content h2 {
   margin: 0;
+  color: #333;
+  font-weight: 600;
 }
 
 .el-main {
-  background: #f5f5f5;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   padding: 20px;
+  border-radius: 8px;
+  margin: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 </style>
 

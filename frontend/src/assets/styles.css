@@ -1,0 +1,77 @@
+/* 全局样式和背景图片配置 */
+
+/* 背景图片路径 - 可以替换为你自己的图片 */
+:root {
+  --bg-login: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');
+  --bg-register: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');
+  --bg-home: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');
+  --bg-admin: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');
+  
+  /* 或者使用本地图片（将图片放在 frontend/public/images/ 目录下） */
+  /* --bg-login: url('/images/login-bg.jpg'); */
+  /* --bg-register: url('/images/register-bg.jpg'); */
+  /* --bg-home: url('/images/home-bg.jpg'); */
+}
+
+/* 通用背景样式 */
+.bg-overlay {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%);
+  z-index: 0;
+}
+
+.bg-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 卡片样式增强 */
+.enhanced-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.enhanced-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* 玻璃态效果 */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+

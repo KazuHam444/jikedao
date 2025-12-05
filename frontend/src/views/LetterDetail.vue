@@ -146,7 +146,29 @@ onMounted(() => {
 <style scoped>
 .letter-detail-page {
   min-height: 100vh;
-  background: #f5f5f5;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  /* 信件详情页面背景 - 阅读和古典场景 */
+  background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.letter-detail-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(245, 247, 250, 0.85) 0%, rgba(195, 207, 226, 0.85) 100%);
+  z-index: 0;
+}
+
+.letter-detail-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .header-content {
@@ -158,38 +180,57 @@ onMounted(() => {
 
 .header-content h2 {
   margin: 0;
+  color: #333;
+  font-weight: 600;
 }
 
 .el-header {
-  background: #fff;
-  border-bottom: 1px solid #e4e7ed;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(228, 231, 237, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .el-main {
-  max-width: 900px;
-  margin: 20px auto;
+  max-width: 1000px;
+  margin: 30px auto;
 }
 
 .letter-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .letter-card,
 .reply-card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.letter-card:hover,
+.reply-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(228, 231, 237, 0.5);
 }
 
 .card-header h3 {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
 }
 
 .letter-meta {
@@ -205,20 +246,36 @@ onMounted(() => {
 
 .letter-content,
 .reply-content {
-  padding: 20px 0;
+  padding: 24px;
 }
 
 .content-text {
-  line-height: 1.8;
+  line-height: 2;
   font-size: 16px;
   color: #333;
   white-space: pre-wrap;
+  font-family: 'Microsoft YaHei', 'SimSun', serif;
 }
 
 .letter-actions {
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid #e4e7ed;
+  border-top: 1px solid rgba(228, 231, 237, 0.5);
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+}
+
+:deep(.el-button--primary) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+:deep(.el-button--primary:hover) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 </style>
 
