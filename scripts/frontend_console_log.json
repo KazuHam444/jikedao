@@ -1,0 +1,258 @@
+{
+  "url": "http://127.0.0.1:5173/",
+  "port": 5173,
+  "console": [
+    {
+      "type": "debug",
+      "text": "[vite] connecting...",
+      "args": [
+        "[vite] connecting..."
+      ],
+      "location": {
+        "url": "http://127.0.0.1:5173/@vite/client",
+        "lineNumber": 788,
+        "columnNumber": 8
+      }
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected.",
+      "args": [
+        "[vite] connected."
+      ],
+      "location": {
+        "url": "http://127.0.0.1:5173/@vite/client",
+        "lineNumber": 911,
+        "columnNumber": 14
+      }
+    }
+  ],
+  "pageErrors": [],
+  "requestsFailed": [],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:5173/",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/main.js?t=1765196206639",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/src/main.js?t=1765196206639",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/@vite/client",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/@vite/client",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/vue.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/vue.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/pinia.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/pinia.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/@element-plus_icons-vue.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/@element-plus_icons-vue.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/element-plus_dist_locale_zh-cn__mjs.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/element-plus_dist_locale_zh-cn__mjs.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/App.vue",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/src/App.vue",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/router/index.js?t=1765196206639",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/src/router/index.js?t=1765196206639",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/vite/dist/client/env.mjs",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/vite/dist/client/env.mjs",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-G3PMV62Z.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-G3PMV62Z.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/element-plus/dist/index.css",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/element-plus/dist/index.css",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-HYZ2CRGS.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-HYZ2CRGS.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/App.vue?vue&type=style&index=0&lang.css",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/src/App.vue?vue&type=style&index=0&lang.css",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/@id/__x00__plugin-vue:export-helper",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/@id/__x00__plugin-vue:export-helper",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-YFT6OQ5R.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-YFT6OQ5R.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/vue-router.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/vue-router.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-NQCROYB4.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-NQCROYB4.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-VWPMIOTI.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-VWPMIOTI.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/element-plus.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/element-plus.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/stores/user.js?t=1765195174663",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/src/stores/user.js?t=1765195174663",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/vite.svg",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/vite.svg",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/utils/api.js?t=1765195174663",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/src/utils/api.js?t=1765195174663",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=f80f08a8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=f80f08a8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/views/Home.vue?t=1765196206639",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/src/views/Home.vue?t=1765196206639",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/views/Home.vue?vue&type=style&index=0&scoped=2dc54a20&lang.css",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/src/views/Home.vue?vue&type=style&index=0&scoped=2dc54a20&lang.css",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/components/LikeButton.vue?t=1765196206639",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/src/components/LikeButton.vue?t=1765196206639",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/components/LikeButton.vue?vue&type=style&index=0&scoped=c538ce84&lang.css",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/src/components/LikeButton.vue?vue&type=style&index=0&scoped=c538ce84&lang.css",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/api/letters/public?page=1&limit=8",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/api/letters/public?page=1&limit=8",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/api/likes/count/1",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/api/likes/count/1",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5173/api/likes/count/2",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "http://127.0.0.1:5173/api/likes/count/2",
+      "requestMethod": "GET"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80",
+      "status": 200,
+      "ok": true,
+      "requestUrl": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80",
+      "requestMethod": "GET"
+    }
+  ]
+}

@@ -146,9 +146,9 @@ router.put('/letters/:letterId/feature', authenticateAdmin, async (req, res) => 
     const letterId = req.params.letterId;
     const { is_featured } = req.body;
 
-    // 检查信件是否存在
+    // 检查信件是否存在（并获取作者信息）
     const [letters] = await query(
-      'SELECT letter_id, is_public FROM letters WHERE letter_id = ?',
+      'SELECT letter_id, is_public, user_id, title FROM letters WHERE letter_id = ?',
       [letterId]
     );
 
@@ -171,6 +171,21 @@ router.put('/letters/:letterId/feature', authenticateAdmin, async (req, res) => 
       'UPDATE letters SET is_featured = ? WHERE letter_id = ?',
       [is_featured, letterId]
     );
+
+    // 如果被设置为精选，给作者发送通知（actor 为管理员）
+    if (is_featured) {
+      try {
+        const owner = letters[0];
+        if (owner && owner.user_id) {
+          await query(
+            'INSERT INTO notifications (user_id, actor_user_id, type, data) VALUES (?, ?, ?, ?)',
+            [owner.user_id, req.admin?.admin_id || 0, 'featured', JSON.stringify({ letter_id: letterId, title: owner.title })]
+          );
+        }
+      } catch (err) {
+        console.warn('创建精选通知失败：', err);
+      }
+    }
 
     res.json({
       success: true,

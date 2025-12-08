@@ -8,6 +8,13 @@
 
 ## 🔧 配置步骤
 
+## 🔐 安全注意事项
+
+- **不要在公开场合粘贴或发布你的 API 密钥。** 如果你不小心泄露了密钥（例如在聊天、帖子或公有仓库中），请立即在 DeepSeek（或对应服务）控制台撤销/删除该密钥并创建新密钥。
+- **不要将生产密钥提交到代码仓库。** 使用 `.env` 或 CI/CD 的机密管理来保存密钥。
+- 本仓库已提供 `.env.example` 作为示例，实际密钥请写入项目根目录的 `.env` 文件或通过系统/主机的环境变量注入。
+
+
 ### 方法一：使用OpenAI（推荐，需要付费）
 
 1. **获取API密钥**
@@ -53,6 +60,14 @@
    AI_MAX_TOKENS=1000
    AI_TEMPERATURE=0.7
    ```
+
+3. **PowerShell（临时会话）设置示例**
+
+```powershell
+$env:AI_PROVIDER='deepseek'; $env:AI_API_KEY='your-deepseek-api-key'; $env:AI_API_URL='https://api.deepseek.com/v1/chat/completions'
+```
+
+> 提示：更推荐在项目根目录创建 `.env`（并把真实密钥写入），仓库中保留 `.env.example`，并确保 `.gitignore` 忽略 `.env`。
 
 ---
 
@@ -158,6 +173,45 @@ AI_TEMPERATURE=0.7
 3. **查看后端日志**
    - 如果看到 `✅ 成功使用AI生成回信`，说明配置成功
    - 如果看到 `⚠️ 使用模拟回信`，说明配置有问题
+
+   ---
+
+   ## 🆕 新增功能说明（快速浏览）
+
+   - **写信页面预览**：在写信页（`/write`）新增“预览信纸”按钮，可以实时查看所选的信纸、字体与边框效果，包含信封与纸张展示。
+   - **回信管理**：在主菜单新增“回信”页面（`/replies`），用户可以查看自己写过的信并对未生成回信的信件单条或批量触发 AI 生成回信。
+   - **点赞与通知**：为精选/公开信件新增点赞功能，点赞会记录在 `likes` 表并为作者创建通知（`notifications` 表）；用户在主页可点击通知图标查看未读通知并跳转查看详情。
+
+   ### 数据库迁移（开发/测试）
+
+   新增的表需要在数据库中创建一次（只需运行一次）：
+
+   ```powershell
+   cd "D:\ VS Code\jikedao"
+   npm run migrate:likes
+   ```
+
+   该脚本会创建 `likes` 与 `notifications` 表（如已存在则跳过）。
+
+   ### 前端验证要点
+
+   - 写信页（`/write`）：选择不同样式后点击“预览信纸”查看效果并确认无误；发送后会保存所选样式信息到信件记录。
+   - 回信页（`/replies`）：可单条或多选批量生成回信，生成结果会更新信件状态（`has_reply` 或 `status`）。
+   - 首页精选信件：卡片右上角有点赞按钮，点击会改变计数并为作者创建通知；通知页（`/notifications`）可查看并标记已读。
+
+   ---
+
+   ### 新增 API 概览
+
+   - `POST /api/likes/toggle`：切换点赞（需登录），参数 `{ letter_id }`。
+   - `GET /api/likes/count/:letterId`：获取某信件点赞数。
+   - `POST /api/comments`：新增评论（需登录），参数 `{ letter_id, content }`。
+   - `GET /api/comments/letter/:letterId`：获取信件评论列表。
+   - `GET /api/notifications`：获取当前用户通知（需登录）。
+   - `POST /api/notifications/mark-read`：标记通知为已读，参数 `{ ids: [id1,id2] }`。
+
+   (更多 API 详情和示例可移动到单独的 API 文档文件或 README 中。)
+
 
 ---
 

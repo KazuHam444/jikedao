@@ -32,6 +32,9 @@ app.use('/api/replies', require('./routes/replies'));
 app.use('/api/figures', require('./routes/figures'));
 app.use('/api/styles', require('./routes/styles'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/likes', require('./routes/likes'));
+app.use('/api/notifications', require('./routes/notifications'));
+app.use('/api/comments', require('./routes/comments'));
 
 // 健康检查
 app.get('/health', (req, res) => {

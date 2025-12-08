@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend deps
+        run: |
+          npm ci
+
+      - name: Run migrations (likes/comments/messages)
+        run: |
+          node scripts/migrate-add-likes-notifications.js || true
+          node scripts/migrate-add-comments-messages.js || true
+
+      - name: Lint frontend (install deps and build)
+        run: |
+          cd frontend
+          npm ci --legacy-peer-deps
+          npm run build
+
+      - name: Success
+        run: echo "CI basic checks passed"

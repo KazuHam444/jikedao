@@ -31,6 +31,7 @@
                 </div>
               </el-option>
             </el-select>
+            <el-button type="info" @click="openPreview" style="margin-top: 8px;">预览信纸</el-button>
           </el-form-item>
           
           <el-form-item label="信件标题" prop="title">
@@ -104,6 +105,24 @@
             <el-button @click="handleReset">重置</el-button>
           </el-form-item>
         </el-form>
+        <el-dialog :visible.sync="previewVisible" title="信件预览" width="820px">
+          <LetterPreview
+            :title="writeForm.title"
+            :content="writeForm.content"
+            :paper="currentPaper"
+            :font="currentFont"
+            :border="currentBorder"
+            :figureName="(figures.find(f=>f.figure_id===writeForm.figure_id)||{}).name || ''"
+          />
+          <template #footer>
+            <el-button @click="previewVisible = false">关闭</el-button>
+            <el-button type="primary" @click="() => handleSubmit()">确认并发送</el-button>
+            <el-button type="success" @click="() => handleSubmit(true)" style="margin-left:8px;">确认并发送并返回首页</el-button>
+          </template>
+        </el-dialog>
+
+        <!-- 发送成功页面改为独立路由 /send-success/:id -->
+
       </el-main>
     </el-container>
   </div>
@@ -114,6 +133,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import api from '@/utils/api'
+import LetterPreview from '@/components/LetterPreview.vue'
 
 const router = useRouter()
 
@@ -124,6 +144,18 @@ const figures = ref([])
 const paperStyles = ref([])
 const fontStyles = ref([])
 const borderStyles = ref([])
+    const previewVisible = ref(false)
+    const currentPaper = ref(null)
+    const currentFont = ref(null)
+    const currentBorder = ref(null)
+
+    // 打开预览并设置当前样式
+    function openPreview() {
+      currentPaper.value = paperStyles.value.find(p => p.style_value === writeForm.paper_style) || null
+      currentFont.value = fontStyles.value.find(f => f.style_value === writeForm.font_style) || null
+      currentBorder.value = borderStyles.value.find(b => b.style_value === writeForm.border_style) || null
+      previewVisible.value = true
+    }
 
 const writeForm = reactive({
   figure_id: null,
@@ -134,6 +166,8 @@ const writeForm = reactive({
   border_style: 'default',
   is_public: false
 })
+
+// 成功页不再使用内嵌对话，发送成功后跳转到独立页面
 
 const rules = {
   figure_id: [
@@ -185,9 +219,9 @@ function handleFigureChange() {
 }
 
 // 提交表单
-async function handleSubmit() {
+async function handleSubmit(returnHome = false) {
   if (!writeFormRef.value) return
-  
+
   await writeFormRef.value.validate(async (valid) => {
     if (valid) {
       loading.value = true
@@ -196,12 +230,14 @@ async function handleSubmit() {
         if (response.data.success) {
           ElMessage.success('信件发送成功！')
           const letterId = response.data.data.letter_id
-          router.push({ name: 'letter-detail', params: { id: letterId } })
+          // 跳转到发送成功页面，用户在该页选择后续操作
+          router.push({ name: 'send-success', params: { id: letterId } })
         }
       } catch (error) {
         ElMessage.error('发送失败')
       } finally {
         loading.value = false
+        previewVisible.value = false
       }
     }
   })
@@ -217,6 +253,16 @@ onMounted(() => {
   fetchStyles()
 })
 </script>
+
+<style scoped>
+/* 简单的成功动画样式 */
+.success-wrap{display:flex;flex-direction:column;align-items:center;padding:24px}
+.checkmark{
+  width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#67d28d,#2fb05b);box-shadow:0 6px 18px rgba(47,176,91,0.24);margin-bottom:12px;animation:pop .36s ease-out;
+}
+.checkmark svg{width:44px;height:44px;fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+@keyframes pop{0%{transform:scale(.6)}80%{transform:scale(1.05)}100%{transform:scale(1)}}
+</style>
 
 <style scoped>
 .write-page {

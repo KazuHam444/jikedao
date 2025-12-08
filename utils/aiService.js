@@ -6,7 +6,20 @@ const axios = require('axios');
  */
 class AIService {
   constructor() {
-    this.apiKey = process.env.AI_API_KEY;
+    // 读取并清洗 API Key：去除首尾空白，剥离包裹的单/双引号
+    let key = process.env.AI_API_KEY;
+    if (typeof key === 'string') {
+      key = key.trim();
+      if ((key.startsWith('"') && key.endsWith('"')) || (key.startsWith("'") && key.endsWith("'"))) {
+        key = key.slice(1, -1).trim();
+      }
+      // 如果包含换行或回车，视为非法
+      if (/\r|\n/.test(key)) {
+        console.warn('AI_API_KEY 包含换行或回车字符，已清洗但建议检查 .env 或环境变量的设置');
+        key = key.replace(/\r|\n/g, '');
+      }
+    }
+    this.apiKey = key;
     this.apiUrl = process.env.AI_API_URL;
     this.provider = process.env.AI_PROVIDER || 'openai'; // openai, deepseek, qwen, etc.
   }

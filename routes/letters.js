@@ -21,10 +21,12 @@ router.get('/public', async (req, res) => {
         l.font_style,
         l.border_style,
         l.writing_date,
+          (SELECT COUNT(*) FROM likes WHERE letter_id = l.letter_id) as like_count,
         u.username,
         hf.name as figure_name,
         hf.era,
-        hf.avatar_url
+        hf.avatar_url,
+        (SELECT COUNT(*) FROM likes WHERE letter_id = l.letter_id) as like_count
       FROM letters l
       INNER JOIN users u ON l.user_id = u.user_id
       INNER JOIN historical_figures hf ON l.figure_id = hf.figure_id
@@ -80,11 +82,14 @@ router.get('/my-letters', authenticate, async (req, res) => {
         l.is_public,
         l.is_featured,
         l.writing_date,
+          (SELECT COUNT(*) FROM likes WHERE letter_id = l.letter_id) as like_count,
+          (SELECT COUNT(*) FROM likes WHERE letter_id = l.letter_id) as like_count,
         l.status,
         hf.name as figure_name,
         hf.era,
         hf.avatar_url,
         CASE WHEN r.reply_id IS NOT NULL THEN TRUE ELSE FALSE END as has_reply
+        , (SELECT COUNT(*) FROM likes WHERE letter_id = l.letter_id) as like_count
       FROM letters l
       INNER JOIN historical_figures hf ON l.figure_id = hf.figure_id
       LEFT JOIN replies r ON l.letter_id = r.letter_id

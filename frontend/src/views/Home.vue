@@ -17,6 +17,9 @@
               <el-menu-item v-if="userStore.isAuthenticated" index="/letters">
                 我的信件
               </el-menu-item>
+              <el-menu-item v-if="userStore.isAuthenticated" index="/replies">
+                回信
+              </el-menu-item>
               <el-menu-item v-if="userStore.isAuthenticated" index="/write">
                 写信
               </el-menu-item>
@@ -27,6 +30,11 @@
           </div>
           <div class="user-actions">
             <template v-if="userStore.isAuthenticated">
+              <el-button type="text" @click="$router.push('/notifications')" style="margin-right:12px;">
+                <el-badge :value="unreadCount" class="item">
+                  <el-icon><Bell /></el-icon>
+                </el-badge>
+              </el-button>
               <el-dropdown>
                 <span class="user-info">
                   <el-icon><User /></el-icon>
@@ -87,6 +95,9 @@
                   <p class="author">作者：{{ letter.username }}</p>
                   <p class="figure">致：{{ letter.figure_name }}（{{ letter.era }}）</p>
                   <p class="date">{{ formatDate(letter.writing_date) }}</p>
+                  <div style="position:absolute;right:12px;top:8px;">
+                    <LikeButton :letterId="letter.letter_id" :initialCount="letter.like_count || 0" @toggled="onToggled" />
+                  </div>
                 </div>
               </el-card>
             </el-col>
@@ -105,6 +116,8 @@ import { useUserStore } from '@/stores/user'
 import { ElMessage } from 'element-plus'
 import { User } from '@element-plus/icons-vue'
 import api from '@/utils/api'
+import LikeButton from '@/components/LikeButton.vue'
+import { Bell } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -115,6 +128,15 @@ const loading = ref(false)
 const activeMenu = computed(() => {
   return router.currentRoute.value.path
 })
+
+const unreadCount = ref(0)
+
+async function fetchUnread() {
+  try {
+    const res = await api.get('/notifications/unread-count')
+    if (res.data.success) unreadCount.value = res.data.data.count
+  } catch (e) {}
+}
 
 // 获取精选信件
 async function fetchFeaturedLetters() {
@@ -138,6 +160,10 @@ function viewLetter(letterId) {
   router.push({ name: 'letter-detail', params: { id: letterId } })
 }
 
+function onToggled(payload){
+  // 可在这里处理切换后逻辑（例如刷新计数）
+}
+
 // 格式化日期
 function formatDate(dateString) {
   const date = new Date(dateString)
@@ -154,6 +180,8 @@ function handleLogout() {
   ElMessage.success('已退出登录')
   router.push('/')
 }
+
+onMounted(()=>{ if(userStore.isAuthenticated) fetchUnread() })
 
 onMounted(() => {
   fetchFeaturedLetters()

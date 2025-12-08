@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useUserStore } from '@/stores/user'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,10 +40,28 @@ const router = createRouter({
       meta: { title: '写信', requiresAuth: true }
     },
     {
+      path: '/replies',
+      name: 'replies',
+      component: () => import('@/views/Replies.vue'),
+      meta: { title: '回信', requiresAuth: true }
+    },
+    {
+      path: '/notifications',
+      name: 'notifications',
+      component: () => import('@/views/Notifications.vue'),
+      meta: { title: '通知', requiresAuth: true }
+    },
+    {
       path: '/letter/:id',
       name: 'letter-detail',
       component: () => import('@/views/LetterDetail.vue'),
       meta: { title: '信件详情' }
+    },
+    {
+      path: '/send-success/:id',
+      name: 'send-success',
+      component: () => import('@/views/SendSuccess.vue'),
+      meta: { title: '发送成功' }
     },
     {
       path: '/admin',
@@ -82,27 +99,29 @@ const router = createRouter({
 })
 
 // 路由守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
+  // 延迟导入 store，避免在路由模块初始化时访问 Pinia（可能尚未安装）
+  const { useUserStore } = await import('@/stores/user')
   const userStore = useUserStore()
-  
+
   // 需要登录的页面
   if (to.meta.requiresAuth && !userStore.isAuthenticated) {
     next({ name: 'login', query: { redirect: to.fullPath } })
     return
   }
-  
+
   // 需要管理员的页面
   if (to.meta.requiresAdmin && !userStore.isAdmin) {
     next({ name: 'home' })
     return
   }
-  
+
   // 已登录用户不能访问登录/注册页
   if (to.meta.requiresGuest && userStore.isAuthenticated) {
     next({ name: 'home' })
     return
   }
-  
+
   next()
 })
 

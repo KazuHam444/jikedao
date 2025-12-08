@@ -52,8 +52,39 @@
               <div class="content-text" v-html="formatContent(reply.content)"></div>
             </div>
           </el-card>
+
+            <!-- 评论区 -->
+            <el-card class="comment-card">
+              <template #header>
+                <div class="card-header">
+                  <h3>评论</h3>
+                </div>
+              </template>
+
+              <div class="comment-list">
+                <div v-if="comments.length === 0">
+                  <el-empty description="还没有评论，写下你的想法吧" />
+                </div>
+                <div v-else>
+                  <div class="comment-item" v-for="c in comments" :key="c.comment_id">
+                    <div class="comment-meta">
+                      <strong class="comment-author">{{ c.username }}</strong>
+                      <span class="comment-date">{{ formatDate(c.created_at) }}</span>
+                    </div>
+                    <div class="comment-body" v-html="formatContent(c.content)"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top:16px;">
+                <el-input type="textarea" v-model="commentContent" placeholder="写下评论..." :rows="3" />
+                <div style="margin-top:8px;text-align:right;">
+                  <el-button type="primary" :loading="postingComment" @click="postComment">发表评论</el-button>
+                </div>
+              </div>
+            </el-card>
           
-          <el-empty v-else-if="!loading && letter && isOwner && letter.status === 'sent'" description="还没有收到回信，点击上方按钮生成回信" />
+          <el-empty v-if="!loading && letter && isOwner && letter.status === 'sent'" description="还没有收到回信，点击上方按钮生成回信" />
         </div>
       </el-main>
     </el-container>
@@ -76,6 +107,9 @@ const letter = ref(null)
 const reply = ref(null)
 const loading = ref(false)
 const generatingReply = ref(false)
+  const comments = ref([])
+  const commentContent = ref('')
+  const postingComment = ref(false)
 
 const isOwner = computed(() => {
   return letter.value && userStore.user && letter.value.user_id === userStore.user.user_id
@@ -89,6 +123,7 @@ async function fetchLetterDetail() {
     if (response.data.success) {
       letter.value = response.data.data.letter
       reply.value = response.data.data.reply
+        fetchComments()
     }
   } catch (error) {
     ElMessage.error('获取信件详情失败')
@@ -97,6 +132,16 @@ async function fetchLetterDetail() {
     loading.value = false
   }
 }
+
+  // 获取评论
+  async function fetchComments() {
+    try {
+      const res = await api.get(`/comments/letter/${route.params.id}`)
+      if (res.data.success) comments.value = res.data.data
+    } catch (e) {
+      // ignore
+    }
+  }
 
 // 生成回信
 async function generateReply() {
@@ -137,6 +182,23 @@ function formatDate(dateString) {
     minute: '2-digit'
   })
 }
+
+  async function postComment() {
+    if (!commentContent.value || commentContent.value.trim().length === 0) return
+    postingComment.value = true
+    try {
+      const res = await api.post('/comments', { letter_id: route.params.id, content: commentContent.value })
+      if (res.data.success) {
+        commentContent.value = ''
+        fetchComments()
+        ElMessage.success('评论已发布')
+      }
+    } catch (e) {
+      ElMessage.error('发布评论失败')
+    } finally {
+      postingComment.value = false
+    }
+  }
 
 onMounted(() => {
   fetchLetterDetail()
@@ -256,6 +318,20 @@ onMounted(() => {
   white-space: pre-wrap;
   font-family: 'Microsoft YaHei', 'SimSun', serif;
 }
+
+.comment-item {
+  padding: 12px 20px;
+  border-bottom: 1px dashed rgba(200,200,200,0.3);
+}
+.comment-meta {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+.comment-author { color:#333 }
+.comment-date { color:#909399; font-size:12px }
+.comment-body { color:#333; white-space:pre-wrap }
 
 .letter-actions {
   margin-top: 20px;
