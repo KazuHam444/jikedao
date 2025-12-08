@@ -11,7 +11,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-import api from '@/utils/api'
+import api from '../utils/api'
 
 const props = defineProps({ letterId: Number, initialCount: Number })
 const emit = defineEmits(['toggled'])

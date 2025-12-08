@@ -26,7 +26,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import api from '@/utils/api'
+import api from '../utils/api'
 import { ElMessage } from 'element-plus'
 
 const notifications = ref([])

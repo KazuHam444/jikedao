@@ -43,7 +43,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '../../stores/user'
 import { ElMessage } from 'element-plus'
 import { DataBoard, User, Document, Avatar } from '@element-plus/icons-vue'
 

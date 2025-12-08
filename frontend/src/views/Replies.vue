@@ -43,7 +43,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import api from '@/utils/api'
+import api from '../utils/api'
 
 const router = useRouter()
 const letters = ref([])

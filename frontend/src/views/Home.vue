@@ -112,11 +112,11 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '../stores/user'
 import { ElMessage } from 'element-plus'
 import { User } from '@element-plus/icons-vue'
-import api from '@/utils/api'
-import LikeButton from '@/components/LikeButton.vue'
+import api from '../utils/api'
+import LikeButton from '../components/LikeButton.vue'
 import { Bell } from '@element-plus/icons-vue'
 
 const router = useRouter()

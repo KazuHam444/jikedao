@@ -81,7 +81,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import api from '@/utils/api'
+import api from '../../utils/api'
 
 const figures = ref([])
 const loading = ref(false)

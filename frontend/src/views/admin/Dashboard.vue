@@ -16,7 +16,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import api from '@/utils/api'
+import api from '../../utils/api'
 
 const statistics = ref([
   { label: '用户总数', value: 0 },

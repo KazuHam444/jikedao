@@ -82,7 +82,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Edit } from '@element-plus/icons-vue'
-import api from '@/utils/api'
+import api from '../utils/api'
 
 const router = useRouter()
 

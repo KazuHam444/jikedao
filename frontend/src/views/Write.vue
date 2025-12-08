@@ -132,8 +132,8 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import api from '@/utils/api'
-import LetterPreview from '@/components/LetterPreview.vue'
+import api from '../utils/api'
+import LetterPreview from '../components/LetterPreview.vue'
 
 const router = useRouter()
 
