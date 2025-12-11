@@ -31,36 +31,84 @@ const formattedContent = computed(() => {
 
 const paperStyle = computed(() => {
   if (props.paper && props.paper.preview_url) {
+    // 获取完整的图片URL
+    let imageUrl = props.paper.preview_url
+    if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
+      imageUrl = `${baseUrl}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`
+    }
     return {
-      backgroundImage: `url(${props.paper.preview_url})`,
-      backgroundSize: 'cover'
+      backgroundImage: `url(${imageUrl})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
     }
   }
-  // 简单内联样式依据 style_value
+  // 根据style_value应用样式
+  const value = props.paper?.style_value || 'default'
   const map = {
-    classic: { background: '#fff8f0' },
-    parchment: { background: '#f6ecd1' },
+    classic: { 
+      background: '#fff8f0',
+      backgroundImage: 'linear-gradient(45deg, #fff8f0 25%, transparent 25%), linear-gradient(-45deg, #fff8f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #fff8f0 75%), linear-gradient(-45deg, transparent 75%, #fff8f0 75%)',
+      backgroundSize: '20px 20px',
+      backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
+    },
+    parchment: { 
+      background: '#f6ecd1',
+      backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,.05) 1px, transparent 0)',
+      backgroundSize: '40px 40px'
+    },
     default: { background: '#ffffff' }
   }
-  return map[props.paper?.style_value || 'default'] || map.default
+  return map[value] || map.default
 })
 
 const fontStyleComputed = computed(() => {
   const value = props.font?.style_value || 'default'
   const map = {
-    default: { fontFamily: `"Microsoft YaHei", Arial, sans-serif`, color: '#333' },
-    kaiti: { fontFamily: 'KaiTi, serif', color: '#333' },
-    xingshu: { fontFamily: 'STXingkai, serif', color: '#333' }
+    default: { 
+      fontFamily: '"Microsoft YaHei", "微软雅黑", Arial, sans-serif', 
+      color: '#333',
+      fontSize: '16px',
+      lineHeight: '2'
+    },
+    kaiti: { 
+      fontFamily: '"KaiTi", "楷体", "STKaiti", serif', 
+      color: '#333',
+      fontSize: '17px',
+      lineHeight: '2.2'
+    },
+    xingshu: { 
+      fontFamily: '"STXingkai", "华文行楷", "Xingkai SC", serif', 
+      color: '#333',
+      fontSize: '18px',
+      lineHeight: '2.3'
+    }
   }
   return map[value] || map.default
 })
 
 const borderStyle = computed(() => {
   const value = props.border?.style_value || 'none'
-  if (value === 'none') return { border: 'none' }
-  if (value === 'classic') return { border: '12px double #d8c3a5', padding: '20px' }
-  if (value === 'pattern') return { border: '8px solid #e3d7c1', padding: '20px' }
-  return { border: 'none' }
+  const map = {
+    none: { 
+      border: 'none',
+      padding: '0'
+    },
+    classic: { 
+      border: '12px double #d8c3a5',
+      padding: '20px',
+      borderRadius: '4px',
+      boxShadow: 'inset 0 0 20px rgba(216, 195, 165, 0.2)'
+    },
+    pattern: { 
+      border: '8px solid #e3d7c1',
+      padding: '20px',
+      borderRadius: '4px',
+      backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(227, 215, 193, 0.3) 10px, rgba(227, 215, 193, 0.3) 20px)'
+    }
+  }
+  return map[value] || map.none
 })
 
 const date = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })

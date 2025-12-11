@@ -366,7 +366,7 @@ router.post('/styles', authenticateAdmin, [
   body('style_type').isIn(['paper', 'font', 'border']).withMessage('样式类型必须是paper、font或border'),
   body('style_name').trim().notEmpty().withMessage('样式名称不能为空'),
   body('style_value').trim().notEmpty().withMessage('样式值不能为空'),
-  body('preview_url').optional().isURL()
+  body('preview_url').optional()
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -397,6 +397,65 @@ router.post('/styles', authenticateAdmin, [
     res.status(500).json({
       success: false,
       message: '创建样式配置失败'
+    });
+  }
+});
+
+// 更新样式配置（管理员）
+router.put('/styles/:styleId', authenticateAdmin, [
+  body('style_name').optional().trim().notEmpty(),
+  body('style_value').optional().trim().notEmpty(),
+  body('preview_url').optional(),
+  body('is_active').optional().isBoolean()
+], async (req, res) => {
+  try {
+    const styleId = req.params.styleId;
+    const { style_name, style_value, preview_url, is_active } = req.body;
+
+    const updateFields = [];
+    const updateValues = [];
+
+    if (style_name !== undefined) {
+      updateFields.push('style_name = ?');
+      updateValues.push(style_name);
+    }
+    if (style_value !== undefined) {
+      updateFields.push('style_value = ?');
+      updateValues.push(style_value);
+    }
+    if (preview_url !== undefined) {
+      updateFields.push('preview_url = ?');
+      updateValues.push(preview_url || null);
+    }
+    if (is_active !== undefined) {
+      updateFields.push('is_active = ?');
+      updateValues.push(is_active);
+    }
+
+    if (updateFields.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: '没有要更新的字段'
+      });
+    }
+
+    updateValues.push(styleId);
+
+    await query(`
+      UPDATE style_configs
+      SET ${updateFields.join(', ')}
+      WHERE style_id = ?
+    `, updateValues);
+
+    res.json({
+      success: true,
+      message: '样式配置更新成功'
+    });
+  } catch (error) {
+    console.error('更新样式配置错误:', error);
+    res.status(500).json({
+      success: false,
+      message: '更新样式配置失败'
     });
   }
 });

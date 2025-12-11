@@ -22,6 +22,10 @@
           <el-icon><Avatar /></el-icon>
           <span>历史人物</span>
         </el-menu-item>
+        <el-menu-item index="/admin/styles">
+          <el-icon><Picture /></el-icon>
+          <span>样式管理</span>
+        </el-menu-item>
       </el-menu>
     </el-aside>
     
@@ -45,7 +49,7 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from '../../stores/user'
 import { ElMessage } from 'element-plus'
-import { DataBoard, User, Document, Avatar } from '@element-plus/icons-vue'
+import { DataBoard, User, Document, Avatar, Picture } from '@element-plus/icons-vue'
 
 const route = useRoute()
 const router = useRouter()

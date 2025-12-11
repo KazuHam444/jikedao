@@ -92,6 +92,12 @@ const router = createRouter({
           name: 'admin-figures',
           component: () => import('../views/admin/Figures.vue'),
           meta: { title: '历史人物管理' }
+        },
+        {
+          path: 'styles',
+          name: 'admin-styles',
+          component: () => import('../views/admin/Styles.vue'),
+          meta: { title: '样式管理' }
         }
       ]
     }

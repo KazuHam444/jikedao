@@ -55,35 +55,65 @@
           </el-form-item>
           
           <el-form-item label="信纸样式">
-            <el-select v-model="writeForm.paper_style" placeholder="选择信纸样式">
+            <el-select v-model="writeForm.paper_style" placeholder="选择信纸样式" style="width: 100%">
               <el-option
                 v-for="style in paperStyles"
                 :key="style.style_id"
                 :label="style.style_name"
                 :value="style.style_value"
-              />
+              >
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <img 
+                    v-if="style.preview_url" 
+                    :src="getImageUrl(style.preview_url)" 
+                    style="width: 60px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid #dcdfe6;"
+                    @error="handleImageError"
+                  />
+                  <span>{{ style.style_name }}</span>
+                </div>
+              </el-option>
             </el-select>
           </el-form-item>
           
           <el-form-item label="字体样式">
-            <el-select v-model="writeForm.font_style" placeholder="选择字体样式">
+            <el-select v-model="writeForm.font_style" placeholder="选择字体样式" style="width: 100%">
               <el-option
                 v-for="style in fontStyles"
                 :key="style.style_id"
                 :label="style.style_name"
                 :value="style.style_value"
-              />
+              >
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <img 
+                    v-if="style.preview_url" 
+                    :src="getImageUrl(style.preview_url)" 
+                    style="width: 60px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid #dcdfe6;"
+                    @error="handleImageError"
+                  />
+                  <span>{{ style.style_name }}</span>
+                </div>
+              </el-option>
             </el-select>
           </el-form-item>
           
           <el-form-item label="边框样式">
-            <el-select v-model="writeForm.border_style" placeholder="选择边框样式">
+            <el-select v-model="writeForm.border_style" placeholder="选择边框样式" style="width: 100%">
               <el-option
                 v-for="style in borderStyles"
                 :key="style.style_id"
                 :label="style.style_name"
                 :value="style.style_value"
-              />
+              >
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <img 
+                    v-if="style.preview_url" 
+                    :src="getImageUrl(style.preview_url)" 
+                    style="width: 60px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid #dcdfe6;"
+                    @error="handleImageError"
+                  />
+                  <span>{{ style.style_name }}</span>
+                </div>
+              </el-option>
             </el-select>
           </el-form-item>
           
@@ -105,8 +135,12 @@
             <el-button @click="handleReset">重置</el-button>
           </el-form-item>
         </el-form>
-        <el-dialog :visible.sync="previewVisible" title="信件预览" width="820px">
+        <el-dialog v-model="previewVisible" title="信件预览" width="900px" :close-on-click-modal="false">
+          <div v-if="!writeForm.title && !writeForm.content" style="text-align: center; padding: 40px; color: #909399;">
+            请先填写信件标题和内容
+          </div>
           <LetterPreview
+            v-else
             :title="writeForm.title"
             :content="writeForm.content"
             :paper="currentPaper"
@@ -116,8 +150,9 @@
           />
           <template #footer>
             <el-button @click="previewVisible = false">关闭</el-button>
-            <el-button type="primary" @click="() => handleSubmit()">确认并发送</el-button>
-            <el-button type="success" @click="() => handleSubmit(true)" style="margin-left:8px;">确认并发送并返回首页</el-button>
+            <el-button type="primary" @click="handleSubmit" :disabled="!writeForm.title || !writeForm.content">
+              确认并发送
+            </el-button>
           </template>
         </el-dialog>
 
@@ -151,6 +186,10 @@ const borderStyles = ref([])
 
     // 打开预览并设置当前样式
     function openPreview() {
+      if (!writeForm.title || !writeForm.content) {
+        ElMessage.warning('请先填写信件标题和内容')
+        return
+      }
       currentPaper.value = paperStyles.value.find(p => p.style_value === writeForm.paper_style) || null
       currentFont.value = fontStyles.value.find(f => f.style_value === writeForm.font_style) || null
       currentBorder.value = borderStyles.value.find(b => b.style_value === writeForm.border_style) || null
@@ -195,6 +234,20 @@ async function fetchFigures() {
   }
 }
 
+// 获取图片URL
+function getImageUrl(url) {
+  if (!url) return ''
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url
+  }
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
+  return `${baseUrl}${url.startsWith('/') ? '' : '/'}${url}`
+}
+
+function handleImageError(event) {
+  event.target.style.display = 'none'
+}
+
 // 获取样式配置
 async function fetchStyles() {
   try {
@@ -230,8 +283,8 @@ async function handleSubmit(returnHome = false) {
         if (response.data.success) {
           ElMessage.success('信件发送成功！')
           const letterId = response.data.data.letter_id
-          // 跳转到发送成功页面，用户在该页选择后续操作
-          router.push({ name: 'send-success', params: { id: letterId } })
+          // 跳转到信件详情页面
+          router.push({ name: 'letter-detail', params: { id: letterId } })
         }
       } catch (error) {
         ElMessage.error('发送失败')

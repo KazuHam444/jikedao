@@ -29,7 +29,14 @@
             </template>
             
             <div class="letter-content">
-              <div class="content-text" v-html="formatContent(letter.content)"></div>
+              <LetterDisplay
+                :title="letter.title"
+                :content="letter.content"
+                :paperStyle="letter.paper_style"
+                :fontStyle="letter.font_style"
+                :borderStyle="letter.border_style"
+                :figureName="letter.figure_name"
+              />
             </div>
             
             <div class="letter-actions" v-if="isOwner">
@@ -98,6 +105,7 @@ import { useUserStore } from '../stores/user'
 import { ElMessage } from 'element-plus'
 import { ArrowLeft } from '@element-plus/icons-vue'
 import api from '../utils/api'
+import LetterDisplay from '../components/LetterDisplay.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -123,7 +131,13 @@ async function fetchLetterDetail() {
     if (response.data.success) {
       letter.value = response.data.data.letter
       reply.value = response.data.data.reply
-        fetchComments()
+      // 调试：输出样式值
+      console.log('信件样式值:', {
+        paper_style: letter.value.paper_style,
+        font_style: letter.value.font_style,
+        border_style: letter.value.border_style
+      })
+      fetchComments()
     }
   } catch (error) {
     ElMessage.error('获取信件详情失败')

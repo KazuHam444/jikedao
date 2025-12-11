@@ -14,6 +14,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// 静态文件服务：提供上传的图片访问
+const path = require('path');
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // 测试数据库连接
 db.getConnection((err, connection) => {
   if (err) {
@@ -32,6 +36,7 @@ app.use('/api/replies', require('./routes/replies'));
 app.use('/api/figures', require('./routes/figures'));
 app.use('/api/styles', require('./routes/styles'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/upload', require('./routes/upload'));
 app.use('/api/likes', require('./routes/likes'));
 app.use('/api/notifications', require('./routes/notifications'));
 app.use('/api/comments', require('./routes/comments'));
