@@ -1,5 +1,17 @@
 /* 全局样式和背景图片配置 */
 
+/* 全局导航栏样式 - 所有页面的header需要为导航栏留出空间 */
+/* 注意：由于已删除各页面的header，此样式可能不再需要，但保留以防万一 */
+.el-header {
+  margin-top: 60px !important;
+}
+
+@media (max-width: 768px) {
+  .el-header {
+    margin-top: 50px !important;
+  }
+}
+
 /* 背景图片路径 - 可以替换为你自己的图片 */
 :root {
   --bg-login: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');

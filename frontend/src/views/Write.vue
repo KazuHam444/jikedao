@@ -1,10 +1,6 @@
 <template>
   <div class="write-page">
     <el-container>
-      <el-header>
-        <h2>写信给历史人物</h2>
-      </el-header>
-      
       <el-main>
         <el-form
           ref="writeFormRef"
@@ -345,21 +341,7 @@ onMounted(() => {
   z-index: 1;
 }
 
-.el-header {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(228, 231, 237, 0.5);
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.el-header h2 {
-  margin: 0;
-  color: #333;
-  font-weight: 600;
-}
+/* 导航栏已移至全局组件，删除原有样式 */
 
 .el-main {
   max-width: 900px;

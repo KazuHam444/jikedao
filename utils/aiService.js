@@ -5,7 +5,8 @@ const axios = require('axios');
  * 支持多种AI服务提供商
  */
 class AIService {
-  constructor() {
+  // 获取配置（每次调用时重新读取，确保环境变量已加载）
+  getConfig() {
     // 读取并清洗 API Key：去除首尾空白，剥离包裹的单/双引号
     let key = process.env.AI_API_KEY;
     if (typeof key === 'string') {
@@ -19,9 +20,24 @@ class AIService {
         key = key.replace(/\r|\n/g, '');
       }
     }
-    this.apiKey = key;
-    this.apiUrl = process.env.AI_API_URL;
-    this.provider = process.env.AI_PROVIDER || 'openai'; // openai, deepseek, qwen, etc.
+    return {
+      apiKey: key,
+      apiUrl: process.env.AI_API_URL,
+      provider: (process.env.AI_PROVIDER || 'openai').toLowerCase()
+    };
+  }
+
+  // 兼容旧代码的属性访问
+  get apiKey() {
+    return this.getConfig().apiKey;
+  }
+
+  get apiUrl() {
+    return this.getConfig().apiUrl;
+  }
+
+  get provider() {
+    return this.getConfig().provider;
   }
 
   /**
@@ -31,8 +47,11 @@ class AIService {
    * @returns {Promise<string>} 回信内容
    */
   async generateReply(letterData, figureData) {
+    // 获取配置（每次调用时重新读取）
+    const config = this.getConfig();
+    
     // 检查是否配置了AI API
-    if (!this.apiKey || !this.apiUrl) {
+    if (!config.apiKey || !config.apiUrl) {
       throw new Error('AI_API_KEY 或 AI_API_URL 未配置，请查看配置说明');
     }
 
@@ -40,15 +59,15 @@ class AIService {
     const prompt = this.buildPrompt(letterData, figureData);
 
     try {
-      switch (this.provider.toLowerCase()) {
+      switch (config.provider) {
         case 'openai':
-          return await this.callOpenAI(prompt);
+          return await this.callOpenAI(prompt, config);
         case 'deepseek':
-          return await this.callDeepSeek(prompt);
+          return await this.callDeepSeek(prompt, config);
         case 'qwen':
-          return await this.callQwen(prompt);
+          return await this.callQwen(prompt, config);
         default:
-          return await this.callOpenAI(prompt);
+          return await this.callOpenAI(prompt, config);
       }
     } catch (error) {
       console.error('AI API调用失败:', error.response?.data || error.message);
@@ -74,115 +93,215 @@ class AIService {
   }
 
   /**
-   * 调用OpenAI API
+   * 调用OpenAI API（带重试机制）
    */
-  async callOpenAI(prompt) {
-    const response = await axios.post(
-      this.apiUrl,
-      {
-        model: process.env.AI_MODEL || 'gpt-3.5-turbo',
-        messages: [
+  async callOpenAI(prompt, config, retries = 3) {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+      try {
+        const response = await axios.post(
+          config.apiUrl,
           {
-            role: 'system',
-            content: '你是一位历史人物，需要以该历史人物的身份和语气回信。回信要真诚、有深度，体现历史人物的性格特点。'
+            model: process.env.AI_MODEL || 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'system',
+                content: '你是一位历史人物，需要以该历史人物的身份和语气回信。回信要真诚、有深度，体现历史人物的性格特点。'
+              },
+              {
+                role: 'user',
+                content: prompt
+              }
+            ],
+            max_tokens: parseInt(process.env.AI_MAX_TOKENS || '1000'),
+            temperature: parseFloat(process.env.AI_TEMPERATURE || '0.7')
           },
           {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        max_tokens: parseInt(process.env.AI_MAX_TOKENS || '1000'),
-        temperature: parseFloat(process.env.AI_TEMPERATURE || '0.7')
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
-          'Content-Type': 'application/json'
-        },
-        timeout: 30000 // 30秒超时
-      }
-    );
-
-    if (response.data.choices && response.data.choices[0]) {
-      return response.data.choices[0].message.content.trim();
-    }
-    throw new Error('AI API返回格式错误');
-  }
-
-  /**
-   * 调用DeepSeek API
-   */
-  async callDeepSeek(prompt) {
-    const response = await axios.post(
-      this.apiUrl || 'https://api.deepseek.com/v1/chat/completions',
-      {
-        model: process.env.AI_MODEL || 'deepseek-chat',
-        messages: [
-          {
-            role: 'system',
-            content: '你是一位历史人物，需要以该历史人物的身份和语气回信。'
-          },
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        max_tokens: parseInt(process.env.AI_MAX_TOKENS || '1000'),
-        temperature: parseFloat(process.env.AI_TEMPERATURE || '0.7')
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
-          'Content-Type': 'application/json'
-        },
-        timeout: 30000
-      }
-    );
-
-    if (response.data.choices && response.data.choices[0]) {
-      return response.data.choices[0].message.content.trim();
-    }
-    throw new Error('AI API返回格式错误');
-  }
-
-  /**
-   * 调用通义千问API
-   */
-  async callQwen(prompt) {
-    const response = await axios.post(
-      this.apiUrl || 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
-      {
-        model: process.env.AI_MODEL || 'qwen-turbo',
-        input: {
-          messages: [
-            {
-              role: 'system',
-              content: '你是一位历史人物，需要以该历史人物的身份和语气回信。'
+            headers: {
+              'Authorization': `Bearer ${config.apiKey}`,
+              'Content-Type': 'application/json',
+              'Accept-Encoding': 'gzip, deflate'
             },
-            {
-              role: 'user',
-              content: prompt
-            }
-          ]
-        },
-        parameters: {
-          max_tokens: parseInt(process.env.AI_MAX_TOKENS || '1000'),
-          temperature: parseFloat(process.env.AI_TEMPERATURE || '0.7')
-        }
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
-          'Content-Type': 'application/json'
-        },
-        timeout: 30000
-      }
-    );
+            timeout: 60000, // 增加到60秒
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
+            decompress: true,
+            responseType: 'json'
+          }
+        );
 
-    if (response.data.output && response.data.output.text) {
-      return response.data.output.text.trim();
+        if (response.data && response.data.choices && response.data.choices[0]) {
+          return response.data.choices[0].message.content.trim();
+        }
+        throw new Error('AI API返回格式错误');
+      } catch (error) {
+        const isLastAttempt = attempt === retries;
+        const isNetworkError = error.code === 'ECONNRESET' || 
+                              error.code === 'ETIMEDOUT' || 
+                              error.code === 'ENOTFOUND' ||
+                              error.message === 'aborted' ||
+                              error.message.includes('aborted');
+
+        if (isNetworkError && !isLastAttempt) {
+          const waitTime = attempt * 2000;
+          console.warn(`OpenAI API调用失败（尝试 ${attempt}/${retries}），${waitTime}ms后重试...`, error.message);
+          await new Promise(resolve => setTimeout(resolve, waitTime));
+          continue;
+        }
+
+        if (error.response) {
+          throw new Error(`OpenAI API错误: ${error.response.status} - ${JSON.stringify(error.response.data)}`);
+        } else if (error.request) {
+          throw new Error(`OpenAI API无响应: ${error.message || '连接超时或中断'}`);
+        } else {
+          throw error;
+        }
+      }
     }
-    throw new Error('AI API返回格式错误');
+  }
+
+  /**
+   * 调用DeepSeek API（带重试机制）
+   */
+  async callDeepSeek(prompt, config, retries = 3) {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+      try {
+        const response = await axios.post(
+          config.apiUrl || 'https://api.deepseek.com/v1/chat/completions',
+          {
+            model: process.env.AI_MODEL || 'deepseek-chat',
+            messages: [
+              {
+                role: 'system',
+                content: '你是一位历史人物，需要以该历史人物的身份和语气回信。'
+              },
+              {
+                role: 'user',
+                content: prompt
+              }
+            ],
+            max_tokens: parseInt(process.env.AI_MAX_TOKENS || '1000'),
+            temperature: parseFloat(process.env.AI_TEMPERATURE || '0.7')
+          },
+          {
+            headers: {
+              'Authorization': `Bearer ${config.apiKey}`,
+              'Content-Type': 'application/json',
+              'Accept-Encoding': 'gzip, deflate' // 明确指定压缩格式
+            },
+            timeout: 60000, // 增加到60秒
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
+            // 禁用自动解压缩，手动处理
+            decompress: true,
+            // 增加响应超时
+            responseType: 'json'
+          }
+        );
+
+        if (response.data && response.data.choices && response.data.choices[0]) {
+          return response.data.choices[0].message.content.trim();
+        }
+        throw new Error('AI API返回格式错误');
+      } catch (error) {
+        const isLastAttempt = attempt === retries;
+        const isNetworkError = error.code === 'ECONNRESET' || 
+                              error.code === 'ETIMEDOUT' || 
+                              error.code === 'ENOTFOUND' ||
+                              error.message === 'aborted' ||
+                              error.message.includes('aborted');
+
+        if (isNetworkError && !isLastAttempt) {
+          // 网络错误，等待后重试
+          const waitTime = attempt * 2000; // 递增等待时间：2秒、4秒、6秒
+          console.warn(`DeepSeek API调用失败（尝试 ${attempt}/${retries}），${waitTime}ms后重试...`, error.message);
+          await new Promise(resolve => setTimeout(resolve, waitTime));
+          continue;
+        }
+
+        // 非网络错误或最后一次尝试，直接抛出
+        if (error.response) {
+          // API返回了错误响应
+          throw new Error(`DeepSeek API错误: ${error.response.status} - ${JSON.stringify(error.response.data)}`);
+        } else if (error.request) {
+          // 请求已发送但没有收到响应
+          throw new Error(`DeepSeek API无响应: ${error.message || '连接超时或中断'}`);
+        } else {
+          // 其他错误
+          throw error;
+        }
+      }
+    }
+  }
+
+  /**
+   * 调用通义千问API（带重试机制）
+   */
+  async callQwen(prompt, config, retries = 3) {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+      try {
+        const response = await axios.post(
+          config.apiUrl || 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
+          {
+            model: process.env.AI_MODEL || 'qwen-turbo',
+            input: {
+              messages: [
+                {
+                  role: 'system',
+                  content: '你是一位历史人物，需要以该历史人物的身份和语气回信。'
+                },
+                {
+                  role: 'user',
+                  content: prompt
+                }
+              ]
+            },
+            parameters: {
+              max_tokens: parseInt(process.env.AI_MAX_TOKENS || '1000'),
+              temperature: parseFloat(process.env.AI_TEMPERATURE || '0.7')
+            }
+          },
+          {
+            headers: {
+              'Authorization': `Bearer ${config.apiKey}`,
+              'Content-Type': 'application/json',
+              'Accept-Encoding': 'gzip, deflate'
+            },
+            timeout: 60000,
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
+            decompress: true,
+            responseType: 'json'
+          }
+        );
+
+        if (response.data && response.data.output && response.data.output.text) {
+          return response.data.output.text.trim();
+        }
+        throw new Error('AI API返回格式错误');
+      } catch (error) {
+        const isLastAttempt = attempt === retries;
+        const isNetworkError = error.code === 'ECONNRESET' || 
+                              error.code === 'ETIMEDOUT' || 
+                              error.code === 'ENOTFOUND' ||
+                              error.message === 'aborted' ||
+                              error.message.includes('aborted');
+
+        if (isNetworkError && !isLastAttempt) {
+          const waitTime = attempt * 2000;
+          console.warn(`通义千问API调用失败（尝试 ${attempt}/${retries}），${waitTime}ms后重试...`, error.message);
+          await new Promise(resolve => setTimeout(resolve, waitTime));
+          continue;
+        }
+
+        if (error.response) {
+          throw new Error(`通义千问API错误: ${error.response.status} - ${JSON.stringify(error.response.data)}`);
+        } else if (error.request) {
+          throw new Error(`通义千问API无响应: ${error.message || '连接超时或中断'}`);
+        } else {
+          throw error;
+        }
+      }
+    }
   }
 
   /**

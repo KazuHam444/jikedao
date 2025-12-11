@@ -1,17 +1,14 @@
 <template>
   <div class="letter-detail-page">
     <el-container>
-      <el-header>
-        <div class="header-content">
+      <el-main v-loading="loading">
+        <div class="page-header">
           <el-button @click="$router.back()">
             <el-icon><ArrowLeft /></el-icon>
             返回
           </el-button>
           <h2>信件详情</h2>
         </div>
-      </el-header>
-      
-      <el-main v-loading="loading">
         <div v-if="letter" class="letter-container">
           <!-- 信件信息 -->
           <el-card class="letter-card">
@@ -247,24 +244,20 @@ onMounted(() => {
   z-index: 1;
 }
 
-.header-content {
+.page-header {
   display: flex;
   align-items: center;
   gap: 20px;
-  height: 100%;
+  margin-bottom: 20px;
+  padding: 20px 0;
 }
 
-.header-content h2 {
+.page-header h2 {
   margin: 0;
-  color: #333;
+  color: #fff;
   font-weight: 600;
-}
-
-.el-header {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(228, 231, 237, 0.5);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-size: 24px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .el-main {

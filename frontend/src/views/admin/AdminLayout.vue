@@ -104,6 +104,14 @@ function handleLogout() {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(228, 231, 237, 0.5);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-top: 60px; /* 为全局导航栏留出空间 */
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .el-header {
+    margin-top: 50px;
+  }
 }
 
 .header-content {

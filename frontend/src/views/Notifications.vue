@@ -1,10 +1,10 @@
 <template>
   <div class="notifications-page">
     <el-container>
-      <el-header>
-        <h2>通知</h2>
-      </el-header>
       <el-main>
+        <div class="page-header">
+          <h2>通知</h2>
+        </div>
         <div v-if="notifications.length">
           <el-card v-for="n in notifications" :key="n.notification_id" class="mb-12">
             <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -87,4 +87,16 @@ onMounted(()=>{ fetchNotifications() })
 
 <style scoped>
 .mb-12{ margin-bottom:12px }
+
+.page-header {
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+.page-header h2 {
+  color: #333;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
 </style>

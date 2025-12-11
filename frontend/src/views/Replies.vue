@@ -1,10 +1,10 @@
 <template>
   <div class="replies-page">
     <el-container>
-      <el-header>
-        <h2>回信管理</h2>
-      </el-header>
       <el-main>
+        <div class="page-header">
+          <h2>回信管理</h2>
+        </div>
         <el-card>
           <template #header>
             <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -109,4 +109,16 @@ onMounted(()=>{
 
 <style scoped>
 .replies-page { min-height: 100vh; }
+
+.page-header {
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+.page-header h2 {
+  color: #333;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
 </style>

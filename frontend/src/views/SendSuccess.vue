@@ -1,9 +1,6 @@
 <template>
   <div class="send-success-page">
     <el-container>
-      <el-header>
-        <h2>发送成功</h2>
-      </el-header>
       <el-main>
         <div class="success-wrap">
           <div class="checkmark">

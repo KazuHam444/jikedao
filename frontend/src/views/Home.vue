@@ -1,61 +1,6 @@
 <template>
   <div class="home">
     <el-container>
-      <!-- 头部导航 -->
-      <el-header>
-        <div class="header-content">
-          <div class="logo">
-            <h1>跨时空邮局</h1>
-          </div>
-          <div class="nav">
-            <el-menu
-              mode="horizontal"
-              :default-active="activeMenu"
-              router
-            >
-              <el-menu-item index="/">首页</el-menu-item>
-              <el-menu-item v-if="userStore.isAuthenticated" index="/letters">
-                我的信件
-              </el-menu-item>
-              <el-menu-item v-if="userStore.isAuthenticated" index="/replies">
-                回信
-              </el-menu-item>
-              <el-menu-item v-if="userStore.isAuthenticated" index="/write">
-                写信
-              </el-menu-item>
-              <el-menu-item v-if="userStore.isAdmin" index="/admin">
-                管理后台
-              </el-menu-item>
-            </el-menu>
-          </div>
-          <div class="user-actions">
-            <template v-if="userStore.isAuthenticated">
-              <el-button type="text" @click="$router.push('/notifications')" style="margin-right:12px;">
-                <el-badge :value="unreadCount" class="item">
-                  <el-icon><Bell /></el-icon>
-                </el-badge>
-              </el-button>
-              <el-dropdown>
-                <span class="user-info">
-                  <el-icon><User /></el-icon>
-                  {{ userStore.user?.username }}
-                </span>
-                <template #dropdown>
-                  <el-dropdown-menu>
-                    <el-dropdown-item @click="handleLogout">退出登录</el-dropdown-item>
-                  </el-dropdown-menu>
-                </template>
-              </el-dropdown>
-            </template>
-            <template v-else>
-              <el-button type="primary" @click="$router.push('/login')">登录</el-button>
-              <el-button @click="$router.push('/register')">注册</el-button>
-              <el-button type="info" @click="$router.push('/admin/login')">管理员</el-button>
-            </template>
-          </div>
-        </div>
-      </el-header>
-
       <!-- 主要内容 -->
       <el-main>
         <div class="banner">
@@ -174,15 +119,6 @@ function formatDate(dateString) {
   })
 }
 
-// 退出登录
-function handleLogout() {
-  userStore.logout()
-  ElMessage.success('已退出登录')
-  router.push('/')
-}
-
-onMounted(()=>{ if(userStore.isAuthenticated) fetchUnread() })
-
 onMounted(() => {
   fetchFeaturedLetters()
 })
@@ -216,60 +152,7 @@ onMounted(() => {
   z-index: 1;
 }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.logo h1 {
-  color: #fff;
-  margin: 0;
-  font-size: 24px;
-}
-
-.nav {
-  flex: 1;
-  margin: 0 40px;
-}
-
-.nav :deep(.el-menu) {
-  background: transparent;
-  border: none;
-}
-
-.nav :deep(.el-menu-item) {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.nav :deep(.el-menu-item:hover),
-.nav :deep(.el-menu-item.is-active) {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.user-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.user-info {
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.el-header {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
+/* 导航栏已移至全局组件，删除原有样式 */
 
 .el-main {
   max-width: 1200px;
