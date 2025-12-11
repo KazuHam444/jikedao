@@ -366,7 +366,8 @@ router.post('/styles', authenticateAdmin, [
   body('style_type').isIn(['paper', 'font', 'border']).withMessage('样式类型必须是paper、font或border'),
   body('style_name').trim().notEmpty().withMessage('样式名称不能为空'),
   body('style_value').trim().notEmpty().withMessage('样式值不能为空'),
-  body('preview_url').optional()
+  body('preview_url').optional(),
+  body('font_url').optional()
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -378,12 +379,12 @@ router.post('/styles', authenticateAdmin, [
       });
     }
 
-    const { style_type, style_name, style_value, preview_url } = req.body;
+    const { style_type, style_name, style_value, preview_url, font_url } = req.body;
 
     const [result] = await query(`
-      INSERT INTO style_configs (style_type, style_name, style_value, preview_url)
-      VALUES (?, ?, ?, ?)
-    `, [style_type, style_name, style_value, preview_url || null]);
+      INSERT INTO style_configs (style_type, style_name, style_value, preview_url, font_url)
+      VALUES (?, ?, ?, ?, ?)
+    `, [style_type, style_name, style_value, preview_url || null, font_url || null]);
 
     res.status(201).json({
       success: true,
@@ -406,11 +407,12 @@ router.put('/styles/:styleId', authenticateAdmin, [
   body('style_name').optional().trim().notEmpty(),
   body('style_value').optional().trim().notEmpty(),
   body('preview_url').optional(),
+  body('font_url').optional(),
   body('is_active').optional().isBoolean()
 ], async (req, res) => {
   try {
     const styleId = req.params.styleId;
-    const { style_name, style_value, preview_url, is_active } = req.body;
+    const { style_name, style_value, preview_url, font_url, is_active } = req.body;
 
     const updateFields = [];
     const updateValues = [];
@@ -426,6 +428,10 @@ router.put('/styles/:styleId', authenticateAdmin, [
     if (preview_url !== undefined) {
       updateFields.push('preview_url = ?');
       updateValues.push(preview_url || null);
+    }
+    if (font_url !== undefined) {
+      updateFields.push('font_url = ?');
+      updateValues.push(font_url || null);
     }
     if (is_active !== undefined) {
       updateFields.push('is_active = ?');

@@ -112,5 +112,65 @@ router.post('/style-image', authenticateAdmin, (req, res, next) => {
   });
 });
 
+
+// 上传字体文件（管理员）
+router.post('/font-file', authenticateAdmin, (req, res, next) => {
+  // 确保字体目录存在
+  const fontsDir = path.join(__dirname, '../uploads/fonts');
+  if (!fs.existsSync(fontsDir)) {
+    fs.mkdirSync(fontsDir, { recursive: true });
+  }
+
+  const fontStorage = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, fontsDir),
+    filename: (req, file, cb) => {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+      const ext = path.extname(file.originalname);
+      cb(null, `font-${uniqueSuffix}${ext}`);
+    }
+  });
+
+  const fontFileFilter = (req, file, cb) => {
+    const allowed = /woff2|woff|ttf|otf/;
+    const extname = allowed.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = allowed.test(file.mimetype);
+    if (extname) {
+      cb(null, true);
+    } else {
+      cb(new Error('只允许上传字体文件（woff, woff2, ttf, otf）'), false);
+    }
+  };
+
+  const fontUpload = multer({
+    storage: fontStorage,
+    limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+    fileFilter: fontFileFilter
+  });
+
+  fontUpload.single('font')(req, res, (err) => {
+    if (err) {
+      if (err instanceof multer.MulterError) {
+        if (err.code === 'LIMIT_FILE_SIZE') {
+          return res.status(400).json({ success: false, message: '字体文件大小超过限制（最大10MB）' });
+        }
+        return res.status(400).json({ success: false, message: `上传错误：${err.message}` });
+      }
+      return res.status(500).json({ success: false, message: err.message || '字体上传失败' });
+    }
+
+    try {
+      if (!req.file) {
+        return res.status(400).json({ success: false, message: '请选择要上传的字体文件' });
+      }
+
+      const fontUrl = `/uploads/fonts/${req.file.filename}`;
+      res.json({ success: true, message: '字体上传成功', data: { url: fontUrl, filename: req.file.filename, size: req.file.size } });
+    } catch (error) {
+      console.error('上传字体错误:', error);
+      res.status(500).json({ success: false, message: error.message || '字体上传失败' });
+    }
+  });
+});
+
 module.exports = router;
 

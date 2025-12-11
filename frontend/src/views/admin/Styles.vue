@@ -158,6 +158,31 @@
             </div>
           </div>
         </el-form-item>
+
+        <el-form-item v-if="styleForm.style_type === 'font'" label="字体文件">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <el-upload
+              :action="uploadFontUrl"
+              :headers="uploadHeaders"
+              :on-success="handleFontUploadSuccess"
+              :on-error="handleFontUploadError"
+              :before-upload="beforeFontUpload"
+              :show-file-list="false"
+              accept=".woff,.woff2,.ttf,.otf"
+              name="font"
+            >
+              <el-button type="primary">上传字体文件</el-button>
+              <template #tip>
+                <div class="el-upload__tip">支持 woff/woff2/ttf/otf，大小不超过10MB</div>
+              </template>
+            </el-upload>
+
+            <div v-if="styleForm.font_url" style="margin-top:8px;">
+              <a :href="getImageUrl(styleForm.font_url)" target="_blank">查看已上传字体文件</a>
+              <div style="margin-top:8px;"><el-button type="danger" size="small" @click="styleForm.font_url = ''">删除字体文件</el-button></div>
+            </div>
+          </div>
+        </el-form-item>
       </el-form>
       <template #footer>
         <el-button @click="showDialog = false">取消</el-button>
@@ -186,7 +211,8 @@ const styleForm = reactive({
   style_type: 'paper',
   style_name: '',
   style_value: '',
-  preview_url: ''
+  preview_url: '',
+  font_url: ''
 })
 
 const rules = {
@@ -202,6 +228,10 @@ const currentStyles = computed(() => {
 const uploadUrl = computed(() => {
   // 使用相对路径，axios会自动处理
   return '/api/upload/style-image'
+})
+
+const uploadFontUrl = computed(() => {
+  return '/api/upload/font-file'
 })
 
 const uploadHeaders = computed(() => {
@@ -249,6 +279,7 @@ function editStyle(style) {
   styleForm.style_name = style.style_name
   styleForm.style_value = style.style_value
   styleForm.preview_url = style.preview_url || ''
+  styleForm.font_url = style.font_url || ''
   showDialog.value = true
 }
 
@@ -267,6 +298,24 @@ function beforeUpload(file) {
   return true
 }
 
+function beforeFontUpload(file) {
+  const allowed = ['font/woff', 'font/woff2', 'font/otf', 'font/ttf', 'application/font-woff', 'application/font-woff2']
+  const ext = file.name.split('.').pop().toLowerCase()
+  const allowedExt = ['woff', 'woff2', 'ttf', 'otf']
+  const isAllowedExt = allowedExt.includes(ext)
+  const isLt10M = file.size / 1024 / 1024 < 10
+
+  if (!isAllowedExt) {
+    ElMessage.error('只允许上传字体文件（woff, woff2, ttf, otf）')
+    return false
+  }
+  if (!isLt10M) {
+    ElMessage.error('字体大小不能超过10MB！')
+    return false
+  }
+  return true
+}
+
 function handleUploadSuccess(response) {
   if (response.success) {
     styleForm.preview_url = response.data.url
@@ -278,6 +327,19 @@ function handleUploadSuccess(response) {
 
 function handleUploadError(error) {
   ElMessage.error('图片上传失败：' + (error.message || '未知错误'))
+}
+
+function handleFontUploadSuccess(response) {
+  if (response.success) {
+    styleForm.font_url = response.data.url
+    ElMessage.success('字体上传成功')
+  } else {
+    ElMessage.error(response.message || '字体上传失败')
+  }
+}
+
+function handleFontUploadError(error) {
+  ElMessage.error('字体上传失败：' + (error.message || '未知错误'))
 }
 
 async function saveStyle() {
@@ -321,6 +383,7 @@ function resetForm() {
   styleForm.style_name = ''
   styleForm.style_value = ''
   styleForm.preview_url = ''
+  styleForm.font_url = ''
   styleFormRef.value?.resetFields()
 }
 
