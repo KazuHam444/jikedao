@@ -14,15 +14,16 @@
 
 /* 背景图片路径 - 可以替换为你自己的图片 */
 :root {
-  --bg-login: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');
-  --bg-register: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');
-  --bg-home: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');
-  --bg-admin: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');
+  /* 已改为使用项目 public 根目录的本地图片。
+     请将本地文件 D:\\background.jpg 复制到 frontend/public/background.jpg
+     然后在 CSS 使用 url('/background.jpg') 引用（浏览器更可靠）。
+  */
+  --bg-login: url('/background.jpg');
+  --bg-register: url('/background.jpg');
+  --bg-home: url('/background.jpg');
+  --bg-admin: url('/background.jpg');
   
-  /* 或者使用本地图片（将图片放在 frontend/public/images/ 目录下） */
-  /* --bg-login: url('/images/login-bg.jpg'); */
-  /* --bg-register: url('/images/register-bg.jpg'); */
-  /* --bg-home: url('/images/home-bg.jpg'); */
+  /* 也可以把图片放在 frontend/public/images/ 并使用 '/images/xxx' 路径 */
 }
 
 /* 通用背景样式 */

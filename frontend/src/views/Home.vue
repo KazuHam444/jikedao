@@ -6,11 +6,18 @@
         <div class="banner">
           <h2>跨越时空，与历史对话</h2>
           <p>给历史人物写信，收到来自过去的回信</p>
-          <el-button v-if="!userStore.isAuthenticated" type="primary" size="large" @click="$router.push('/register')">
-            开始写信
-          </el-button>
-          <el-button v-else type="primary" size="large" @click="$router.push('/write')">
-            开始写信
+          <el-button
+            type="text"
+            size="large"
+            class="start-image-button"
+            @click="handleStartClick"
+          >
+            <img
+              :src="currentImage"
+              alt="开始写信"
+              class="start-image"
+              :class="{ open: isOpen }"
+            />
           </el-button>
         </div>
 
@@ -76,6 +83,27 @@ const activeMenu = computed(() => {
 
 const unreadCount = ref(0)
 
+// 控制开始图片的动画与切换
+const isOpen = ref(false)
+const isAnimating = ref(false)
+
+const currentImage = computed(() => (isOpen.value ? '/letter_open.png' : '/letter_close.png'))
+
+function handleStartClick() {
+  if (isAnimating.value) return
+  isAnimating.value = true
+  isOpen.value = true
+  // 动画短暂延迟后跳转到写信页
+  setTimeout(() => {
+    router.push('/write')
+    // 重置状态，避免长时间保持打开图
+    setTimeout(() => {
+      isOpen.value = false
+      isAnimating.value = false
+    }, 300)
+  }, 400)
+}
+
 async function fetchUnread() {
   try {
     const res = await api.get('/notifications/unread-count')
@@ -127,9 +155,8 @@ onMounted(() => {
 <style scoped>
 .home {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  /* 首页背景 - 历史人物和古代建筑主题 */
-  background-image: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1920&q=80');
+  /* 使用全局 CSS 变量 --bg-login（指向 /background.jpg）作为首页背景 */
+  background-image: var(--bg-login);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -143,7 +170,8 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%);
+  /* 移除紫色透明遮罩，保留空背景以直接显示图片 */
+  background: transparent;
   z-index: 0;
 }
 
@@ -161,9 +189,15 @@ onMounted(() => {
 }
 
 .banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: #fff;
-  padding: 80px 0;
+  padding: 40px 0;
+  min-height: 60vh;
+  box-sizing: border-box;
   animation: fadeIn 0.8s ease-out;
 }
 
@@ -244,6 +278,42 @@ onMounted(() => {
 .date {
   color: #909399;
   font-size: 12px;
+}
+
+.start-image-button {
+  padding: 0;
+  border-radius: 8px;
+}
+
+.start-image {
+  max-height: 128vh; /* 根据视口自适应，避免造成额外滚动条 */
+  width: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+
+}
+
+.start-image.open {
+  transform: scale(1.02) translateY(-4px);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.start-image-button {
+  cursor: pointer;
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px; /* 轻微下移，仍由弹性布局居中 */
+}
+@media (max-width: 768px) {
+  .start-image {
+    height: 220px; /* 移动端限制高度，避免过大 */
+  }
+  .start-image-button {
+      margin-top: 8px; /* 移动端减小间距 */
+    }
 }
 </style>
 

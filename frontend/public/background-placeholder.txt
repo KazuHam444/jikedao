@@ -1,0 +1,1 @@
+占位文件：请将你的 D:\background.jpg 覆盖此文件并重命名为 background.jpg，或将背景图片直接复制到 frontend/public/background.jpg。
