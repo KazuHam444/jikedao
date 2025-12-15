@@ -1,8 +1,6 @@
 <template>
   <div class="preview-wrap">
-    <div class="envelope">
-      <div class="seal"></div>
-    </div>
+    <div class="seal"></div>
     <div class="paper" :style="paperStyle">
       <div class="border" :style="borderStyle">
         <div class="content" :style="fontStyleComputed" v-html="formattedContent"></div>
@@ -188,23 +186,8 @@ const date = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'l
   gap: 24px;
   align-items: flex-start;
 }
-.envelope {
-  width: 140px;
-  height: 100px;
-  background: linear-gradient(135deg,#b98f6b,#8b5a2b);
-  border-radius: 6px;
-  position: relative;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-}
-.envelope .seal {
-  width: 40px;
-  height: 40px;
-  background: rgba(255,255,255,0.15);
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  border-radius: 50%;
-}
+
+
 .paper {
   width: 600px;
   min-height: 320px;

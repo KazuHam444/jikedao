@@ -3,7 +3,10 @@
     <el-container>
       <el-main>
         <div class="page-header">
-          <h2>我的信件</h2>
+          <div class="page-header-left">
+            <img :src="letterClose" class="header-icon" alt="信件图标" />
+            <h2>我的信件</h2>
+          </div>
           <el-button type="primary" @click="$router.push('/write')">
             <el-icon><Edit /></el-icon>
             写新信
@@ -80,6 +83,8 @@ import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Edit } from '@element-plus/icons-vue'
 import api from '../utils/api'
+
+const letterClose = '/letter_close1.png'
 
 const router = useRouter()
 
@@ -172,24 +177,15 @@ onMounted(() => {
 <style scoped>
 .letters-page {
   min-height: 100vh;
-  /* 使用全局 background.png */
-  background-image: url('/background.png');
+  /* 使用专用背景 background2.png */
+  background-image: url('/background2.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   position: relative;
 }
 
-.letters-page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(245, 247, 250, 0.85) 0%, rgba(195, 207, 226, 0.85) 100%);
-  z-index: 0;
-}
+/* 已移除覆盖遮罩，页面直接显示 background2.png */
 
 .letters-page > * {
   position: relative;
@@ -199,26 +195,35 @@ onMounted(() => {
 /* 导航栏已移至全局组件，删除原有样式 */
 
 .el-main {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  /* 半透明卡片：保留模糊、轻阴影与细边框，但不实心 */
+  background: rgba(255, 255, 255, 0.546);
+  backdrop-filter: blur(2px);
   margin: 20px;
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 30px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 :deep(.el-table) {
+  /* 表格完全透明，无对比 */
   background: transparent;
+  backdrop-filter: none;
 }
 
 :deep(.el-table th) {
-  background: rgba(245, 247, 250, 0.5);
+  background: transparent;
 }
 
 :deep(.el-button--primary) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
 }
+
+/* page header icon */
+.page-header { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.page-header-left { display:flex; align-items:center; gap:12px; }
+.page-header .header-icon { width:48px; height:48px; object-fit:contain; }
+.page-header h2 { margin:0; font-size:20px; }
 </style>
 
