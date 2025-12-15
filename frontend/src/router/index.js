@@ -52,6 +52,12 @@ const router = createRouter({
       meta: { title: '通知', requiresAuth: true }
     },
     {
+      path: '/featured',
+      name: 'featured',
+      component: () => import('../views/FeaturedLetters.vue'),
+      meta: { title: '精选信件' }
+    },
+    {
       path: '/letter/:id',
       name: 'letter-detail',
       component: () => import('../views/LetterDetail.vue'),

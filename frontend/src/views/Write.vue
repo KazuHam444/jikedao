@@ -8,15 +8,18 @@
           :rules="rules"
           label-width="100px"
         >
-          <el-form-item label="选择历史人物" prop="figure_id">
+          <el-form-item label="选择角色" prop="figure_id">
             <el-select
               v-model="writeForm.figure_id"
-              placeholder="请选择历史人物"
+              placeholder="请选择角色（支持搜索）"
               style="width: 100%"
+              filterable
+              :filter-method="filterFigures"
+              @visible-change="handleSelectVisible"
               @change="handleFigureChange"
             >
               <el-option
-                v-for="figure in figures"
+                v-for="figure in filteredFigures"
                 :key="figure.figure_id"
                 :label="`${figure.name}（${figure.era}）`"
                 :value="figure.figure_id"
@@ -172,6 +175,7 @@ const writeFormRef = ref(null)
 const loading = ref(false)
 
 const figures = ref([])
+const filteredFigures = ref([])
 const paperStyles = ref([])
 const fontStyles = ref([])
 const borderStyles = ref([])
@@ -206,7 +210,7 @@ const writeForm = reactive({
 
 const rules = {
   figure_id: [
-    { required: true, message: '请选择历史人物', trigger: 'change' }
+    { required: true, message: '请选择角色', trigger: 'change' }
   ],
   title: [
     { required: true, message: '请输入信件标题', trigger: 'blur' },
@@ -218,16 +222,53 @@ const rules = {
   ]
 }
 
-// 获取历史人物列表
+// 获取角色列表
 async function fetchFigures() {
   try {
     const response = await api.get('/figures')
     if (response.data.success) {
       figures.value = response.data.data
+      filteredFigures.value = response.data.data
     }
   } catch (error) {
-    ElMessage.error('获取历史人物列表失败')
+    ElMessage.error('获取角色列表失败')
   }
+}
+
+// 下拉框显示/隐藏时重置过滤
+function handleSelectVisible(visible) {
+  if (visible) {
+    // 打开下拉框时，确保显示所有人物
+    filteredFigures.value = figures.value
+  }
+}
+
+// 搜索过滤角色（支持中英文）
+function filterFigures(query) {
+  if (!query || query.trim() === '') {
+    // 没有搜索词时，显示所有人物
+    filteredFigures.value = figures.value
+    return
+  }
+  
+  const lowerQuery = query.toLowerCase().trim()
+  filteredFigures.value = figures.value.filter(figure => {
+    // 搜索姓名（中文）
+    if (figure.name.includes(query)) return true
+    // 搜索时代（中文）
+    if (figure.era.includes(query)) return true
+    // 搜索姓名（英文，转小写）
+    if (figure.name.toLowerCase().includes(lowerQuery)) return true
+    // 搜索时代（英文，转小写）
+    if (figure.era.toLowerCase().includes(lowerQuery)) return true
+    // 搜索简介（中英文）
+    if (figure.biography) {
+      if (figure.biography.includes(query) || figure.biography.toLowerCase().includes(lowerQuery)) {
+        return true
+      }
+    }
+    return false
+  })
 }
 
 // 获取图片URL

@@ -4,8 +4,8 @@
       <!-- 主要内容 -->
       <el-main>
         <div class="banner">
-          <h2>跨越时空，与历史对话</h2>
-          <p>给历史人物写信，收到来自过去的回信</p>
+          <h2>跨越时空，连接无限可能</h2>
+          <p>只有你想不到的，没有我们送不到的</p>
           <el-button
             type="text"
             size="large"
@@ -20,68 +20,18 @@
             />
           </el-button>
         </div>
-
-        <!-- 精选信件展示 -->
-        <div class="featured-letters">
-          <h3>精选信件</h3>
-          <el-row :gutter="20" v-loading="loading">
-            <el-col
-              v-for="letter in letters"
-              :key="letter.letter_id"
-              :xs="24"
-              :sm="12"
-              :md="8"
-              :lg="6"
-            >
-              <el-card
-                class="letter-card"
-                shadow="hover"
-                @click="viewLetter(letter.letter_id)"
-              >
-                <template #header>
-                  <div class="card-header">
-                    <span>{{ letter.title }}</span>
-                  </div>
-                </template>
-                <div class="letter-info">
-                  <p class="author">作者：{{ letter.username }}</p>
-                  <p class="figure">致：{{ letter.figure_name }}（{{ letter.era }}）</p>
-                  <p class="date">{{ formatDate(letter.writing_date) }}</p>
-                  <div style="position:absolute;right:12px;top:8px;">
-                    <LikeButton :letterId="letter.letter_id" :initialCount="letter.like_count || 0" @toggled="onToggled" />
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
-          </el-row>
-          <el-empty v-if="!loading && letters.length === 0" description="暂无精选信件" />
-        </div>
       </el-main>
     </el-container>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '../stores/user'
-import { ElMessage } from 'element-plus'
-import { User } from '@element-plus/icons-vue'
-import api from '../utils/api'
-import LikeButton from '../components/LikeButton.vue'
-import { Bell } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const userStore = useUserStore()
-
-const letters = ref([])
-const loading = ref(false)
-
-const activeMenu = computed(() => {
-  return router.currentRoute.value.path
-})
-
-const unreadCount = ref(0)
 
 // 控制开始图片的动画与切换
 const isOpen = ref(false)
@@ -104,57 +54,12 @@ function handleStartClick() {
   }, 400)
 }
 
-async function fetchUnread() {
-  try {
-    const res = await api.get('/notifications/unread-count')
-    if (res.data.success) unreadCount.value = res.data.data.count
-  } catch (e) {}
-}
-
-// 获取精选信件
-async function fetchFeaturedLetters() {
-  loading.value = true
-  try {
-    const response = await api.get('/letters/public', {
-      params: { page: 1, limit: 8 }
-    })
-    if (response.data.success) {
-      letters.value = response.data.data.letters
-    }
-  } catch (error) {
-    ElMessage.error('获取信件列表失败')
-  } finally {
-    loading.value = false
-  }
-}
-
-// 查看信件详情
-function viewLetter(letterId) {
-  router.push({ name: 'letter-detail', params: { id: letterId } })
-}
-
-function onToggled(payload){
-  // 可在这里处理切换后逻辑（例如刷新计数）
-}
-
-// 格式化日期
-function formatDate(dateString) {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
-
-onMounted(() => {
-  fetchFeaturedLetters()
-})
 </script>
 
 <style scoped>
 .home {
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   /* 使用全局 CSS 变量 --bg-login（指向 /background.jpg）作为首页背景 */
   background-image: var(--bg-login);
   background-size: cover;
@@ -182,10 +87,20 @@ onMounted(() => {
 
 /* 导航栏已移至全局组件，删除原有样式 */
 
+:deep(.el-container) {
+  height: 100%;
+  overflow: hidden;
+}
+
 .el-main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .banner {
@@ -196,9 +111,12 @@ onMounted(() => {
   text-align: center;
   color: #fff;
   padding: 40px 0;
-  min-height: 60vh;
+  width: 100%;
   box-sizing: border-box;
   animation: fadeIn 0.8s ease-out;
+  position: relative;
+  user-select: none;
+  pointer-events: auto;
 }
 
 .banner h2 {
@@ -227,58 +145,6 @@ onMounted(() => {
   }
 }
 
-.featured-letters {
-  margin-top: 40px;
-}
-
-.featured-letters h3 {
-  color: #fff;
-  font-size: 28px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.letter-card {
-  margin-bottom: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.letter-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-
-.card-header {
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.letter-info {
-  font-size: 14px;
-  color: #666;
-}
-
-.letter-info p {
-  margin: 8px 0;
-}
-
-.author {
-  color: #409eff;
-}
-
-.figure {
-  color: #67c23a;
-}
-
-.date {
-  color: #909399;
-  font-size: 12px;
-}
 
 .start-image-button {
   padding: 0;
@@ -286,12 +152,12 @@ onMounted(() => {
 }
 
 .start-image {
-  max-height: 128vh; /* 根据视口自适应，避免造成额外滚动条 */
+  max-height: 60vh; /* 限制高度，避免造成滚动条 */
+  max-width: 100%;
   width: auto;
   display: block;
   border-radius: 8px;
-  object-fit: cover;
-
+  object-fit: contain;
 }
 
 .start-image.open {

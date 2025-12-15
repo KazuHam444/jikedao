@@ -10,7 +10,12 @@
     "migrate:comments": "node scripts/migrate-add-comments-messages.js",
     "create-admin": "node scripts/create-admin.js",
     "init-data": "node scripts/init-data.js",
-    "add-style": "node scripts/add-style.js"
+    "add-style": "node scripts/add-style.js",
+    "add-figures": "node scripts/add-figures.js",
+    "add-100-figures": "node scripts/add-100-figures.js",
+    "export-figures": "node scripts/export-figures.js",
+    "import-figures": "node scripts/import-figures.js",
+    "sync-figures": "node scripts/sync-figures.js"
   },
   "keywords": [
     "nodejs",

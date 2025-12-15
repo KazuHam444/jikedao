@@ -16,6 +16,11 @@ export const useUserStore = defineStore('user', () => {
     try {
       const response = await api.post('/auth/login', { username, password })
       if (response.data.success) {
+        // 普通用户登录时，清除管理员token
+        adminToken.value = ''
+        admin.value = null
+        localStorage.removeItem('adminToken')
+        
         token.value = response.data.data.token
         user.value = response.data.data.user
         localStorage.setItem('token', token.value)
@@ -51,6 +56,11 @@ export const useUserStore = defineStore('user', () => {
     try {
       const response = await api.post('/auth/admin/login', { username, password })
       if (response.data.success) {
+        // 管理员登录时，清除普通用户token
+        token.value = ''
+        user.value = null
+        localStorage.removeItem('token')
+        
         adminToken.value = response.data.data.token
         admin.value = response.data.data.admin
         localStorage.setItem('adminToken', adminToken.value)

@@ -8,35 +8,67 @@
       
       <!-- 导航菜单 -->
       <div class="nav-menu">
-        <el-menu
-          mode="horizontal"
-          :default-active="activeMenu"
-          router
-          class="nav-menu-inner"
-        >
-          <el-menu-item index="/">首页</el-menu-item>
-          <el-menu-item v-if="userStore.isAuthenticated" index="/letters">
-            我的信件
-          </el-menu-item>
-          <el-menu-item v-if="userStore.isAuthenticated" index="/replies">
-            回信
-          </el-menu-item>
-          <el-menu-item v-if="userStore.isAuthenticated" index="/write">
-            写信
-          </el-menu-item>
-          <el-menu-item v-if="userStore.isAdmin" index="/admin">
+        <div class="nav-menu-inner">
+          <div 
+            class="nav-item" 
+            :class="{ active: activeMenu === '/' }"
+            @click="router.push('/')"
+          >
+            首页
+          </div>
+          <!-- 普通用户菜单：只在普通用户登录且不是管理员时显示 -->
+          <template v-if="userStore.isAuthenticated && !userStore.isAdmin">
+            <div 
+              class="nav-item" 
+              :class="{ active: activeMenu === '/write' }"
+              @click="router.push('/write')"
+            >
+              写信
+            </div>
+            <div 
+              class="nav-item" 
+              :class="{ active: activeMenu === '/replies' }"
+              @click="router.push('/replies')"
+            >
+              回信
+            </div>
+            <div 
+              class="nav-item" 
+              :class="{ active: activeMenu === '/letters' }"
+              @click="router.push('/letters')"
+            >
+              我的信件
+            </div>
+          </template>
+          <!-- 精选信件：所有用户都可以访问 -->
+          <div 
+            class="nav-item" 
+            :class="{ active: activeMenu === '/featured' }"
+            @click="router.push('/featured')"
+          >
+            精选信件
+          </div>
+          <!-- 管理员菜单：只在管理员登录时显示 -->
+          <div 
+            v-if="userStore.isAdmin && !userStore.isAuthenticated"
+            class="nav-item" 
+            :class="{ active: activeMenu.startsWith('/admin') }"
+            @click="router.push('/admin')"
+          >
             管理后台
-          </el-menu-item>
-        </el-menu>
+          </div>
+        </div>
       </div>
       
       <!-- 用户操作 -->
       <div class="user-actions">
-        <template v-if="userStore.isAuthenticated">
+        <!-- 普通用户操作 -->
+        <template v-if="userStore.isAuthenticated && !userStore.isAdmin">
           <el-button type="text" @click="$router.push('/notifications')" class="notification-btn">
-            <el-badge :value="unreadCount" class="item">
+            <el-badge v-if="unreadCount > 0" :value="unreadCount" class="item">
               <el-icon><Bell /></el-icon>
             </el-badge>
+            <el-icon v-else><Bell /></el-icon>
           </el-button>
           <el-dropdown>
             <span class="user-info">
@@ -50,6 +82,21 @@
             </template>
           </el-dropdown>
         </template>
+        <!-- 管理员操作 -->
+        <template v-else-if="userStore.isAdmin && !userStore.isAuthenticated">
+          <el-dropdown>
+            <span class="user-info">
+              <el-icon><User /></el-icon>
+              {{ userStore.admin?.username || '管理员' }}
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item @click="handleAdminLogout">退出登录</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </template>
+        <!-- 未登录 -->
         <template v-else>
           <el-button type="primary" size="small" @click="$router.push('/login')">登录</el-button>
           <el-button size="small" @click="$router.push('/register')">注册</el-button>
@@ -84,6 +131,12 @@ function goHome() {
 
 function handleLogout() {
   userStore.logout()
+  ElMessage.success('已退出登录')
+  router.push('/')
+}
+
+function handleAdminLogout() {
+  userStore.adminLogout()
   ElMessage.success('已退出登录')
   router.push('/')
 }
@@ -158,20 +211,35 @@ onMounted(() => {
   flex: 1;
   display: flex;
   justify-content: center;
+  min-width: 0; /* 允许 flex 子元素缩小 */
 }
 
 .nav-menu-inner {
-  background: transparent;
-  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: nowrap;
 }
 
-.nav-menu-inner :deep(.el-menu-item) {
+.nav-item {
+  padding: 0 20px;
+  height: 60px;
+  line-height: 60px;
   color: #333;
+  cursor: pointer;
   border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
 }
 
-.nav-menu-inner :deep(.el-menu-item:hover),
-.nav-menu-inner :deep(.el-menu-item.is-active) {
+.nav-item:hover {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.nav-item.active {
   color: #667eea;
   background: rgba(102, 126, 234, 0.1);
   border-bottom-color: #667eea;
@@ -206,7 +274,8 @@ onMounted(() => {
 /* 响应式设计 */
 @media (max-width: 768px) {
   .logo-text {
-    font-size: 20px;
+    font-size: 18px;
+    letter-spacing: 1px;
   }
   
   .top-navbar {
@@ -214,24 +283,61 @@ onMounted(() => {
   }
   
   .navbar-content {
-    padding: 0 15px;
-  }
-  
-  .nav-menu {
-    display: none; /* 移动端隐藏菜单，可以通过下拉菜单实现 */
+    padding: 0 10px;
   }
   
   .logo-container {
-    margin-right: 10px;
+    margin-right: 8px;
+    padding: 4px 8px;
+  }
+  
+  .nav-menu {
+    flex: 1;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .nav-menu-inner {
+    display: flex !important;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .nav-item {
+    padding: 0 12px !important;
+    height: 50px;
+    line-height: 50px;
+    font-size: 13px;
+    flex-shrink: 0;
   }
   
   .user-actions {
-    margin-left: 10px;
+    margin-left: 8px;
+    flex-shrink: 0;
   }
   
   .user-actions .el-button {
-    padding: 8px 12px;
+    padding: 6px 10px;
     font-size: 12px;
+  }
+  
+  .user-info {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
+
+/* 确保菜单项在小屏幕上也能正常显示 */
+@media (max-width: 480px) {
+  .nav-item {
+    padding: 0 8px !important;
+    font-size: 12px;
+  }
+  
+  .logo-text {
+    font-size: 16px;
   }
 }
 </style>

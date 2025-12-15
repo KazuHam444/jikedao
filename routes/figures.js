@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { query } = require('../config/database');
+const { sortFiguresByInitial } = require('../utils/pinyin');
 
 // 获取所有历史人物列表
 router.get('/', async (req, res) => {
@@ -15,12 +16,14 @@ router.get('/', async (req, res) => {
         created_at
       FROM historical_figures
       WHERE is_active = TRUE
-      ORDER BY era, name
     `);
+
+    // 按姓氏首字母排序
+    const sortedFigures = sortFiguresByInitial(figures);
 
     res.json({
       success: true,
-      data: figures
+      data: sortedFigures
     });
   } catch (error) {
     console.error('获取历史人物列表错误:', error);
