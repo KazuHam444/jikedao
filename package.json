@@ -15,7 +15,9 @@
     "add-100-figures": "node scripts/add-100-figures.js",
     "export-figures": "node scripts/export-figures.js",
     "import-figures": "node scripts/import-figures.js",
-    "sync-figures": "node scripts/sync-figures.js"
+    "sync-figures": "node scripts/sync-figures.js",
+    "export-db": "node scripts/export-database.js",
+    "import-db": "node scripts/import-database.js"
   },
   "keywords": [
     "nodejs",
