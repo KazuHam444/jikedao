@@ -110,12 +110,12 @@ async function handleLogin() {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  /* 登录页面背景 - 古典信件和羽毛笔主题 */
-  background-image: url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1920&q=80');
+  /* 使用全局 background.png */
+  background-image: url('/background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   position: relative;
 }
 

@@ -3,6 +3,7 @@
     <div class="navbar-content">
       <!-- Logo -->
       <div class="logo-container" @click="goHome">
+        <img src="/icon.png" alt="logo icon" class="logo-icon" />
         <span class="logo-text">跨时空邮局</span>
       </div>
       
@@ -196,6 +197,14 @@ onMounted(() => {
   transform: translateY(-1px);
 }
 
+.logo-icon {
+  height: 64px;
+  width: auto;
+  margin-right: 6px;
+  object-fit: contain;
+  display: inline-block;
+}
+
 .logo-text {
   font-size: 24px;
   font-weight: 700;
@@ -273,6 +282,11 @@ onMounted(() => {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .logo-icon {
+    height: 32px;
+    margin-right: 16px;
+  }
+  
   .logo-text {
     font-size: 18px;
     letter-spacing: 1px;

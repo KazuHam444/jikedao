@@ -33,7 +33,7 @@ function viewDetail(){ if(letterId) router.push({ name: 'letter-detail', params:
 </script>
 
 <style scoped>
-.send-success-page { min-height:100vh; background: linear-gradient(135deg,#f0f4ff,#eef6f1); }
+.send-success-page { min-height:100vh; background-image: url('/background.png'); background-size: cover; background-position: center; background-attachment: fixed; }
 .success-wrap{max-width:720px;margin:60px auto;text-align:center;padding:40px;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.08)}
 .checkmark{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#67d28d,#2fb05b);box-shadow:0 6px 18px rgba(47,176,91,0.12);margin:0 auto 12px}
 .checkmark svg{width:44px;height:44px;fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}

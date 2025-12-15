@@ -219,9 +219,8 @@ onMounted(() => {
 <style scoped>
 .letter-detail-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  /* 信件详情页面背景 - 阅读和古典场景 */
-  background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1920&q=80');
+  /* 使用全站背景图片 */
+  background-image: url('/background.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

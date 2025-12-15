@@ -172,9 +172,8 @@ onMounted(() => {
 <style scoped>
 .letters-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  /* 我的信件页面背景 - 信件和书架主题 */
-  background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1920&q=80');
+  /* 使用全局 background.png */
+  background-image: url('/background.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

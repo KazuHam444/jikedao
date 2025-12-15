@@ -67,9 +67,8 @@ function handleLogout() {
 <style scoped>
 .admin-layout {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  /* 管理员后台背景 - 简洁的办公场景 */
-  background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80');
+  /* 使用全站背景图片 */
+  background-image: url('/background.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

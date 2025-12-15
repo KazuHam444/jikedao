@@ -1,11 +1,16 @@
 <template>
   <div class="home">
+    <div class="overlays">
+      <img src="/part1.png" class="part part1" alt="part1" />
+      <img src="/part2.png" class="part part2" alt="part2" />
+      <img src="/part3.png" class="part part3" alt="part3" />
+    </div>
     <el-container>
       <!-- 主要内容 -->
       <el-main>
         <div class="banner">
           <h2>跨越时空，连接无限可能</h2>
-          <p>只有你想不到的，没有我们送不到的</p>
+          <p>遥寄思绪，发于指端</p>
           <el-button
             type="text"
             size="large"
@@ -24,7 +29,6 @@
     </el-container>
   </div>
 </template>
-
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
@@ -58,31 +62,74 @@ function handleStartClick() {
 
 <style scoped>
 .home {
-  height: 100vh;
+  height: 100vh; /* 固定视口高度，禁止页面滚动 */
   overflow: hidden;
-  /* 使用全局 CSS 变量 --bg-login（指向 /background.jpg）作为首页背景 */
-  background-image: var(--bg-login);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  /* 背景由固定的伪元素承载 */
+  background: none;
   position: relative;
 }
 
 .home::before {
   content: '';
-  position: absolute;
+  position: fixed; /* 固定在视口，严格不随内容滚动 */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  /* 移除紫色透明遮罩，保留空背景以直接显示图片 */
-  background: transparent;
-  z-index: 0;
+  background-image: url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -2; /* 放到最底层 */
 }
 
 .home > * {
   position: relative;
   z-index: 1;
+}
+
+.overlays {
+  position: fixed; /* 固定在视口，滑入后不随内容滚动 */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* 在内容下方、背景上方 */
+  pointer-events: none;
+}
+.overlays .part {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.98;
+  transform: translateY(-100%);
+  animation-name: slideDown;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.overlays .part1 { animation-delay: 0s; z-index: 0 }
+.overlays .part2 { animation-delay: 0.25s; z-index: 1 }
+.overlays .part3 { animation-delay: 0.5s; z-index: 2 }
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .overlays .part { opacity: 0.9 }
 }
 
 /* 导航栏已移至全局组件，删除原有样式 */
@@ -152,7 +199,7 @@ function handleStartClick() {
 }
 
 .start-image {
-  max-height: 60vh; /* 限制高度，避免造成滚动条 */
+  max-height: 40vh; /* 缩小图片确保首页内容在单屏内不滚动 */
   max-width: 100%;
   width: auto;
   display: block;

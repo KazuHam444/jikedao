@@ -18,10 +18,10 @@
      请将本地文件 D:\\background.jpg 复制到 frontend/public/background.jpg
      然后在 CSS 使用 url('/background.jpg') 引用（浏览器更可靠）。
   */
-  --bg-login: url('/background.jpg');
-  --bg-register: url('/background.jpg');
-  --bg-home: url('/background.jpg');
-  --bg-admin: url('/background.jpg');
+  --bg-login: url('/background.png');
+  --bg-register: url('/background.png');
+  --bg-home: url('/background.png');
+  --bg-admin: url('/background.png');
   
   /* 也可以把图片放在 frontend/public/images/ 并使用 '/images/xxx' 路径 */
 }
@@ -32,6 +32,14 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+/* 全局 body 背景，作为默认保底 */
+body {
+  background-image: var(--bg-home);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .bg-overlay::before {

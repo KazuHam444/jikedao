@@ -44,6 +44,7 @@
           
           <el-form-item label="信件内容" prop="content">
             <el-input
+              class="board-editor"
               v-model="writeForm.content"
               type="textarea"
               :rows="10"
@@ -168,8 +169,6 @@ import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import api from '../utils/api'
 import LetterPreview from '../components/LetterPreview.vue'
-
-const router = useRouter()
 
 const writeFormRef = ref(null)
 const loading = ref(false)
@@ -357,9 +356,8 @@ onMounted(() => {
 <style scoped>
 .write-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  /* 写信页面背景 - 古典书房和书写场景 */
-  background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=80');
+  /* 全站统一背景 */
+  background-image: url('/background.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -367,14 +365,8 @@ onMounted(() => {
 }
 
 .write-page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(245, 247, 250, 0.85) 0%, rgba(195, 207, 226, 0.85) 100%);
-  z-index: 0;
+  /* 已移除覆盖遮罩以保持信纸的原始色彩 */
+  display: none;
 }
 
 .write-page > * {
@@ -387,16 +379,37 @@ onMounted(() => {
 .el-main {
   max-width: 900px;
   margin: 30px auto;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* 使用信纸背景并放大以更明显展示纹理 */
+  background-image: url('/board.png');
+  background-size: 178%; /* 可调整该值控制图片显示大小，100% 为默认覆盖 */
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: 60px;
+  /* 去掉圆角/阴影/边框，移除白框视觉 */
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
 }
 
 :deep(.el-input__wrapper) {
   border-radius: 8px;
+}
+
+/* 写信编辑框使用 board.png 作为背景（位于 frontend/public/board.png） */
+:deep(.board-editor .el-textarea__inner) {
+  /* 移除内部背景图效果，仅保留文本样式 */
+  background: none;
+  background-color: transparent;
+  min-height: 220px; /* 保证有足够高度 */
+  padding: 24px; /* 增大内边距，让文本不要贴边 */
+  color: #222; /* 文本颜色，按需调整 */
+}
+
+/* 当用户选择无边框时，透明边框更融合背景 */
+:deep(.board-editor .el-textarea__inner:focus) {
+  outline: none;
+  box-shadow: none;
+  border-color: rgba(0,0,0,0.12);
 }
 
 :deep(.el-textarea__inner) {
