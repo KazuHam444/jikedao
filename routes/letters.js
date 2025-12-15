@@ -242,11 +242,36 @@ router.post('/', authenticate, [
     }
 
     // 插入信件
+    // 幂等保护：防止短时间内重复提交相同内容
+    const [recent] = await query(
+      `SELECT writing_date FROM letters WHERE user_id = ? AND title = ? AND content = ? ORDER BY writing_date DESC LIMIT 1`,
+      [userId, title, content]
+    );
+
+    if (recent && recent.length > 0) {
+      const lastDate = new Date(recent[0].writing_date);
+      const diffMs = Date.now() - lastDate.getTime();
+      const DUP_WINDOW_MS = 30 * 1000; // 30 秒内视为重复提交
+      if (diffMs < DUP_WINDOW_MS) {
+        return res.status(409).json({
+          success: false,
+          message: '请勿重复提交：已检测到短时间内相同内容的信件'
+        });
+      }
+    }
+
+    // 使用原子性 INSERT ... SELECT 防止并发下重复插入（如果在短时间窗口内存在相同记录则不插入）
     const [result] = await query(`
-      INSERT INTO letters 
-      (user_id, figure_id, title, content, paper_style, font_style, border_style, is_public, status)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'sent')
-    `, [userId, figure_id, title, content, paper_style, font_style, border_style, is_public]);
+      INSERT INTO letters (user_id, figure_id, title, content, paper_style, font_style, border_style, is_public, status)
+      SELECT ?,?,?,?,?,?,?,?, 'sent' FROM DUAL
+      WHERE NOT EXISTS (
+        SELECT 1 FROM letters WHERE user_id = ? AND title = ? AND content = ? AND writing_date > NOW() - INTERVAL 30 SECOND
+      )
+    `, [userId, figure_id, title, content, paper_style, font_style, border_style, is_public, userId, title, content]);
+
+    if (!result || result.affectedRows === 0) {
+      return res.status(409).json({ success: false, message: '请勿重复提交：已检测到短时间内相同内容的信件' });
+    }
 
     res.status(201).json({
       success: true,

@@ -39,10 +39,13 @@ router.post('/register', [
     // 加密密码
     const passwordHash = await bcrypt.hash(password, 10);
 
-    // 插入新用户
+    // 插入新用户（对邮箱进行加密以保护静态存储）
+    const { encrypt } = require('../utils/encryption');
+    const encryptedEmail = encrypt(email);
+
     const [result] = await query(
       'INSERT INTO users (username, password_hash, email) VALUES (?, ?, ?)',
-      [username, passwordHash, email]
+      [username, passwordHash, encryptedEmail]
     );
 
     res.status(201).json({
@@ -123,6 +126,16 @@ router.post('/login', [
       { expiresIn: process.env.JWT_EXPIRE || '7d' }
     );
 
+    // 返回前解密邮箱（如果已加密）
+    const { decrypt } = require('../utils/encryption');
+    let userEmail = user.email;
+    try {
+      userEmail = decrypt(user.email);
+    } catch (e) {
+      // 解密失败则保留原始值
+      console.warn('解密邮箱失败:', e.message);
+    }
+
     res.json({
       success: true,
       message: '登录成功',
@@ -131,7 +144,7 @@ router.post('/login', [
         user: {
           user_id: user.user_id,
           username: user.username,
-          email: user.email
+          email: userEmail
         }
       }
     });
