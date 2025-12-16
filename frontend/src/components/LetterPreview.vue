@@ -1,11 +1,15 @@
 <template>
   <div class="preview-wrap">
-    <div class="seal"></div>
     <div class="paper" :style="paperStyle">
-      <div class="border" :style="borderStyle">
-        <div class="content" :style="fontStyleComputed" v-html="formattedContent"></div>
+      <div class="content" :style="fontStyleComputed" v-html="formattedContent"></div>
+      <div class="footer" v-if="figureName">
+        <div class="signature-text">致：{{ figureName }} · {{ date }}</div>
+        <div class="seal-container">
+          <div class="seal-paper">
+            <img src="/1.png" alt="印章" />
+          </div>
+        </div>
       </div>
-      <div class="footer">致：{{ figureName }} · {{ date }}</div>
     </div>
   </div>
 </template>
@@ -19,7 +23,8 @@ const props = defineProps({
   paper: Object, // { style_value, preview_url }
   font: Object,
   border: Object,
-  figureName: String
+  figureName: String,
+  fontColor: String // 字体颜色
 })
 
 const formattedContent = computed(() => {
@@ -87,6 +92,7 @@ function ensureFontInjected(styleValue, fontUrl) {
 
 const fontStyleComputed = computed(() => {
   const value = props.font?.style_value || 'default'
+  const fontColor = props.fontColor || '#333'
 
   // 若有 font_url，优先动态注入并使用
   if (props.font && props.font.font_url) {
@@ -94,7 +100,7 @@ const fontStyleComputed = computed(() => {
     if (injectedName) {
       return {
         fontFamily: `${injectedName}, "Microsoft YaHei", Arial, sans-serif`,
-        color: '#333',
+        color: fontColor,
         fontSize: '17px',
         lineHeight: '2.2'
       }
@@ -104,37 +110,37 @@ const fontStyleComputed = computed(() => {
   const map = {
     default: { 
       fontFamily: '"Microsoft YaHei", "微软雅黑", Arial, sans-serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '16px',
       lineHeight: '2'
     },
     kaiti: { 
       fontFamily: '"KaiTi", "楷体", "STKaiti", serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '17px',
       lineHeight: '2.2'
     },
     'kaiti-font': { 
       fontFamily: '"KaiTi", "楷体", "STKaiti", serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '17px',
       lineHeight: '2.2'
     },
     xingshu: { 
       fontFamily: '"STXingkai", "华文行楷", "Xingkai SC", serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '18px',
       lineHeight: '2.3'
     },
     'xingshu-font': { 
       fontFamily: '"STXingkai", "华文行楷", "Xingkai SC", serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '18px',
       lineHeight: '2.3'
     },
     'songti-font': { 
       fontFamily: '"SimSun", "宋体", "STSong", serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '16px',
       lineHeight: '2'
     }
@@ -183,31 +189,81 @@ const date = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'l
 <style scoped>
 .preview-wrap {
   display: flex;
-  gap: 24px;
-  align-items: flex-start;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
-
 
 .paper {
   width: 600px;
-  min-height: 320px;
-  padding: 18px;
-  border-radius: 8px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background-size: cover;
+  background-position: center;
 }
-.border {
-  background: rgba(255,255,255,0.95);
-  min-height: 260px;
-}
+
 .content {
-  padding: 18px;
+  padding: 40px;
   line-height: 1.9;
   font-size: 16px;
+  flex: 1;
+  overflow: hidden;
 }
+
 .footer {
-  margin-top: 18px;
+  padding: 0 40px 40px;
   text-align: right;
   color: #666;
-  font-size: 13px;
+  font-size: 14px;
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.signature-text {
+  margin-bottom: 8px;
+}
+
+.seal-container {
+  perspective: 1000px;
+  width: 120px;
+  height: 120px;
+}
+
+.seal-paper {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform-origin: bottom center;
+  animation: sealAnimation 2.5s cubic-bezier(0.6, 0.05, 0.2, 1) forwards;
+}
+
+.seal-paper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes sealAnimation {
+  0% {
+    transform: rotateX(-70deg) translateZ(100px);
+    box-shadow: inset 0px 400px 200px -200px rgba(0,0,0,0.4); 
+  }
+  80% {
+    transform: translateZ(50px);
+    box-shadow: inset 0px 0px 0px 0px rgba(0,0,0,0);
+  }
+  100% {
+    transform: rotateX(0deg) translateZ(0);
+  }
 }
 </style>

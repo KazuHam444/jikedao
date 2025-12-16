@@ -117,6 +117,13 @@
             </el-select>
           </el-form-item>
           
+          <el-form-item label="字体颜色">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <el-color-picker v-model="writeForm.font_color" />
+              <span>{{ writeForm.font_color }}</span>
+            </div>
+          </el-form-item>
+          
           <el-form-item label="是否公开">
             <el-switch
               v-model="writeForm.is_public"
@@ -147,26 +154,13 @@
             :font="currentFont"
             :border="currentBorder"
             :figureName="(figures.find(f=>f.figure_id===writeForm.figure_id)||{}).name || ''"
+            :fontColor="writeForm.font_color"
           />
           <template #footer>
             <el-button @click="previewVisible = false">关闭</el-button>
             <el-button type="primary" @click="handleSubmit" :disabled="!writeForm.title || !writeForm.content">
               确认并发送
             </el-button>
-          </template>
-        </el-dialog>
-        <el-dialog v-model="sentPreviewVisible" title="发送成功 — 信件预览" width="900px" :close-on-click-modal="false">
-          <LetterPreview
-            :title="sentLetter.title"
-            :content="sentLetter.content"
-            :paper="sentLetter.paper"
-            :font="sentLetter.font"
-            :border="sentLetter.border"
-            :figureName="sentLetter.figureName"
-          />
-          <template #footer>
-            <el-button @click="sentPreviewVisible = false">关闭</el-button>
-            <el-button type="primary" @click="viewSentDetail">查看详情</el-button>
           </template>
         </el-dialog>
 
@@ -184,6 +178,7 @@ import { ElMessage } from 'element-plus'
 import api from '../utils/api'
 import LetterPreview from '../components/LetterPreview.vue'
 
+const router = useRouter()
 const writeFormRef = ref(null)
 const loading = ref(false)
 
@@ -196,18 +191,6 @@ const borderStyles = ref([])
     const currentPaper = ref(null)
     const currentFont = ref(null)
     const currentBorder = ref(null)
-    // 发送后自动展示的预览
-    const sentPreviewVisible = ref(false)
-    const sentLetter = reactive({
-      letter_id: null,
-      title: '',
-      content: '',
-      paper: null,
-      font: null,
-      border: null,
-      figureName: ''
-    })
-    const router = useRouter()
 
     // 打开预览并设置当前样式
     function openPreview() {
@@ -228,6 +211,7 @@ const writeForm = reactive({
   paper_style: 'default',
   font_style: 'default',
   border_style: 'default',
+  font_color: '#333333',
   is_public: false
 })
 
@@ -345,15 +329,8 @@ async function handleSubmit(returnHome = false) {
         if (response.data.success) {
           ElMessage.success('信件发送成功！')
           const letterId = response.data.data.letter_id
-          // 填充已发送信件数据并显示发送后预览对话
-          sentLetter.letter_id = letterId
-          sentLetter.title = writeForm.title
-          sentLetter.content = writeForm.content
-          sentLetter.paper = currentPaper.value
-          sentLetter.font = currentFont.value
-          sentLetter.border = currentBorder.value
-          sentLetter.figureName = (figures.value.find(f => f.figure_id === writeForm.figure_id) || {}).name || ''
-          sentPreviewVisible.value = true
+          // 跳转到信件详情页面
+          router.push({ name: 'letter-detail', params: { id: letterId } })
         }
       } catch (error) {
         ElMessage.error('发送失败')
@@ -368,14 +345,6 @@ async function handleSubmit(returnHome = false) {
 // 重置表单
 function handleReset() {
   writeFormRef.value?.resetFields()
-}
-
-// 查看已发送信件详情并跳转
-function viewSentDetail() {
-  if (sentLetter.letter_id) {
-    sentPreviewVisible.value = false
-    router.push({ name: 'letter-detail', params: { id: sentLetter.letter_id } })
-  }
 }
 
 onMounted(() => {
@@ -438,8 +407,8 @@ onMounted(() => {
   /* 移除内部背景图效果，仅保留文本样式 */
   background: none;
   background-color: transparent;
-  min-height: 220px; /* 保证有足够高度 */
-  padding: 24px; /* 增大内边距，让文本不要贴边 */
+  min-height: 200px; /* 保证有足够高度 */
+  padding: 4px; /* 增大内边距，让文本不要贴边 */
   color: #222; /* 文本颜色，按需调整 */
 }
 

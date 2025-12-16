@@ -1,9 +1,7 @@
 <template>
   <div class="letter-display">
     <div class="paper" :style="paperStyleComputed">
-      <div class="border" :style="borderStyleComputed">
-        <div class="content" :style="fontStyleComputed" v-html="formattedContent"></div>
-      </div>
+      <div class="content" :style="fontStyleComputed" v-html="formattedContent"></div>
       <div class="footer" v-if="figureName">
         致：{{ figureName }} · {{ date }}
       </div>
@@ -21,6 +19,7 @@ const props = defineProps({
   paperStyle: String, // style_value
   fontStyle: String,  // style_value
   borderStyle: String, // style_value
+  fontColor: String, // 字体颜色
   figureName: String
 })
 
@@ -116,6 +115,7 @@ function ensureFontInjected(styleValue, fontUrl) {
 
 const fontStyleComputed = computed(() => {
   const value = props.fontStyle || 'default'
+  const fontColor = props.fontColor || '#333'
   
   // 若已加载的字体样式包含 font_url，则优先使用
   const fontConfig = fontStyles.value.find(f => f.style_value === props.fontStyle)
@@ -124,7 +124,7 @@ const fontStyleComputed = computed(() => {
     if (injectedName) {
       return {
         fontFamily: `${injectedName}, "Microsoft YaHei", Arial, sans-serif`,
-        color: '#333',
+        color: fontColor,
         fontSize: '17px',
         lineHeight: '2.2'
       }
@@ -134,37 +134,37 @@ const fontStyleComputed = computed(() => {
   const map = {
     default: { 
       fontFamily: '"Microsoft YaHei", "微软雅黑", Arial, sans-serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '16px',
       lineHeight: '2'
     },
     kaiti: { 
       fontFamily: '"KaiTi", "楷体", "STKaiti", serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '17px',
       lineHeight: '2.2'
     },
     'kaiti-font': {
       fontFamily: '"KaiTi", "楷体", "STKaiti", serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '17px',
       lineHeight: '2.2'
     },
     xingshu: { 
       fontFamily: '"STXingkai", "华文行楷", "Xingkai SC", serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '18px',
       lineHeight: '2.3'
     },
     'xingshu-font': {
       fontFamily: '"STXingkai", "华文行楷", "Xingkai SC", serif', 
-      color: '#333',
+      color: fontColor,
       fontSize: '18px',
       lineHeight: '2.3'
     },
     'songti-font': {
       fontFamily: '"SimSun", "宋体", "STSong", serif',
-      color: '#333',
+      color: fontColor,
       fontSize: '16px',
       lineHeight: '2'
     }
@@ -227,14 +227,6 @@ const date = computed(() => {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   /* 注意：背景样式通过 :style="paperStyleComputed" 动态应用 */
-}
-
-.border {
-  min-height: 300px;
-  border-radius: 4px;
-  /* 注意：边框和背景样式通过 :style="borderStyleComputed" 动态应用 */
-  /* 默认背景，但会被动态样式覆盖 */
-  background: rgba(255, 255, 255, 0.95);
 }
 
 .content {

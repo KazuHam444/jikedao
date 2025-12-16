@@ -20,6 +20,7 @@ router.get('/public', async (req, res) => {
         l.paper_style,
         l.font_style,
         l.border_style,
+        l.font_color,
         l.writing_date,
           (SELECT COUNT(*) FROM likes WHERE letter_id = l.letter_id) as like_count,
         u.username,
@@ -79,6 +80,7 @@ router.get('/my-letters', authenticate, async (req, res) => {
         l.paper_style,
         l.font_style,
         l.border_style,
+        l.font_color,
         l.is_public,
         l.is_featured,
         l.writing_date,
@@ -225,6 +227,7 @@ router.post('/', authenticate, [
       paper_style = 'default',
       font_style = 'default',
       border_style = 'default',
+      font_color = '#333333',
       is_public = false
     } = req.body;
 
@@ -244,9 +247,9 @@ router.post('/', authenticate, [
     // 插入信件
     const [result] = await query(`
       INSERT INTO letters 
-      (user_id, figure_id, title, content, paper_style, font_style, border_style, is_public, status)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'sent')
-    `, [userId, figure_id, title, content, paper_style, font_style, border_style, is_public]);
+      (user_id, figure_id, title, content, paper_style, font_style, border_style, font_color, is_public, status)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'sent')
+    `, [userId, figure_id, title, content, paper_style, font_style, border_style, font_color, is_public]);
 
     res.status(201).json({
       success: true,

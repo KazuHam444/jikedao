@@ -32,6 +32,7 @@
                 :paperStyle="letter.paper_style"
                 :fontStyle="letter.font_style"
                 :borderStyle="letter.border_style"
+                :fontColor="letter.font_color"
                 :figureName="letter.figure_name"
               />
             </div>
