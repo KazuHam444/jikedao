@@ -26,18 +26,9 @@ router.get('/me', authenticate, async (req, res) => {
       });
     }
 
-    // 解密邮箱字段后返回
-    const { decrypt } = require('../utils/encryption');
-    const user = users[0];
-    try {
-      user.email = decrypt(user.email);
-    } catch (e) {
-      console.warn('解密邮箱失败:', e.message);
-    }
-
     res.json({
       success: true,
-      data: user
+      data: users[0]
     });
   } catch (error) {
     console.error('获取用户信息错误:', error);

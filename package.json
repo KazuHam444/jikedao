@@ -17,9 +17,7 @@
     "import-figures": "node scripts/import-figures.js",
     "sync-figures": "node scripts/sync-figures.js",
     "export-db": "node scripts/export-database.js",
-    "import-db": "node scripts/import-database.js",
-    "audit:sql": "node scripts/sql-audit.js",
-    "encrypt:emails": "node scripts/encrypt-existing-emails.js"
+    "import-db": "node scripts/import-database.js"
   },
   "keywords": [
     "nodejs",

@@ -23,10 +23,8 @@ async function exportDatabase() {
     const exportData = {};
 
     for (const table of tablesToExport) {
-      // 使用 escapeId 安全地插入表名，防止外部注入
-      const safeTable = require('../config/database').escapeId(table);
-      const query = `SELECT * FROM ${safeTable}`;
-      const [results] = await require('../config/database').query(query);
+      const query = `SELECT * FROM ${table}`;
+      const [results] = await promisePool.query(query);
       exportData[table] = results;
       console.log(`✅ 已导出表 ${table} (${results.length} 条记录)`);
     }
