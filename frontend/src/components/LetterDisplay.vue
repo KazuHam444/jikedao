@@ -3,7 +3,12 @@
     <div class="paper" :style="paperStyleComputed">
       <div class="content" :style="fontStyleComputed" v-html="formattedContent"></div>
       <div class="footer" v-if="figureName">
-        致：{{ figureName }} · {{ date }}
+        <div class="signature-text">致：{{ figureName }} · {{ date }}</div>
+        <div class="seal-container">
+          <div class="seal-paper">
+            <img src="/1.png" alt="印章" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -242,6 +247,45 @@ const date = computed(() => {
   color: #666;
   font-size: 14px;
   font-style: italic;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.seal-container {
+  perspective: 1000px;
+  width: 120px;
+  height: 120px;
+}
+
+.seal-paper {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform-origin: bottom center;
+  animation: sealAnimation 2.5s cubic-bezier(0.6, 0.05, 0.2, 1) forwards;
+}
+
+.seal-paper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes sealAnimation {
+  0% {
+    transform: rotateX(-70deg) translateZ(100px);
+    box-shadow: inset 0px 400px 200px -200px rgba(0,0,0,0.4); 
+  }
+  80% {
+    transform: translateZ(50px);
+    box-shadow: inset 0px 0px 0px 0px rgba(0,0,0,0);
+  }
+  100% {
+    transform: rotateX(0deg) translateZ(0);
+  }
 }
 </style>
 
