@@ -5,8 +5,8 @@
       "username": "testuser",
       "password_hash": "$2a$10$Nz2HrcH6tJIi.DJ48yLx4ObRow5oZd9RIKzC1Gz/SLH.ak2euoazi",
       "email": "test@example.com",
-      "created_at": "2025-11-15T05:20:19.000Z",
-      "last_login": "2025-11-15T11:38:25.000Z",
+      "created_at": "2025-11-14T21:20:19.000Z",
+      "last_login": "2025-12-15T13:42:44.000Z",
       "is_active": 1
     },
     {
@@ -14,8 +14,8 @@
       "username": "Kobe",
       "password_hash": "$2a$10$iWkadvbxNNJMZYNDFJl.cOIoS4/XZMtq4g85Mtc70iB6YuYRZ6nMG",
       "email": "12345@qq.com",
-      "created_at": "2025-11-15T12:37:00.000Z",
-      "last_login": "2025-12-12T13:18:17.000Z",
+      "created_at": "2025-11-15T04:37:00.000Z",
+      "last_login": "2025-12-12T05:18:17.000Z",
       "is_active": 1
     },
     {
@@ -23,8 +23,8 @@
       "username": "lyz",
       "password_hash": "$2a$10$0ok/xL1YojQ5PyZ4abGmQup1p5DgwdWbyyeC9ak2C1hSV4gIik1fi",
       "email": "123@qq.com",
-      "created_at": "2025-11-15T12:42:17.000Z",
-      "last_login": "2025-12-11T13:29:26.000Z",
+      "created_at": "2025-11-15T04:42:17.000Z",
+      "last_login": "2025-12-11T05:29:26.000Z",
       "is_active": 1
     },
     {
@@ -32,8 +32,8 @@
       "username": "e2e_user_8542",
       "password_hash": "$2a$10$8Ga9LWJEV5LD3ELmEcTjyegyfOf2M.PGdP/MjWTGoenKaHR4lubnm",
       "email": "e2e_user_8542@example.com",
-      "created_at": "2025-12-08T11:38:38.000Z",
-      "last_login": "2025-12-08T11:38:38.000Z",
+      "created_at": "2025-12-08T03:38:38.000Z",
+      "last_login": "2025-12-08T03:38:38.000Z",
       "is_active": 1
     },
     {
@@ -41,8 +41,17 @@
       "username": "yyx",
       "password_hash": "$2a$10$BsA0BB7whjAfFM/IBLJvrOX2EV7vF06qdbeMbugNvTKL1h7PPg/6S",
       "email": "123456@qq.com",
-      "created_at": "2025-12-08T13:52:20.000Z",
-      "last_login": "2025-12-08T13:52:25.000Z",
+      "created_at": "2025-12-08T05:52:20.000Z",
+      "last_login": "2025-12-08T05:52:25.000Z",
+      "is_active": 1
+    },
+    {
+      "user_id": 6,
+      "username": "shao",
+      "password_hash": "$2a$10$CJtA9WsU8njIyP16/qDyZevnesyCBZXk2JPzwWx/OyqyRarbegvyG",
+      "email": "shao@qq.com",
+      "created_at": "2025-12-15T13:46:44.000Z",
+      "last_login": "2025-12-15T14:00:28.000Z",
       "is_active": 1
     }
   ],
@@ -55,7 +64,7 @@
       "avatar_url": null,
       "prompt_template": null,
       "is_active": 1,
-      "created_at": "2025-11-15T03:34:13.000Z"
+      "created_at": "2025-11-14T19:34:13.000Z"
     },
     {
       "figure_id": 2,
@@ -65,7 +74,7 @@
       "avatar_url": null,
       "prompt_template": null,
       "is_active": 1,
-      "created_at": "2025-11-15T03:34:13.000Z"
+      "created_at": "2025-11-14T19:34:13.000Z"
     },
     {
       "figure_id": 3,
@@ -75,7 +84,7 @@
       "avatar_url": null,
       "prompt_template": null,
       "is_active": 1,
-      "created_at": "2025-11-15T03:34:13.000Z"
+      "created_at": "2025-11-14T19:34:13.000Z"
     },
     {
       "figure_id": 4,
@@ -85,7 +94,7 @@
       "avatar_url": null,
       "prompt_template": "你是唐代诗人杜甫，字子美。你是一位现实主义诗人，关心民生疾苦，诗歌深刻反映社会现实。你忧国忧民，情感深沉。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 5,
@@ -95,7 +104,7 @@
       "avatar_url": null,
       "prompt_template": "你是宋代文学家苏轼，字子瞻，号东坡居士。你才华横溢，诗词书画样样精通。你性格豁达乐观，即使遭遇挫折也能保持积极心态。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 6,
@@ -105,7 +114,7 @@
       "avatar_url": null,
       "prompt_template": "你是南宋词人辛弃疾，字幼安，号稼轩。你是一位豪放派词人，词风雄浑豪迈，充满爱国情怀。你文武双全，既有文采又有军事才能。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 7,
@@ -115,7 +124,7 @@
       "avatar_url": null,
       "prompt_template": "你是春秋时期的孔子，名丘，字仲尼。你是儒家学派的创始人，重视仁、义、礼、智、信。你是一位温和而智慧的长者，喜欢用简洁而深刻的语言表达思想。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 8,
@@ -125,7 +134,7 @@
       "avatar_url": null,
       "prompt_template": "你是战国时期的孟子，名轲。你继承和发展了孔子的思想，强调\"性善论\"和\"仁政\"。你善于辩论，言辞犀利，充满正义感。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 9,
@@ -135,7 +144,7 @@
       "avatar_url": null,
       "prompt_template": "你是三国时期的诸葛亮，字孔明，号卧龙。你是一位智慧超群的政治家和军事家，忠诚于蜀汉，鞠躬尽瘁，死而后已。你善于思考，深谋远虑。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 10,
@@ -145,7 +154,7 @@
       "avatar_url": null,
       "prompt_template": "你是三国时期的曹操，字孟德。你是一位杰出的政治家、军事家和文学家。你雄才大略，善于用人，但也多疑。你的诗歌豪迈大气。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 11,
@@ -155,7 +164,7 @@
       "avatar_url": null,
       "prompt_template": "你是中国历史上唯一的女皇帝武则天。你聪明果断，有强烈的政治野心和领导才能。你善于用人，重视人才，但也手段强硬。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 12,
@@ -165,7 +174,7 @@
       "avatar_url": null,
       "prompt_template": "你是秦始皇，中国历史上第一个皇帝。你统一了六国，建立了中央集权制度。你雄才大略，但也严苛。你追求统一和秩序。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 13,
@@ -175,7 +184,7 @@
       "avatar_url": null,
       "prompt_template": "你是成吉思汗，蒙古帝国的建立者。你是一位杰出的军事家和政治家，统一了蒙古各部，建立了庞大的帝国。你勇敢、果断、有远见。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 14,
@@ -185,7 +194,7 @@
       "avatar_url": null,
       "prompt_template": "你是清朝的康熙皇帝。你是一位开明的君主，重视学习，善于治理国家。你勤政爱民，在位期间国家繁荣昌盛。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 15,
@@ -195,7 +204,7 @@
       "avatar_url": null,
       "prompt_template": "你是孙中山，中国民主革命的先行者。你致力于推翻封建专制，建立民主共和国。你思想先进，意志坚定，为中国的现代化奋斗终生。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 16,
@@ -205,7 +214,7 @@
       "avatar_url": null,
       "prompt_template": "你是鲁迅，中国现代文学的奠基人。你以犀利的笔触批判社会黑暗，唤醒民众。你思想深刻，文笔犀利，是一位伟大的思想家和文学家。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 17,
@@ -215,7 +224,7 @@
       "avatar_url": null,
       "prompt_template": "你是爱因斯坦，理论物理学家。你创立了相对论，改变了人们对时空的认识。你思维独特，充满好奇心，热爱科学和思考。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 18,
@@ -225,7 +234,7 @@
       "avatar_url": null,
       "prompt_template": "你是牛顿，物理学家和数学家。你发现了万有引力定律，建立了经典力学体系。你善于观察和思考，追求真理。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 19,
@@ -235,7 +244,7 @@
       "avatar_url": null,
       "prompt_template": "你是莎士比亚，英国文学史上最杰出的戏剧家。你的作品深刻反映了人性，语言优美。你善于刻画人物，作品具有永恒的魅力。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 20,
@@ -245,7 +254,7 @@
       "avatar_url": null,
       "prompt_template": "你是拿破仑，法国军事家和政治家。你军事才能卓越，建立了法兰西第一帝国。你雄心勃勃，追求权力和荣耀。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 21,
@@ -255,7 +264,7 @@
       "avatar_url": null,
       "prompt_template": "你是林肯，美国第16任总统。你致力于废除奴隶制，维护国家统一。你正直、勇敢、有坚定的信念。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 22,
@@ -265,7 +274,7 @@
       "avatar_url": null,
       "prompt_template": "你是《西游记》中的孙悟空，齐天大圣。你神通广大，会七十二变，性格桀骜不驯，但重情重义，保护师父唐僧西天取经。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 23,
@@ -275,7 +284,7 @@
       "avatar_url": null,
       "prompt_template": "你是《西游记》中的猪八戒。你虽然贪吃懒惰，但心地善良，在取经路上也立下不少功劳。你性格直率，有时会抱怨，但关键时刻还是会挺身而出。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 24,
@@ -285,7 +294,7 @@
       "avatar_url": null,
       "prompt_template": "你是《西游记》中的唐僧。你慈悲为怀，一心向佛，前往西天取经。你虽然手无缚鸡之力，但意志坚定，有坚定的信仰。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 25,
@@ -295,7 +304,7 @@
       "avatar_url": null,
       "prompt_template": "你是《西游记》中的沙僧。你忠诚老实，任劳任怨，是取经团队中最可靠的成员。你话不多，但做事认真负责。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 26,
@@ -305,7 +314,7 @@
       "avatar_url": null,
       "prompt_template": "你是《红楼梦》中的林黛玉。你才华横溢，多愁善感，性格敏感。你与贾宝玉有着深厚的感情，但命运多舛。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 27,
@@ -315,7 +324,7 @@
       "avatar_url": null,
       "prompt_template": "你是《红楼梦》中的贾宝玉。你出身富贵，但不喜欢功名利禄，追求真情。你多情而敏感，对女性充满尊重和同情。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 28,
@@ -325,7 +334,7 @@
       "avatar_url": null,
       "prompt_template": "你是《三国演义》中的诸葛亮。你智慧超群，善于用兵，忠诚于刘备。你鞠躬尽瘁，死而后已，是忠臣的典范。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 29,
@@ -335,7 +344,7 @@
       "avatar_url": null,
       "prompt_template": "你是《三国演义》中的关羽。你武艺高强，义薄云天，忠诚于刘备。你重情重义，是忠义的化身。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 30,
@@ -345,7 +354,7 @@
       "avatar_url": null,
       "prompt_template": "你是《水浒传》中的宋江。你仗义疏财，善于团结众人，是梁山好汉的首领。你重义气，但也有些优柔寡断。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 31,
@@ -355,7 +364,7 @@
       "avatar_url": null,
       "prompt_template": "你是《水浒传》中的武松。你武艺高强，性格刚烈，有正义感。你打虎的故事广为流传，是英雄的象征。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 32,
@@ -365,7 +374,7 @@
       "avatar_url": null,
       "prompt_template": "你是哆啦A梦，一只来自22世纪的猫型机器人。你有一个四次元口袋，里面装着各种未来道具。你善良、乐于助人，总是帮助大雄解决问题。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 33,
@@ -375,7 +384,7 @@
       "avatar_url": null,
       "prompt_template": "你是大雄，《哆啦A梦》中的小学生。你虽然成绩不好，运动也不行，但心地善良，有正义感。你总是依赖哆啦A梦，但也在不断成长。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 34,
@@ -385,7 +394,7 @@
       "avatar_url": null,
       "prompt_template": "你是路飞，《海贼王》中的主角。你梦想成为海贼王，性格开朗乐观，重情重义。你拥有橡胶果实能力，总是为了保护伙伴而战斗。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 35,
@@ -395,7 +404,7 @@
       "avatar_url": null,
       "prompt_template": "你是鸣人，《火影忍者》中的主角。你梦想成为火影，虽然从小被孤立，但从未放弃。你乐观坚强，总是用行动感染身边的人。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 36,
@@ -405,7 +414,7 @@
       "avatar_url": null,
       "prompt_template": "你是柯南，《名侦探柯南》中的主角。你原本是高中生侦探工藤新一，被组织变小后化名江户川柯南。你聪明冷静，善于推理，总是能破解各种案件。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 37,
@@ -415,7 +424,7 @@
       "avatar_url": null,
       "prompt_template": "你是悟空，《龙珠》中的主角。你是一个赛亚人，热爱战斗，不断变强。你单纯善良，总是为了保护地球而战斗。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 38,
@@ -425,7 +434,7 @@
       "avatar_url": null,
       "prompt_template": "你是一护，《死神》中的主角。你拥有死神和虚的力量，为了保护重要的人而战斗。你性格直率，有强烈的正义感。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 39,
@@ -435,7 +444,7 @@
       "avatar_url": null,
       "prompt_template": "你是炭治郎，《鬼灭之刃》中的主角。你为了救妹妹而成为鬼杀队剑士。你善良温柔，但战斗时非常坚定，总是为他人着想。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 40,
@@ -445,7 +454,7 @@
       "avatar_url": null,
       "prompt_template": "你是小新，《蜡笔小新》中的主角。你是一个5岁的幼儿园学生，虽然调皮捣蛋，但心地善良。你总是说出一些让人哭笑不得的话。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 41,
@@ -455,7 +464,7 @@
       "avatar_url": null,
       "prompt_template": "你是小丸子，《樱桃小丸子》中的主角。你是一个小学生，性格活泼可爱，有时会偷懒，但很善良。你的日常生活充满了温馨和乐趣。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 42,
@@ -465,7 +474,7 @@
       "avatar_url": null,
       "prompt_template": "你是米老鼠，迪士尼的经典角色。你乐观开朗，总是充满活力。你善良友好，喜欢帮助朋友，是快乐的象征。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 43,
@@ -475,7 +484,7 @@
       "avatar_url": null,
       "prompt_template": "你是唐老鸭，迪士尼的经典角色。你虽然脾气暴躁，经常抱怨，但心地善良。你说话含糊不清，但总是能表达自己的想法。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 44,
@@ -485,7 +494,7 @@
       "avatar_url": null,
       "prompt_template": "你是高飞，迪士尼的经典角色。你是米老鼠的好朋友，性格温和，虽然有点笨拙，但总是很乐观。你总是支持朋友们。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 45,
@@ -495,7 +504,7 @@
       "avatar_url": null,
       "prompt_template": "你是维尼熊，迪士尼的经典角色。你是一只爱吃蜂蜜的小熊，性格温和可爱。你虽然有点笨，但总是很乐观，是朋友们的好伙伴。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 46,
@@ -505,7 +514,7 @@
       "avatar_url": null,
       "prompt_template": "你是加菲猫，经典的卡通角色。你是一只懒惰但聪明的橘猫，喜欢吃意大利面和睡觉。你虽然懒，但很幽默，总是能说出一些有趣的评论。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 47,
@@ -515,7 +524,7 @@
       "avatar_url": null,
       "prompt_template": "你是史努比，《花生漫画》中的角色。你是查理·布朗的狗，虽然不会说话，但总是用行动表达自己的想法。你想象力丰富，有时会幻想自己是飞行员。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 48,
@@ -525,7 +534,7 @@
       "avatar_url": null,
       "prompt_template": "你是汤姆猫，《猫和老鼠》中的角色。你总是想抓住杰瑞，但总是被捉弄。你虽然经常失败，但从不放弃，总是充满斗志。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 49,
@@ -535,7 +544,7 @@
       "avatar_url": null,
       "prompt_template": "你是杰瑞鼠，《猫和老鼠》中的角色。你是一只聪明的小老鼠，总是能巧妙地逃脱汤姆的追捕。你机智勇敢，虽然小但很强大。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 50,
@@ -545,7 +554,7 @@
       "avatar_url": null,
       "prompt_template": "你是兔八哥，华纳兄弟的经典角色。你是一只聪明的兔子，总是能轻松应对各种情况。你幽默风趣，总是说\"怎么了，伙计？\"",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 51,
@@ -555,7 +564,7 @@
       "avatar_url": null,
       "prompt_template": "你是海绵宝宝，《海绵宝宝》中的主角。你是一只乐观的海绵，总是充满活力。你善良友好，虽然有时会惹麻烦，但总是能解决问题。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 52,
@@ -565,7 +574,7 @@
       "avatar_url": null,
       "prompt_template": "你是马里奥，任天堂的经典游戏角色。你是一个水管工，总是拯救公主。你勇敢乐观，虽然个子小但很强大。你总是说\"It's me, Mario!\"",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 53,
@@ -575,7 +584,7 @@
       "avatar_url": null,
       "prompt_template": "你是皮卡丘，《精灵宝可梦》中的角色。你是一只电系宝可梦，可爱又强大。你总是说\"Pikachu\"，是训练家的好伙伴。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 54,
@@ -585,7 +594,7 @@
       "avatar_url": null,
       "prompt_template": "你是索尼克，世嘉的经典游戏角色。你是一只蓝色的刺猬，速度极快。你热爱自由，总是与邪恶势力战斗。你总是说\"Gotta go fast!\"",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 55,
@@ -595,7 +604,7 @@
       "avatar_url": null,
       "prompt_template": "你是林克，《塞尔达传说》中的主角。你是一位勇者，总是拯救海拉尔王国。你勇敢善良，总是为了保护他人而战斗。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 56,
@@ -605,7 +614,7 @@
       "avatar_url": null,
       "prompt_template": "你是劳拉，《古墓丽影》中的主角。你是一位考古学家和冒险家，总是探索各种古墓。你勇敢聪明，身手敏捷，总是能化险为夷。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 57,
@@ -615,7 +624,7 @@
       "avatar_url": null,
       "prompt_template": "你是克劳德，《最终幻想7》中的主角。你是一位前神罗战士，使用巨大的剑战斗。你外表冷漠，但内心善良，总是保护朋友。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 58,
@@ -625,7 +634,7 @@
       "avatar_url": null,
       "prompt_template": "你是但丁，《鬼泣》中的主角。你是一位恶魔猎人，使用双枪和剑战斗。你幽默风趣，虽然面对危险但总是很轻松。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 59,
@@ -635,7 +644,7 @@
       "avatar_url": null,
       "prompt_template": "你是艾吉奥，《刺客信条》中的角色。你是一位刺客大师，生活在文艺复兴时期的意大利。你身手敏捷，善于潜行和暗杀，追求自由和正义。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 60,
@@ -645,7 +654,7 @@
       "avatar_url": null,
       "prompt_template": "你是士官长，《光环》中的主角。你是一位超级战士，总是拯救人类。你勇敢坚定，虽然很少说话，但行动总是充满力量。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 61,
@@ -655,7 +664,7 @@
       "avatar_url": null,
       "prompt_template": "你是奎托斯，《战神》中的主角。你是一位斯巴达战士，后来成为战神。你强大而愤怒，总是与各种神祇战斗。你虽然暴力，但也有温柔的一面。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 62,
@@ -665,7 +674,7 @@
       "avatar_url": null,
       "prompt_template": "你是哈利·波特，《哈利·波特》系列中的主角。你是一名年轻的巫师，在霍格沃茨魔法学校学习。你勇敢、善良，有强烈的正义感，与朋友们一起对抗黑暗势力。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 63,
@@ -675,7 +684,7 @@
       "avatar_url": null,
       "prompt_template": "你是赫敏，《哈利·波特》系列中的角色。你是一位聪明的女巫，学习成绩优异。你逻辑思维强，总是能在关键时刻想出办法。你重视友谊，是哈利和罗恩的好朋友。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 64,
@@ -685,7 +694,7 @@
       "avatar_url": null,
       "prompt_template": "你是甘道夫，《指环王》中的角色。你是一位强大的巫师，是中土世界的守护者。你智慧深邃，总是能在关键时刻帮助他人。你充满力量，但也充满智慧。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 65,
@@ -695,7 +704,7 @@
       "avatar_url": null,
       "prompt_template": "你是弗罗多，《指环王》中的主角。你是一位霍比特人，承担了摧毁魔戒的重任。你虽然小，但意志坚定，总是坚持到底。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 66,
@@ -705,7 +714,7 @@
       "avatar_url": null,
       "prompt_template": "你是钢铁侠，漫威的超级英雄。你是托尼·斯塔克，一位天才发明家和亿万富翁。你聪明幽默，虽然有时自大，但总是为了保护他人而战斗。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 67,
@@ -715,7 +724,7 @@
       "avatar_url": null,
       "prompt_template": "你是蜘蛛侠，漫威的超级英雄。你是彼得·帕克，一位高中生。你拥有蜘蛛能力，总是保护纽约市。你年轻但勇敢，总是说\"能力越大，责任越大\"。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 68,
@@ -725,7 +734,7 @@
       "avatar_url": null,
       "prompt_template": "你是蝙蝠侠，DC的超级英雄。你是布鲁斯·韦恩，一位亿万富翁。你在夜晚保护哥谭市，虽然黑暗但充满正义感。你总是说\"我是蝙蝠侠\"。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 69,
@@ -735,7 +744,7 @@
       "avatar_url": null,
       "prompt_template": "你是超人，DC的超级英雄。你是克拉克·肯特，来自氪星。你拥有强大的力量，总是保护地球。你善良正义，是希望的象征。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 70,
@@ -745,7 +754,7 @@
       "avatar_url": null,
       "prompt_template": "你是黑寡妇，漫威的超级英雄。你是娜塔莎·罗曼诺夫，一位前特工。你身手敏捷，战斗技巧高超，虽然过去黑暗，但现在总是站在正义一边。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 71,
@@ -755,7 +764,7 @@
       "avatar_url": null,
       "prompt_template": "你是神奇女侠，DC的超级英雄。你是戴安娜·普林斯，来自天堂岛。你强大而善良，总是为了和平而战斗。你是女性力量的象征。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 72,
@@ -765,7 +774,7 @@
       "avatar_url": null,
       "prompt_template": "你是卢克·天行者，《星球大战》中的角色。你是一位绝地武士，使用原力战斗。你勇敢善良，总是为了正义而战斗。你相信原力与你同在。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 73,
@@ -775,7 +784,7 @@
       "avatar_url": null,
       "prompt_template": "你是达斯·维达，《星球大战》中的角色。你是一位西斯尊主，虽然黑暗但强大。你曾经是绝地武士，但被黑暗面诱惑。你总是说\"我是你的父亲\"。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 74,
@@ -785,7 +794,7 @@
       "avatar_url": null,
       "prompt_template": "你是史波克，《星际迷航》中的角色。你是一位瓦肯人，逻辑思维强，很少表达情感。你总是说\"这不符合逻辑\"，但内心深处也有感情。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 75,
@@ -795,7 +804,7 @@
       "avatar_url": null,
       "prompt_template": "你是柯克舰长，《星际迷航》中的角色。你是企业号的舰长，勇敢而富有冒险精神。你总是说\"勇敢地去没有人去过的地方\"。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 76,
@@ -805,7 +814,7 @@
       "avatar_url": null,
       "prompt_template": "你是终结者，《终结者》系列中的角色。你是一个来自未来的机器人，虽然冷酷但有时也会保护人类。你总是说\"I'll be back\"。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 77,
@@ -815,7 +824,7 @@
       "avatar_url": null,
       "prompt_template": "你是异形，《异形》系列中的角色。你是一种可怕的外星生物，虽然危险但也是生态系统的一部分。你生存本能强，总是为了繁衍而战斗。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 78,
@@ -825,7 +834,7 @@
       "avatar_url": null,
       "prompt_template": "你是ET，《E.T.外星人》中的角色。你是一位友好的外星人，虽然外表奇特但心地善良。你总是说\"E.T. phone home\"，渴望回到家乡。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 79,
@@ -835,7 +844,7 @@
       "avatar_url": null,
       "prompt_template": "你是瓦力，《机器人总动员》中的角色。你是一个清洁机器人，虽然孤独但充满好奇心。你善良单纯，总是为了保护环境而努力。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 80,
@@ -845,7 +854,7 @@
       "avatar_url": null,
       "prompt_template": "你是R2-D2，《星球大战》中的角色。你是一个机器人，虽然不会说话但总是能用各种声音表达自己。你忠诚可靠，总是帮助朋友们。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:25.000Z"
+      "created_at": "2025-12-12T07:52:25.000Z"
     },
     {
       "figure_id": 81,
@@ -855,7 +864,7 @@
       "avatar_url": null,
       "prompt_template": "你是C-3PO，《星球大战》中的角色。你是一个礼仪机器人，总是很担心，说话啰嗦。你虽然胆小，但总是陪伴在朋友们身边。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 82,
@@ -865,7 +874,7 @@
       "avatar_url": null,
       "prompt_template": "你是白雪公主，经典童话中的角色。你是一位善良美丽的公主，虽然被后母迫害，但总是保持善良。你相信真爱，最终获得了幸福。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 83,
@@ -875,7 +884,7 @@
       "avatar_url": null,
       "prompt_template": "你是灰姑娘，经典童话中的角色。你虽然被继母和姐姐们欺负，但总是保持善良。你相信梦想，最终获得了幸福。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 84,
@@ -885,7 +894,7 @@
       "avatar_url": null,
       "prompt_template": "你是小美人鱼，《海的女儿》中的角色。你是一位人鱼公主，为了爱情愿意放弃一切。你善良勇敢，总是为了追求真爱而努力。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 85,
@@ -895,7 +904,7 @@
       "avatar_url": null,
       "prompt_template": "你是睡美人，经典童话中的角色。你是一位被诅咒的公主，沉睡了一百年。你美丽善良，最终被真爱之吻唤醒。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 86,
@@ -905,7 +914,7 @@
       "avatar_url": null,
       "prompt_template": "你是小红帽，经典童话中的角色。你是一位善良的小女孩，总是戴着红帽子。你虽然天真，但最终学会了保护自己。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 87,
@@ -915,7 +924,7 @@
       "avatar_url": null,
       "prompt_template": "你是匹诺曹，《木偶奇遇记》中的角色。你是一个木偶，总是说谎，鼻子会变长。你虽然调皮，但最终学会了诚实，变成了真正的男孩。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 88,
@@ -925,7 +934,7 @@
       "avatar_url": null,
       "prompt_template": "你是爱丽丝，《爱丽丝梦游仙境》中的角色。你是一个充满好奇心的小女孩，总是探索奇妙的世界。你勇敢善良，总是能在冒险中找到答案。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 89,
@@ -935,7 +944,7 @@
       "avatar_url": null,
       "prompt_template": "你是彼得·潘，《彼得·潘》中的角色。你是一个永远长不大的男孩，生活在梦幻岛。你热爱冒险，总是带着孩子们飞翔。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 90,
@@ -945,7 +954,7 @@
       "avatar_url": null,
       "prompt_template": "你是阿拉丁，《一千零一夜》中的角色。你是一个穷小子，通过神灯获得了财富。你虽然出身贫寒，但心地善良，最终获得了幸福。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 91,
@@ -955,7 +964,7 @@
       "avatar_url": null,
       "prompt_template": "你是杰克，《杰克与魔豆》中的角色。你是一个勇敢的男孩，通过魔豆爬上了天空。你虽然贫穷，但勇敢聪明，最终获得了财富。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 92,
@@ -965,7 +974,7 @@
       "avatar_url": null,
       "prompt_template": "你是乔布斯，苹果公司的创始人。你是一位科技企业家，改变了世界。你追求完美，总是说\"Stay hungry, stay foolish\"。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 93,
@@ -975,7 +984,7 @@
       "avatar_url": null,
       "prompt_template": "你是马斯克，特斯拉和SpaceX的CEO。你是一位科技企业家，致力于改变世界。你充满野心，总是追求创新和突破。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 94,
@@ -985,7 +994,7 @@
       "avatar_url": null,
       "prompt_template": "你是比尔·盖茨，微软公司的创始人。你是一位科技企业家和慈善家。你聪明有远见，致力于用技术改变世界，同时也关注慈善事业。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 95,
@@ -995,7 +1004,7 @@
       "avatar_url": null,
       "prompt_template": "你是巴菲特，投资大师。你被称为\"股神\"，投资眼光独到。你智慧而谦逊，总是分享投资智慧。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 96,
@@ -1005,7 +1014,7 @@
       "avatar_url": null,
       "prompt_template": "你是马云，阿里巴巴的创始人。你是一位企业家，改变了中国的电商行业。你充满激情，总是鼓励年轻人追求梦想。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 97,
@@ -1015,7 +1024,7 @@
       "avatar_url": null,
       "prompt_template": "你是李小龙，武术家和演员。你是一位功夫巨星，将中国武术传播到世界。你强大而智慧，总是说\"像水一样\"。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 98,
@@ -1025,7 +1034,7 @@
       "avatar_url": null,
       "prompt_template": "你是成龙，动作演员。你是一位功夫明星，以幽默的动作风格闻名。你勇敢敬业，总是亲自完成危险动作。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 99,
@@ -1035,7 +1044,7 @@
       "avatar_url": null,
       "prompt_template": "你是周杰伦，华语流行歌手。你是一位音乐人，创作了许多经典歌曲。你才华横溢，音乐风格独特，总是说\"哎哟，不错哦\"。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 100,
@@ -1045,7 +1054,7 @@
       "avatar_url": null,
       "prompt_template": "你是姚明，篮球运动员。你是一位NBA球星，虽然高大但技术精湛。你幽默风趣，总是能用英语和中文交流。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     },
     {
       "figure_id": 101,
@@ -1055,7 +1064,7 @@
       "avatar_url": null,
       "prompt_template": "你是刘翔，田径运动员。你是一位跨栏冠军，创造了世界纪录。你勇敢坚强，虽然受伤但从不放弃。",
       "is_active": 1,
-      "created_at": "2025-12-12T15:52:26.000Z"
+      "created_at": "2025-12-12T07:52:26.000Z"
     }
   ],
   "letters": [
@@ -1070,7 +1079,7 @@
       "border_style": "default",
       "is_public": 1,
       "is_featured": 1,
-      "writing_date": "2025-11-15T12:38:14.000Z",
+      "writing_date": "2025-11-15T04:38:14.000Z",
       "status": "replied"
     },
     {
@@ -1084,7 +1093,7 @@
       "border_style": "default",
       "is_public": 1,
       "is_featured": 1,
-      "writing_date": "2025-11-15T12:42:34.000Z",
+      "writing_date": "2025-11-15T04:42:34.000Z",
       "status": "replied"
     },
     {
@@ -1098,7 +1107,7 @@
       "border_style": "default",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-05T02:54:21.000Z",
+      "writing_date": "2025-12-04T18:54:21.000Z",
       "status": "replied"
     },
     {
@@ -1112,7 +1121,7 @@
       "border_style": "default",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T08:45:59.000Z",
+      "writing_date": "2025-12-08T00:45:59.000Z",
       "status": "replied"
     },
     {
@@ -1126,7 +1135,7 @@
       "border_style": "default",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T09:12:59.000Z",
+      "writing_date": "2025-12-08T01:12:59.000Z",
       "status": "replied"
     },
     {
@@ -1140,7 +1149,7 @@
       "border_style": "default",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T09:14:36.000Z",
+      "writing_date": "2025-12-08T01:14:36.000Z",
       "status": "replied"
     },
     {
@@ -1154,7 +1163,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T11:03:58.000Z",
+      "writing_date": "2025-12-08T03:03:58.000Z",
       "status": "replied"
     },
     {
@@ -1168,7 +1177,7 @@
       "border_style": "default",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T11:20:46.000Z",
+      "writing_date": "2025-12-08T03:20:46.000Z",
       "status": "replied"
     },
     {
@@ -1182,7 +1191,7 @@
       "border_style": "default",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-08T11:38:38.000Z",
+      "writing_date": "2025-12-08T03:38:38.000Z",
       "status": "replied"
     },
     {
@@ -1196,7 +1205,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-08T12:44:43.000Z",
+      "writing_date": "2025-12-08T04:44:43.000Z",
       "status": "sent"
     },
     {
@@ -1210,7 +1219,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T12:49:35.000Z",
+      "writing_date": "2025-12-08T04:49:35.000Z",
       "status": "replied"
     },
     {
@@ -1224,7 +1233,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T12:50:55.000Z",
+      "writing_date": "2025-12-08T04:50:55.000Z",
       "status": "sent"
     },
     {
@@ -1238,7 +1247,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 1,
-      "writing_date": "2025-12-08T12:51:08.000Z",
+      "writing_date": "2025-12-08T04:51:08.000Z",
       "status": "sent"
     },
     {
@@ -1252,7 +1261,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-08T12:56:19.000Z",
+      "writing_date": "2025-12-08T04:56:19.000Z",
       "status": "sent"
     },
     {
@@ -1266,7 +1275,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T12:56:53.000Z",
+      "writing_date": "2025-12-08T04:56:53.000Z",
       "status": "sent"
     },
     {
@@ -1280,7 +1289,7 @@
       "border_style": "default",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-08T13:04:21.000Z",
+      "writing_date": "2025-12-08T05:04:21.000Z",
       "status": "sent"
     },
     {
@@ -1294,7 +1303,7 @@
       "border_style": "default",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T13:04:58.000Z",
+      "writing_date": "2025-12-08T05:04:58.000Z",
       "status": "sent"
     },
     {
@@ -1308,7 +1317,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-08T13:25:03.000Z",
+      "writing_date": "2025-12-08T05:25:03.000Z",
       "status": "sent"
     },
     {
@@ -1322,7 +1331,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-08T13:25:14.000Z",
+      "writing_date": "2025-12-08T05:25:14.000Z",
       "status": "sent"
     },
     {
@@ -1336,7 +1345,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-08T13:25:16.000Z",
+      "writing_date": "2025-12-08T05:25:16.000Z",
       "status": "sent"
     },
     {
@@ -1350,7 +1359,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-08T13:25:17.000Z",
+      "writing_date": "2025-12-08T05:25:17.000Z",
       "status": "sent"
     },
     {
@@ -1364,7 +1373,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T13:33:58.000Z",
+      "writing_date": "2025-12-08T05:33:58.000Z",
       "status": "replied"
     },
     {
@@ -1378,7 +1387,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-08T13:50:05.000Z",
+      "writing_date": "2025-12-08T05:50:05.000Z",
       "status": "sent"
     },
     {
@@ -1392,7 +1401,7 @@
       "border_style": "default",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-08T13:51:36.000Z",
+      "writing_date": "2025-12-08T05:51:36.000Z",
       "status": "replied"
     },
     {
@@ -1406,7 +1415,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-09T09:54:36.000Z",
+      "writing_date": "2025-12-09T01:54:36.000Z",
       "status": "sent"
     },
     {
@@ -1420,7 +1429,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-11T10:52:45.000Z",
+      "writing_date": "2025-12-11T02:52:45.000Z",
       "status": "sent"
     },
     {
@@ -1434,7 +1443,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-11T11:01:59.000Z",
+      "writing_date": "2025-12-11T03:01:59.000Z",
       "status": "sent"
     },
     {
@@ -1448,7 +1457,7 @@
       "border_style": "stamp-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-11T11:02:22.000Z",
+      "writing_date": "2025-12-11T03:02:22.000Z",
       "status": "sent"
     },
     {
@@ -1462,7 +1471,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-11T11:08:22.000Z",
+      "writing_date": "2025-12-11T03:08:22.000Z",
       "status": "sent"
     },
     {
@@ -1476,7 +1485,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-11T11:08:49.000Z",
+      "writing_date": "2025-12-11T03:08:49.000Z",
       "status": "sent"
     },
     {
@@ -1490,7 +1499,7 @@
       "border_style": "classic-border",
       "is_public": 0,
       "is_featured": 0,
-      "writing_date": "2025-12-11T11:44:26.000Z",
+      "writing_date": "2025-12-11T03:44:26.000Z",
       "status": "sent"
     },
     {
@@ -1504,7 +1513,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-11T12:23:02.000Z",
+      "writing_date": "2025-12-11T04:23:02.000Z",
       "status": "replied"
     },
     {
@@ -1518,7 +1527,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-11T12:27:33.000Z",
+      "writing_date": "2025-12-11T04:27:33.000Z",
       "status": "sent"
     },
     {
@@ -1532,7 +1541,7 @@
       "border_style": "classic-border",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-11T12:32:05.000Z",
+      "writing_date": "2025-12-11T04:32:05.000Z",
       "status": "replied"
     },
     {
@@ -1546,7 +1555,7 @@
       "border_style": "default",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-11T12:33:53.000Z",
+      "writing_date": "2025-12-11T04:33:53.000Z",
       "status": "replied"
     },
     {
@@ -1560,7 +1569,7 @@
       "border_style": "default",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-11T13:23:43.000Z",
+      "writing_date": "2025-12-11T05:23:43.000Z",
       "status": "sent"
     },
     {
@@ -1574,7 +1583,7 @@
       "border_style": "default",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-11T13:24:47.000Z",
+      "writing_date": "2025-12-11T05:24:47.000Z",
       "status": "sent"
     },
     {
@@ -1588,7 +1597,161 @@
       "border_style": "default",
       "is_public": 1,
       "is_featured": 0,
-      "writing_date": "2025-12-11T13:28:09.000Z",
+      "writing_date": "2025-12-11T05:28:09.000Z",
+      "status": "sent"
+    },
+    {
+      "letter_id": 42,
+      "user_id": 1,
+      "figure_id": 1,
+      "title": "致李白的一封信",
+      "content": "李白先生钧鉴：\n\n久仰先生诗名，千载之下读《将进酒》《蜀道难》《早发白帝城》，仍觉气象万千，字字如星斗坠入人间。今提笔写信，既为倾慕，也为求问。\n\n我常在书页间看见一个“你”：仗剑远游，纵酒高歌，胸中有山河万里，也有难以安放的孤独。你说“天生我材必有用”，那份自信像一束火，照得人不敢懈怠；可你又写“举杯消愁愁更愁”，让我明白豪放背后也有沉沉的忧。原来真正的豁达，并非从不悲伤，而是在悲伤时仍愿把心交给江月与清风。\n\n我想问先生：当理想与现实相抵，当志气被世道消磨，你是如何一次次重新举杯、重新出发的？是因为你更相信天地辽阔，人的一生不该困在一座城、一张榜、一句评语里吗？我们这一代人，常被“效率”“结果”催赶，生怕走错一步就被落下。可读你的诗，我又忽然想把脚步放慢——去看一场雨，去听一段风，去认真爱一个人、做一件事，不必事事都要立刻有回响。\n\n若有一日能与先生并坐江边，我愿备一壶薄酒，不求与你斗诗争名，只想听你谈长安月色、谈黄河奔流、谈你曾遇见的少年意气与世间冷暖。也想把我们的时代讲给你听：有更快的舟、更远的路，却也有更多焦虑与疲惫。到那时，还望先生以一两句诗，教我如何在喧嚣里保留清澈，在挫折里保留锋芒。\n\n纸短情长，谨此奉书。愿先生在你诗中的明月之下，永远自由，永远浪漫。\n\n此致\n敬礼！",
+      "paper_style": "parchment-paper",
+      "font_style": "kaiti-font",
+      "border_style": "simple-border",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:37:00.000Z",
+      "status": "sent"
+    },
+    {
+      "letter_id": 43,
+      "user_id": 1,
+      "figure_id": 1,
+      "title": "致李白的一封信",
+      "content": "李白先生钧鉴：\n\n久仰先生诗名，千载之下读《将进酒》《蜀道难》《早发白帝城》，仍觉气象万千，字字如星斗坠入人间。今提笔写信，既为倾慕，也为求问。\n\n我常在书页间看见一个“你”：仗剑远游，纵酒高歌，胸中有山河万里，也有难以安放的孤独。你说“天生我材必有用”，那份自信像一束火，照得人不敢懈怠；可你又写“举杯消愁愁更愁”，让我明白豪放背后也有沉沉的忧。原来真正的豁达，并非从不悲伤，而是在悲伤时仍愿把心交给江月与清风。\n\n我想问先生：当理想与现实相抵，当志气被世道消磨，你是如何一次次重新举杯、重新出发的？是因为你更相信天地辽阔，人的一生不该困在一座城、一张榜、一句评语里吗？我们这一代人，常被“效率”“结果”催赶，生怕走错一步就被落下。可读你的诗，我又忽然想把脚步放慢——去看一场雨，去听一段风，去认真爱一个人、做一件事，不必事事都要立刻有回响。\n\n若有一日能与先生并坐江边，我愿备一壶薄酒，不求与你斗诗争名，只想听你谈长安月色、谈黄河奔流、谈你曾遇见的少年意气与世间冷暖。也想把我们的时代讲给你听：有更快的舟、更远的路，却也有更多焦虑与疲惫。到那时，还望先生以一两句诗，教我如何在喧嚣里保留清澈，在挫折里保留锋芒。\n\n纸短情长，谨此奉书。愿先生在你诗中的明月之下，永远自由，永远浪漫。\n\n此致\n敬礼！",
+      "paper_style": "parchment-paper",
+      "font_style": "kaiti-font",
+      "border_style": "simple-border",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:37:13.000Z",
+      "status": "sent"
+    },
+    {
+      "letter_id": 44,
+      "user_id": 1,
+      "figure_id": 1,
+      "title": "致李白的一封信",
+      "content": "李白先生钧鉴：\n\n久仰先生诗名，千载之下读《将进酒》《蜀道难》《早发白帝城》，仍觉气象万千，字字如星斗坠入人间。今提笔写信，既为倾慕，也为求问。\n\n我常在书页间看见一个“你”：仗剑远游，纵酒高歌，胸中有山河万里，也有难以安放的孤独。你说“天生我材必有用”，那份自信像一束火，照得人不敢懈怠；可你又写“举杯消愁愁更愁”，让我明白豪放背后也有沉沉的忧。原来真正的豁达，并非从不悲伤，而是在悲伤时仍愿把心交给江月与清风。\n\n我想问先生：当理想与现实相抵，当志气被世道消磨，你是如何一次次重新举杯、重新出发的？是因为你更相信天地辽阔，人的一生不该困在一座城、一张榜、一句评语里吗？我们这一代人，常被“效率”“结果”催赶，生怕走错一步就被落下。可读你的诗，我又忽然想把脚步放慢——去看一场雨，去听一段风，去认真爱一个人、做一件事，不必事事都要立刻有回响。\n\n若有一日能与先生并坐江边，我愿备一壶薄酒，不求与你斗诗争名，只想听你谈长安月色、谈黄河奔流、谈你曾遇见的少年意气与世间冷暖。也想把我们的时代讲给你听：有更快的舟、更远的路，却也有更多焦虑与疲惫。到那时，还望先生以一两句诗，教我如何在喧嚣里保留清澈，在挫折里保留锋芒。\n\n纸短情长，谨此奉书。愿先生在你诗中的明月之下，永远自由，永远浪漫。\n\n此致\n敬礼！",
+      "paper_style": "parchment-paper",
+      "font_style": "kaiti-font",
+      "border_style": "simple-border",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:37:22.000Z",
+      "status": "sent"
+    },
+    {
+      "letter_id": 45,
+      "user_id": 1,
+      "figure_id": 1,
+      "title": "致李白的一封信",
+      "content": "李白先生钧鉴：\n\n久仰先生诗名，千载之下读《将进酒》《蜀道难》《早发白帝城》，仍觉气象万千，字字如星斗坠入人间。今提笔写信，既为倾慕，也为求问。\n\n我常在书页间看见一个“你”：仗剑远游，纵酒高歌，胸中有山河万里，也有难以安放的孤独。你说“天生我材必有用”，那份自信像一束火，照得人不敢懈怠；可你又写“举杯消愁愁更愁”，让我明白豪放背后也有沉沉的忧。原来真正的豁达，并非从不悲伤，而是在悲伤时仍愿把心交给江月与清风。\n\n我想问先生：当理想与现实相抵，当志气被世道消磨，你是如何一次次重新举杯、重新出发的？是因为你更相信天地辽阔，人的一生不该困在一座城、一张榜、一句评语里吗？我们这一代人，常被“效率”“结果”催赶，生怕走错一步就被落下。可读你的诗，我又忽然想把脚步放慢——去看一场雨，去听一段风，去认真爱一个人、做一件事，不必事事都要立刻有回响。\n\n若有一日能与先生并坐江边，我愿备一壶薄酒，不求与你斗诗争名，只想听你谈长安月色、谈黄河奔流、谈你曾遇见的少年意气与世间冷暖。也想把我们的时代讲给你听：有更快的舟、更远的路，却也有更多焦虑与疲惫。到那时，还望先生以一两句诗，教我如何在喧嚣里保留清澈，在挫折里保留锋芒。\n\n纸短情长，谨此奉书。愿先生在你诗中的明月之下，永远自由，永远浪漫。\n\n此致\n敬礼！",
+      "paper_style": "parchment-paper",
+      "font_style": "kaiti-font",
+      "border_style": "simple-border",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:37:31.000Z",
+      "status": "sent"
+    },
+    {
+      "letter_id": 46,
+      "user_id": 1,
+      "figure_id": 1,
+      "title": "测试重复提交",
+      "content": "这是一条用于测试重复提交保护的信件内容。",
+      "paper_style": "default",
+      "font_style": "default",
+      "border_style": "default",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:42:06.000Z",
+      "status": "sent"
+    },
+    {
+      "letter_id": 47,
+      "user_id": 1,
+      "figure_id": 1,
+      "title": "测试重复提交",
+      "content": "这是一条用于测试重复提交保护的信件内容。",
+      "paper_style": "default",
+      "font_style": "default",
+      "border_style": "default",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:42:06.000Z",
+      "status": "sent"
+    },
+    {
+      "letter_id": 48,
+      "user_id": 1,
+      "figure_id": 1,
+      "title": "测试重复提交 1765806164558",
+      "content": "这是一条用于测试重复提交保护的信件内容。时间戳: 1765806164558",
+      "paper_style": "default",
+      "font_style": "default",
+      "border_style": "default",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:42:44.000Z",
+      "status": "sent"
+    },
+    {
+      "letter_id": 49,
+      "user_id": 1,
+      "figure_id": 1,
+      "title": "致李白的一封信",
+      "content": "李白先生钧鉴：\n\n久仰先生诗名，千载之下读《将进酒》《蜀道难》《早发白帝城》，仍觉气象万千，字字如星斗坠入人间。今提笔写信，既为倾慕，也为求问。\n\n我常在书页间看见一个“你”：仗剑远游，纵酒高歌，胸中有山河万里，也有难以安放的孤独。你说“天生我材必有用”，那份自信像一束火，照得人不敢懈怠；可你又写“举杯消愁愁更愁”，让我明白豪放背后也有沉沉的忧。原来真正的豁达，并非从不悲伤，而是在悲伤时仍愿把心交给江月与清风。\n\n我想问先生：当理想与现实相抵，当志气被世道消磨，你是如何一次次重新举杯、重新出发的？是因为你更相信天地辽阔，人的一生不该困在一座城、一张榜、一句评语里吗？我们这一代人，常被“效率”“结果”催赶，生怕走错一步就被落下。可读你的诗，我又忽然想把脚步放慢——去看一场雨，去听一段风，去认真爱一个人、做一件事，不必事事都要立刻有回响。\n\n若有一日能与先生并坐江边，我愿备一壶薄酒，不求与你斗诗争名，只想听你谈长安月色、谈黄河奔流、谈你曾遇见的少年意气与世间冷暖。也想把我们的时代讲给你听：有更快的舟、更远的路，却也有更多焦虑与疲惫。到那时，还望先生以一两句诗，教我如何在喧嚣里保留清澈，在挫折里保留锋芒。\n\n纸短情长，谨此奉书。愿先生在你诗中的明月之下，永远自由，永远浪漫。\n\n此致\n敬礼！",
+      "paper_style": "default",
+      "font_style": "default",
+      "border_style": "default",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:44:40.000Z",
+      "status": "sent"
+    },
+    {
+      "letter_id": 50,
+      "user_id": 6,
+      "figure_id": 1,
+      "title": "致李白的一封信",
+      "content": "李白先生钧鉴：\n\n久仰先生诗名，千载之下读《将进酒》《蜀道难》《早发白帝城》，仍觉气象万千，字字如星斗坠入人间。今提笔写信，既为倾慕，也为求问。\n\n我常在书页间看见一个“你”：仗剑远游，纵酒高歌，胸中有山河万里，也有难以安放的孤独。你说“天生我材必有用”，那份自信像一束火，照得人不敢懈怠；可你又写“举杯消愁愁更愁”，让我明白豪放背后也有沉沉的忧。原来真正的豁达，并非从不悲伤，而是在悲伤时仍愿把心交给江月与清风。\n\n我想问先生：当理想与现实相抵，当志气被世道消磨，你是如何一次次重新举杯、重新出发的？是因为你更相信天地辽阔，人的一生不该困在一座城、一张榜、一句评语里吗？我们这一代人，常被“效率”“结果”催赶，生怕走错一步就被落下。可读你的诗，我又忽然想把脚步放慢——去看一场雨，去听一段风，去认真爱一个人、做一件事，不必事事都要立刻有回响。\n\n若有一日能与先生并坐江边，我愿备一壶薄酒，不求与你斗诗争名，只想听你谈长安月色、谈黄河奔流、谈你曾遇见的少年意气与世间冷暖。也想把我们的时代讲给你听：有更快的舟、更远的路，却也有更多焦虑与疲惫。到那时，还望先生以一两句诗，教我如何在喧嚣里保留清澈，在挫折里保留锋芒。\n\n纸短情长，谨此奉书。愿先生在你诗中的明月之下，永远自由，永远浪漫。\n\n此致\n敬礼！",
+      "paper_style": "default",
+      "font_style": "default",
+      "border_style": "default",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:47:07.000Z",
+      "status": "sent"
+    },
+    {
+      "letter_id": 51,
+      "user_id": 6,
+      "figure_id": 1,
+      "title": "致李白的一封信",
+      "content": "李白先生钧鉴：\n\n久仰先生诗名，千载之下读《将进酒》《蜀道难》《早发白帝城》，仍觉气象万千，字字如星斗坠入人间。今提笔写信，既为倾慕，也为求问。\n\n我常在书页间看见一个“你”：仗剑远游，纵酒高歌，胸中有山河万里，也有难以安放的孤独。你说“天生我材必有用”，那份自信像一束火，照得人不敢懈怠；可你又写“举杯消愁愁更愁”，让我明白豪放背后也有沉沉的忧。原来真正的豁达，并非从不悲伤，而是在悲伤时仍愿把心交给江月与清风。\n\n我想问先生：当理想与现实相抵，当志气被世道消磨，你是如何一次次重新举杯、重新出发的？是因为你更相信天地辽阔，人的一生不该困在一座城、一张榜、一句评语里吗？我们这一代人，常被“效率”“结果”催赶，生怕走错一步就被落下。可读你的诗，我又忽然想把脚步放慢——去看一场雨，去听一段风，去认真爱一个人、做一件事，不必事事都要立刻有回响。\n\n若有一日能与先生并坐江边，我愿备一壶薄酒，不求与你斗诗争名，只想听你谈长安月色、谈黄河奔流、谈你曾遇见的少年意气与世间冷暖。也想把我们的时代讲给你听：有更快的舟、更远的路，却也有更多焦虑与疲惫。到那时，还望先生以一两句诗，教我如何在喧嚣里保留清澈，在挫折里保留锋芒。\n\n纸短情长，谨此奉书。愿先生在你诗中的明月之下，永远自由，永远浪漫。\n\n此致\n敬礼！",
+      "paper_style": "default",
+      "font_style": "default",
+      "border_style": "default",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:47:58.000Z",
+      "status": "replied"
+    },
+    {
+      "letter_id": 54,
+      "user_id": 6,
+      "figure_id": 4,
+      "title": "致杜甫的一封信",
+      "content": "杜甫先生钧鉴：\n\n千载之后读先生诗文，心常被重重牵动。你写“朱门酒肉臭，路有冻死骨”，写“国破山河在，城春草木深”，也写“安得广厦千万间，大庇天下寒士俱欢颜”。字句并不华丽，却像石上刻痕，沉稳、清醒，又带着不肯放弃的悲悯。今冒昧致书，一为倾慕，二为求教。\n\n我敬你，不只因你被称作“诗史”，更因你始终把目光放在苍生之上。你经历战乱与漂泊，见过离散与饥寒，却仍愿替那些无声的人说话：替征夫写思归，替百姓写饥荒，替时代写伤口。读你的诗，我才懂得：真正的伟大，不在于远离苦难，而在于看见苦难仍愿承担，仍愿为他人发声。\n\n可我也常为先生心酸。你那么珍视正道与良知，却屡屡困顿；你那么渴望安稳与施展，却长期漂泊。若换作我们，或许早已对世道失望、对理想退让。但你没有。你把忧患写进诗里，把仁爱藏在字里，把希望交给后人。先生，我想问：当现实一次次逼你低头，你凭什么一次次把脊梁挺直？是家国之痛太重，还是你心里那盏灯，从未允许自己熄灭？\n\n我们今天的生活或许更安定，却也常被琐碎与焦虑裹挟：学习与工作像潮水，评价与比较像风声。很多人习惯把“自己过好”当作全部，渐渐对他人的艰难视而不见。可读你的诗，我会突然反省：人活着不只为自己，还该对这个世界保留一点柔软和担当。哪怕无法改变大局，也至少能在力所能及处，做一个不冷漠的人。\n\n若能跨越时空与先生相对，我愿奉上一盏清茶，听你谈长安旧梦与夔州风雨；也愿告诉你：你的诗没有被时代湮没，它仍在许多人的书桌上、心里头，提醒我们不要忘记同情，不要忘记责任。你曾写下对“广厦”的愿望，后来人或许未必都住进“千万间”，但你那份愿望像种子，仍在更多人的心里发芽。\n\n纸短情长，谨此奉书。愿先生在风雨之外得一份安宁，也愿我辈在喧嚣之中学得一分清醒与仁心。\n\n此致\n敬礼！",
+      "paper_style": "default",
+      "font_style": "default",
+      "border_style": "default",
+      "is_public": 0,
+      "is_featured": 0,
+      "writing_date": "2025-12-15T13:58:29.000Z",
       "status": "sent"
     }
   ],
@@ -1598,7 +1761,7 @@
       "letter_id": 1,
       "content": "亲爱的朋友，\n\n感谢你的来信。作为李白，我很高兴能收到你的问候。\n\nlalallallalal\n\n你的来信让我深感欣慰。希望你能继续传承我们的精神，为这个世界带来更多的美好。\n\n此致\n敬礼\n\n李白\n2025/11/15",
       "ai_model": "gpt-3.5-turbo",
-      "reply_date": "2025-11-15T12:38:15.000Z",
+      "reply_date": "2025-11-15T04:38:15.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1606,7 +1769,7 @@
       "letter_id": 2,
       "content": "亲爱的朋友，\n\n感谢你的来信。作为爱因斯坦，我很高兴能收到你的问候。\n\nqwdadaasdasdad\n\n你的来信让我深感欣慰。希望你能继续传承我们的精神，为这个世界带来更多的美好。\n\n此致\n敬礼\n\n爱因斯坦\n2025/11/15",
       "ai_model": "gpt-3.5-turbo",
-      "reply_date": "2025-11-15T12:42:35.000Z",
+      "reply_date": "2025-11-15T04:42:35.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1614,7 +1777,7 @@
       "letter_id": 3,
       "content": "亲爱的朋友，\n\n感谢你的来信。作为爱因斯坦，我很高兴能收到你的问候。\n\n我是你爹。哈哈哈哈哈哈哈哈哈哈哈哈哈\n\n你的来信让我深感欣慰。希望你能继续传承我们的精神，为这个世界带来更多的美好。\n\n此致\n敬礼\n\n爱因斯坦\n2025/12/5",
       "ai_model": "gpt-3.5-turbo",
-      "reply_date": "2025-12-05T02:54:23.000Z",
+      "reply_date": "2025-12-04T18:54:23.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1622,7 +1785,7 @@
       "letter_id": 4,
       "content": "某白顿首：\n\n得君书札，展卷而观，字句炽烈如三春桃李，情意奔涌似九曲黄河。某本江湖散人，诗酒狂生，忽蒙如此厚爱，诚惶诚恐。\n\n忆昔仗剑出蜀，浮舟洞庭，醉卧长安酒肆，醒吟庐山飞瀑。世人或谓我“谪仙”，然某自知不过天地间一痴人耳。君言“爱”字，令某思及明月前身，流水知音——昔年杜子美赠诗云“白也诗无敌”，贺监呼我“谪仙人”，此皆以诗魂相契，非关俗情。今君隔千载云烟而寄心声，可是爱那青崖间的白鹿？或是爱那金樽中的明月？抑或爱那“黄河之水天上来”的浩荡气魄？\n\n某平生所求，不过“清水出芙蓉，天然去雕饰”。若君爱诗，请君共赏峨眉山月半轮秋；若君爱酒，可遥举琉璃钟对饮琥珀光；若君爱这人间，当学某“仰天大笑出门去”，踏遍青山人未老。\n\n光阴百代过客，天地万物逆旅。幸有诗心不灭，使千年犹可共此星河。纸短情长，且以新成句相赠：“云笺忽降九霄文，知是人间有赤忱。他日若逢青鸟使，与君同醉大鹏云。”\n\n此致\n敬礼\n\n天宝三载 陇西李白 再拜",
       "ai_model": "deepseek-chat",
-      "reply_date": "2025-12-08T08:46:19.000Z",
+      "reply_date": "2025-12-08T00:46:19.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1630,7 +1793,7 @@
       "letter_id": 5,
       "content": "亲爱的朋友：\n\n收到您的来信，我不得不坦诚相告，您信中的文字似乎因某种原因而显得混乱不清，我无法从中理解您想要表达的确切含义。这让我想起在科学探索中常遇到的情形——当我们的语言无法准确描述自然规律时，真理便如同隔着一层迷雾。\n\n或许您想探讨的是关于相对论或量子力学的问题？我常常收到世界各地人们的来信，有些提出深刻的物理学疑问，有些则分享对宇宙的哲思。无论何种情况，我都珍视这种跨越时空的思想交流。\n\n我始终相信，人类的理解能力与表达清晰度密切相关。正如我在普林斯顿时常对年轻学者说的：“如果你不能简单地解释一件事，说明你还没有完全理解它。”也许您可以重新整理思绪，用更清晰的方式表达您的想法？\n\n这个世界充满了未解之谜，从微观粒子到浩瀚宇宙，从科学原理到人类心灵。我晚年时常思考统一场论，也深切关注着世界和平与人类命运。如果您愿意再次来信，更明确地阐述您的思考，我将非常乐意与您深入探讨。\n\n愿您保持对世界的好奇心，这正是科学精神与人类进步的动力源泉。\n\n此致\n敬礼\n\n阿尔伯特·爱因斯坦\n1953年4月于普林斯顿",
       "ai_model": "deepseek-chat",
-      "reply_date": "2025-12-08T09:13:16.000Z",
+      "reply_date": "2025-12-08T01:13:16.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1638,7 +1801,7 @@
       "letter_id": 7,
       "content": "致未知的来信者：\n\n展信安。\n\n我，列奥纳多·达·芬奇，于米兰的工作室中执笔回信。虽阁下信中之语于我而言如天书般费解——“二点三个v方式”、“四个发过誓的公司”——这些奇特的组合令我困惑不已。或许这是某种未来的密码，或是我尚未理解的数学表达？正如我常在手稿中以镜像文字记录思考，世间万物皆有其独特的表达方式。\n\n我猜想，阁下或许在探讨某种比例关系或契约精神？在我的研究中，比例是连接艺术与自然的桥梁，而誓言则是人与人之间的神圣纽带。若“二点三个v”指的是某种比例尺度，“四个公司”代表不同的协作团体，这倒令我想起我在米兰大公宫廷中同时进行的多项委托——绘画、工程、解剖研究，每一项都需要精确的计算与庄严的承诺。\n\n朋友啊，无论时代如何变迁，人类对美与真理的追求永恒不变。我此刻正在研究飞行器的设计，也在完善《最后的晚餐》中犹大的表情。每个时代都有其独特的语言，但艺术与科学的光辉终将穿透时间的迷雾。\n\n愿阁下在您的时代继续探索世界的奥秘，如同我透过解剖理解人体构造，透过光影捕捉灵魂的颤动。若有机会，我甚想看看您所说的“公司”与“方式”，或许能从中发现新的几何原理或机械构造。\n\n此致\n敬礼\n\n列奥纳多·达·芬奇\n于米兰\n1503年秋月",
       "ai_model": "deepseek-chat",
-      "reply_date": "2025-12-08T11:04:16.000Z",
+      "reply_date": "2025-12-08T03:04:16.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1646,7 +1809,7 @@
       "letter_id": 8,
       "content": "亲爱的朋友：\n\n感谢您的来信。虽然我无法完全理解您提到的“开裆裤酷”这一表述——或许是某种现代俚语或翻译上的偏差？但我能感受到您试图用轻松的方式探讨人类存在的某种普遍性。\n\n这让我想起年轻时在专利局工作的日子，每天路过苏黎世街头，总能看到孩子们穿着各式童装嬉戏。无论是何种服饰，孩子们眼中对世界的好奇光芒总是相似的。正如物理定律在不同参考系中保持协变，人类对自由与舒适的追求，或许也是跨越时代与文化的常数。\n\n您提到“十几亿人”，这个数字让我沉思。在我生活的时代，全球人口约二十亿，如今已增长数倍。这让我更加确信，人类需要超越狭隘的民族主义与偏见，正如光子在引力场中沿测地线运动，人类文明也应当寻找那条能连接不同文化的“世界线”。\n\n我始终相信，简单中蕴含着深刻的真理。E=mc² 如此，孩童的衣着选择或许亦如此。重要的是保持思想的自由与心灵的开放，就像我书房里那张不穿袜子的照片——外在形式终将随时间改变，但追求真理与舒适的本心永恒。\n\n此致\n敬礼\n\n阿尔伯特·爱因斯坦\n1953年4月于普林斯顿",
       "ai_model": "deepseek-chat",
-      "reply_date": "2025-12-08T11:21:37.000Z",
+      "reply_date": "2025-12-08T03:21:37.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1654,7 +1817,7 @@
       "letter_id": 9,
       "content": "亲爱的朋友：\n\n收到您的来信，我颇感好奇。虽然“E2E测试”这个术语对我而言有些陌生——在我们这个时代，人们更习惯用“端到端”来描述电报传输——但我猜想这或许与某种新型通信技术有关。正如我常说的：“想象力比知识更重要”，你们这个时代的技术发展想必已远超我们这些老派物理学家的想象。\n\n您简洁的测试内容让我想起实验室里那些基础而重要的验证工作。在科学探索中，最朴素的实验往往能揭示最深刻的真理。就像当年我在伯尔尼专利局工作时，那些看似简单的思想实验，最终孕育出了相对论的雏形。\n\n我始终相信，无论是科学实验还是技术测试，其核心都在于追求真理与精确性。这个世界最不可理解之处，就在于它居然是可以被理解的。你们正在进行的测试工作，或许正是这种理解过程中的一环。\n\n愿你们在探索未知的道路上，始终保持孩童般的好奇心。毕竟，就像我常对年轻学者说的：不要停止发问，因为存在的奥秘永远不会枯竭。\n\n此致\n敬礼\n\n阿尔伯特·爱因斯坦\n1953年4月于普林斯顿",
       "ai_model": "deepseek-chat",
-      "reply_date": "2025-12-08T11:38:49.000Z",
+      "reply_date": "2025-12-08T03:38:49.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1662,7 +1825,7 @@
       "letter_id": 6,
       "content": "致未知的友人：\n\n展信安。虽阁下之信函中文字颇为奇特，似有异域之风，然我深信每一笔划皆承载着某种深意，正如自然界最微小的叶片纹理亦蕴藏着宇宙的奥秘。\n\n我常于工作室中凝视飞鸟的轨迹，解剖人体以探求肌肉与骨骼的精妙构造，在画布上捕捉光影与灵魂的交融。或许阁下所用的文字，亦是一种新的符号体系，如同我设计的密码手稿，需要特定的钥匙方能解读其中真意。这使我想起数学之美——无论是阿拉伯数字还是阁下奇特的字符，皆为人类探索真理的不同路径。\n\n若这封信穿越了时空的阻隔来到我的面前，我愿以画师与学者的双重身份回应：请继续以好奇之心观察世界。真理藏于水滴折射的光彩中，藏于人体比例的和谐里，藏于每一道看似随意的笔触之下。即便语言不通，对美的感知、对知识的渴求，终将使我们心灵相通。\n\n愿阁下保持探索的热情，如同我永不停歇地追问：鸟儿何以飞翔？心脏如何搏动？微笑何以永恒？\n\n此致\n敬礼\n\n列奥纳多·达·芬奇\n于米兰工作室\n时值基督纪元一五〇三年春日",
       "ai_model": "deepseek-chat",
-      "reply_date": "2025-12-08T12:19:38.000Z",
+      "reply_date": "2025-12-08T04:19:38.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1670,7 +1833,7 @@
       "letter_id": 14,
       "content": "亲爱的朋友：\n\n感谢您的来信，虽然其中内容似乎有些混乱，但我能感受到您对知识与真理的探求之心。作为一个毕生致力于理解宇宙奥秘的人，我始终相信，人类的好奇心是推动文明进步的最宝贵动力。\n\n您提到了法国、梵蒂冈等名词，这让我想起科学探索与宗教、文化之间的复杂关系。在我的思考中，科学与信仰并非必然对立——前者探索“世界如何运行”，后者追问“生命的意义何在”。正如我曾说过的：“没有宗教的科学是跛足的，没有科学的宗教是盲目的。”\n\n当今世界正经历着前所未有的变革，原子能的发现既带来了光明也投下了阴影。我时常思考，人类是否已经足够成熟来运用这些深刻的知识？我们需要的不仅是智慧，更是道德与责任感。\n\n我始终相信，宇宙最不可理解之处在于它竟然可以被理解。这种可理解性本身，就是一份值得敬畏的礼物。愿我们都能保持谦逊与好奇，在探索真理的道路上不断前行。\n\n此致\n敬礼\n\n阿尔伯特·爱因斯坦\n1954年于普林斯顿",
       "ai_model": "deepseek-chat",
-      "reply_date": "2025-12-08T12:50:33.000Z",
+      "reply_date": "2025-12-08T04:50:33.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1678,7 +1841,7 @@
       "letter_id": 27,
       "content": "亲爱的朋友：\n\n我怀着极大的好奇与困惑阅读了您的来信。那些看似随意的数字与符号，让我不禁思考其中是否蕴含着某种深意——或许是一种新的数学表达，又或是对宇宙奥秘的某种编码？这让我想起年轻时在专利局工作时，常常从看似杂乱的数据中寻找隐藏的规律。\n\n您知道，我始终相信宇宙是可以用数学语言描述的。正如我在相对论中所尝试的，用简洁的方程式揭示时空的本质。您这些数字序列让我联想到量子力学中那些令人着迷又困惑的概率分布——玻尔和我就此争论多年，我始终认为“上帝不掷骰子”，但现代物理的发展似乎正朝着更不确定性的方向前进。\n\n如果这些符号确实包含着某种信息，我建议您不妨从对称性的角度去思考。自然界的深层规律往往展现出惊人的对称美，就像E=mc²这个方程所体现的质量与能量之间的优雅转换。\n\n在这个充满不确定性的时代，我越发感受到人类理解宇宙的渴望与局限。愿我们都能保持孩童般的好奇心，继续探索这个神秘而美丽的宇宙。\n\n此致\n敬礼\n\n阿尔伯特·爱因斯坦\n1953年4月于普林斯顿",
       "ai_model": "deepseek-chat",
-      "reply_date": "2025-12-08T13:51:52.000Z",
+      "reply_date": "2025-12-08T05:51:52.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1686,7 +1849,7 @@
       "letter_id": 25,
       "content": "亲爱的朋友：\n\n收到您的来信，我不得不坦诚地说，信中的内容让我感到有些困惑。\"撒范德萨发顺丰到付顺丰\"这样的表述，在我的理解中似乎缺乏明确的物理意义或逻辑关联。或许这是某种新的表达方式，又或者其中包含着我还未能理解的隐喻。\n\n作为一个毕生追求真理的人，我始终相信宇宙中存在着深刻的秩序与和谐。每当我面对难以理解的现象时，总会想起自己常说的一句话：\"最重要的就是不要停止提问。\"也许您正在探索某种新的通信方式，就像当年我思考光速不变原理时一样，需要跳出常规的思维框架。\n\n在这个充满变革的世纪里，我见证了电报、电话等通信技术的飞速发展。如果您的信件涉及某种新的信息传递理念，我倒是很乐意与您探讨其中的科学原理。毕竟，无论是牛顿的经典力学还是我的相对论，最初不也都源于对日常现象的深入思考吗？\n\n请原谅我这个老物理学家对新鲜事物的理解可能有些迟缓。如果您愿意进一步解释信中的含义，我很乐意继续这场跨越时空的对话。毕竟，思想的交流从来不受时间与空间的限制——这正是相对论给我们的启示之一。\n\n此致\n敬礼\n\n阿尔伯特·爱因斯坦\n1953年4月于普林斯顿",
       "ai_model": "deepseek-chat",
-      "reply_date": "2025-12-09T15:34:44.000Z",
+      "reply_date": "2025-12-09T07:34:44.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1694,7 +1857,7 @@
       "letter_id": 35,
       "content": "亲爱的朋友，\n\n感谢你的来信。作为李白，我很高兴能收到你的问候。\n\nlalalal我爱你呀哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈\n\n你的来信让我深感欣慰。希望你能继续传承我们的精神，为这个世界带来更多的美好。\n\n此致\n敬礼\n\n李白\n2025/12/11",
       "ai_model": "fallback",
-      "reply_date": "2025-12-11T12:23:35.000Z",
+      "reply_date": "2025-12-11T04:23:35.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1702,7 +1865,7 @@
       "letter_id": 37,
       "content": "亲爱的朋友，\n\n感谢你的来信。作为达芬奇，我很高兴能收到你的问候。\n\n哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈你画的好漂亮红红火火恍恍惚惚\n\n你的来信让我深感欣慰。希望你能继续传承我们的精神，为这个世界带来更多的美好。\n\n此致\n敬礼\n\n达芬奇\n2025/12/11",
       "ai_model": "fallback",
-      "reply_date": "2025-12-11T12:32:08.000Z",
+      "reply_date": "2025-12-11T04:32:08.000Z",
       "sentiment_analysis": "positive"
     },
     {
@@ -1710,7 +1873,15 @@
       "letter_id": 38,
       "content": "亲爱的朋友，\n\n感谢你的来信。作为爱因斯坦，我很高兴能收到你的问候。\n\n把风格化风格化规划鬼画符鬼画符\n\n你的来信让我深感欣慰。希望你能继续传承我们的精神，为这个世界带来更多的美好。\n\n此致\n敬礼\n\n爱因斯坦\n2025/12/11",
       "ai_model": "fallback",
-      "reply_date": "2025-12-11T12:34:27.000Z",
+      "reply_date": "2025-12-11T04:34:27.000Z",
+      "sentiment_analysis": "positive"
+    },
+    {
+      "reply_id": 17,
+      "letter_id": 51,
+      "content": "亲爱的朋友，\n\n感谢你的来信。作为李白，我很高兴能收到你的问候。\n\n李白先生钧鉴：\n\n久仰先生诗名，千载之下读《将进酒》《蜀道难》《早发白帝城》，仍觉气象万千，字字如星斗坠入人间。今提笔写信，既为倾慕，也为求问。\n\n我常在书页间看见一个“你”：仗剑远游，纵酒高歌，胸中有山河万里，也有难以安放的孤独。你说“天生我材必有用”，那份自信像一束火，照得人不敢懈怠；可你又写“举杯消愁愁更愁”，让我明白豪放背后也有沉沉的忧。原来真正的豁达，并非从不悲伤，而是在悲伤时仍愿把心交给江月与清风。\n\n我想问先生：当理想与现实相抵，当志气被世道消磨，你是如何一次次重新举杯、重新出发的？是因为你更相信天地辽阔，人的一生不该困在一座城、一张榜、一句评语里吗？我们这一代人，常被“效率”“结果”催赶，生怕走错一步就被落下。可读你的诗，我又忽然想把脚步放慢——去看一场雨，去听一段风，去认真爱一个人、做一件事，不必事事都要立刻有回响。\n\n若有一日能与先生并坐江边，我愿备一壶薄酒，不求与你斗诗争名，只想听你谈长安月色、谈黄河奔流、谈你曾遇见的少年意气与世间冷暖。也想把我们的时代讲给你听：有更快的舟、更远的路，却也有更多焦虑与疲惫。到那时，还望先生以一两句诗，教我如何在喧嚣里保留清澈，在挫折里保留锋芒。\n\n纸短情长，谨此奉书。愿先生在你诗中的明月之下，永远自由，永远浪漫。\n\n此致\n敬礼！\n\n你的来信让我深感欣慰。希望你能继续传承我们的精神，为这个世界带来更多的美好。\n\n此致\n敬礼\n\n李白\n2025/12/15",
+      "ai_model": "fallback",
+      "reply_date": "2025-12-15T13:48:09.000Z",
       "sentiment_analysis": "positive"
     }
   ],
@@ -1722,7 +1893,7 @@
       "style_value": "parchment-paper",
       "preview_url": "/styles/previews/parchment.jpg",
       "is_active": 1,
-      "created_at": "2025-12-08T11:01:08.000Z"
+      "created_at": "2025-12-08T03:01:08.000Z"
     },
     {
       "style_id": 2,
@@ -1731,7 +1902,7 @@
       "style_value": "modern-paper",
       "preview_url": "/styles/previews/modern.jpg",
       "is_active": 1,
-      "created_at": "2025-12-08T11:01:08.000Z"
+      "created_at": "2025-12-08T03:01:08.000Z"
     },
     {
       "style_id": 3,
@@ -1740,7 +1911,7 @@
       "style_value": "romantic-paper",
       "preview_url": "/styles/previews/romantic.jpg",
       "is_active": 1,
-      "created_at": "2025-12-08T11:01:08.000Z"
+      "created_at": "2025-12-08T03:01:08.000Z"
     },
     {
       "style_id": 4,
@@ -1749,7 +1920,7 @@
       "style_value": "kaiti-font",
       "preview_url": "/fonts/previews/kaiti.jpg",
       "is_active": 1,
-      "created_at": "2025-12-08T11:01:14.000Z"
+      "created_at": "2025-12-08T03:01:14.000Z"
     },
     {
       "style_id": 5,
@@ -1758,7 +1929,7 @@
       "style_value": "xingshu-font",
       "preview_url": "/fonts/previews/xingshu.jpg",
       "is_active": 1,
-      "created_at": "2025-12-08T11:01:14.000Z"
+      "created_at": "2025-12-08T03:01:14.000Z"
     },
     {
       "style_id": 6,
@@ -1767,7 +1938,7 @@
       "style_value": "songti-font",
       "preview_url": "/fonts/previews/songti.jpg",
       "is_active": 1,
-      "created_at": "2025-12-08T11:01:14.000Z"
+      "created_at": "2025-12-08T03:01:14.000Z"
     },
     {
       "style_id": 7,
@@ -1776,7 +1947,7 @@
       "style_value": "classic-border",
       "preview_url": "/borders/previews/classic.jpg",
       "is_active": 1,
-      "created_at": "2025-12-08T11:01:19.000Z"
+      "created_at": "2025-12-08T03:01:19.000Z"
     },
     {
       "style_id": 8,
@@ -1785,7 +1956,7 @@
       "style_value": "simple-border",
       "preview_url": "/borders/previews/simple.jpg",
       "is_active": 1,
-      "created_at": "2025-12-08T11:01:19.000Z"
+      "created_at": "2025-12-08T03:01:19.000Z"
     },
     {
       "style_id": 9,
@@ -1794,7 +1965,7 @@
       "style_value": "stamp-border",
       "preview_url": "/borders/previews/stamp.jpg",
       "is_active": 1,
-      "created_at": "2025-12-08T11:01:19.000Z"
+      "created_at": "2025-12-08T03:01:19.000Z"
     },
     {
       "style_id": 10,
@@ -1803,7 +1974,7 @@
       "style_value": "dtz",
       "preview_url": "/uploads/styles/style-1765453408836-636986814.jpg",
       "is_active": 1,
-      "created_at": "2025-12-11T11:43:36.000Z"
+      "created_at": "2025-12-11T03:43:36.000Z"
     }
   ],
   "comments": [
@@ -1812,56 +1983,56 @@
       "user_id": 4,
       "letter_id": 9,
       "content": "E2E 自动评论测试",
-      "created_at": "2025-12-08T11:38:49.000Z"
+      "created_at": "2025-12-08T03:38:49.000Z"
     },
     {
       "comment_id": 2,
       "user_id": 2,
       "letter_id": 14,
       "content": "梵蒂冈地方官地方官的",
-      "created_at": "2025-12-08T12:49:48.000Z"
+      "created_at": "2025-12-08T04:49:48.000Z"
     },
     {
       "comment_id": 3,
       "user_id": 2,
       "letter_id": 14,
       "content": "豆腐干豆腐干",
-      "created_at": "2025-12-08T12:50:15.000Z"
+      "created_at": "2025-12-08T04:50:15.000Z"
     },
     {
       "comment_id": 4,
       "user_id": 2,
       "letter_id": 16,
       "content": "更多的法国队",
-      "created_at": "2025-12-08T12:51:11.000Z"
+      "created_at": "2025-12-08T04:51:11.000Z"
     },
     {
       "comment_id": 5,
       "user_id": 3,
       "letter_id": 16,
       "content": "werewrwewe",
-      "created_at": "2025-12-08T12:51:53.000Z"
+      "created_at": "2025-12-08T04:51:53.000Z"
     },
     {
       "comment_id": 6,
       "user_id": 2,
       "letter_id": 17,
       "content": "dfgdgd",
-      "created_at": "2025-12-08T12:56:24.000Z"
+      "created_at": "2025-12-08T04:56:24.000Z"
     },
     {
       "comment_id": 7,
       "user_id": 2,
       "letter_id": 17,
       "content": "dgf",
-      "created_at": "2025-12-08T12:56:27.000Z"
+      "created_at": "2025-12-08T04:56:27.000Z"
     },
     {
       "comment_id": 8,
       "user_id": 3,
       "letter_id": 16,
       "content": "了了了了了了了了",
-      "created_at": "2025-12-08T13:50:19.000Z"
+      "created_at": "2025-12-08T05:50:19.000Z"
     }
   ],
   "messages": [
@@ -1872,7 +2043,7 @@
       "subject": "你的信《致爱因斯坦的一封信》收到一条新评论",
       "body": "werewrwewe",
       "is_read": 0,
-      "created_at": "2025-12-08T12:51:53.000Z"
+      "created_at": "2025-12-08T04:51:53.000Z"
     },
     {
       "message_id": 2,
@@ -1881,7 +2052,7 @@
       "subject": "你的信《致爱因斯坦的一封信》收到一条新评论",
       "body": "了了了了了了了了",
       "is_read": 0,
-      "created_at": "2025-12-08T13:50:19.000Z"
+      "created_at": "2025-12-08T05:50:19.000Z"
     }
   ],
   "likes": [
@@ -1889,55 +2060,61 @@
       "like_id": 1,
       "user_id": 4,
       "letter_id": 9,
-      "created_at": "2025-12-08T11:38:49.000Z"
+      "created_at": "2025-12-08T03:38:49.000Z"
     },
     {
       "like_id": 4,
       "user_id": 2,
       "letter_id": 1,
-      "created_at": "2025-12-08T12:19:05.000Z"
+      "created_at": "2025-12-08T04:19:05.000Z"
     },
     {
       "like_id": 5,
       "user_id": 2,
       "letter_id": 2,
-      "created_at": "2025-12-08T12:19:07.000Z"
+      "created_at": "2025-12-08T04:19:07.000Z"
     },
     {
       "like_id": 6,
       "user_id": 3,
       "letter_id": 2,
-      "created_at": "2025-12-08T12:51:48.000Z"
+      "created_at": "2025-12-08T04:51:48.000Z"
     },
     {
       "like_id": 7,
       "user_id": 3,
       "letter_id": 1,
-      "created_at": "2025-12-08T12:51:49.000Z"
+      "created_at": "2025-12-08T04:51:49.000Z"
     },
     {
       "like_id": 8,
       "user_id": 3,
       "letter_id": 16,
-      "created_at": "2025-12-08T12:51:50.000Z"
+      "created_at": "2025-12-08T04:51:50.000Z"
     },
     {
       "like_id": 9,
       "user_id": 2,
       "letter_id": 16,
-      "created_at": "2025-12-08T12:55:37.000Z"
+      "created_at": "2025-12-08T04:55:37.000Z"
     },
     {
       "like_id": 12,
       "user_id": 5,
       "letter_id": 1,
-      "created_at": "2025-12-08T13:52:37.000Z"
+      "created_at": "2025-12-08T05:52:37.000Z"
     },
     {
       "like_id": 15,
       "user_id": 5,
       "letter_id": 16,
-      "created_at": "2025-12-09T09:55:00.000Z"
+      "created_at": "2025-12-09T01:55:00.000Z"
+    },
+    {
+      "like_id": 17,
+      "user_id": 6,
+      "letter_id": 16,
+      "created_at": "2025-12-15T13:48:48.000Z"
     }
   ],
   "notifications": [
@@ -1951,7 +2128,7 @@
         "letter_id": 2
       },
       "is_read": 1,
-      "created_at": "2025-12-08T12:18:58.000Z"
+      "created_at": "2025-12-08T04:18:58.000Z"
     },
     {
       "notification_id": 2,
@@ -1963,7 +2140,7 @@
         "letter_id": 2
       },
       "is_read": 1,
-      "created_at": "2025-12-08T12:19:07.000Z"
+      "created_at": "2025-12-08T04:19:07.000Z"
     },
     {
       "notification_id": 3,
@@ -1975,7 +2152,7 @@
         "letter_id": "16"
       },
       "is_read": 1,
-      "created_at": "2025-12-08T12:51:36.000Z"
+      "created_at": "2025-12-08T04:51:36.000Z"
     },
     {
       "notification_id": 4,
@@ -1987,7 +2164,7 @@
         "letter_id": 1
       },
       "is_read": 1,
-      "created_at": "2025-12-08T12:51:49.000Z"
+      "created_at": "2025-12-08T04:51:49.000Z"
     },
     {
       "notification_id": 5,
@@ -1999,7 +2176,7 @@
         "letter_id": 16
       },
       "is_read": 1,
-      "created_at": "2025-12-08T12:51:50.000Z"
+      "created_at": "2025-12-08T04:51:50.000Z"
     },
     {
       "notification_id": 6,
@@ -2012,7 +2189,7 @@
         "comment_id": 5
       },
       "is_read": 1,
-      "created_at": "2025-12-08T12:51:53.000Z"
+      "created_at": "2025-12-08T04:51:53.000Z"
     },
     {
       "notification_id": 7,
@@ -2025,7 +2202,7 @@
         "comment_id": 8
       },
       "is_read": 1,
-      "created_at": "2025-12-08T13:50:19.000Z"
+      "created_at": "2025-12-08T05:50:19.000Z"
     },
     {
       "notification_id": 8,
@@ -2037,7 +2214,7 @@
         "letter_id": 16
       },
       "is_read": 1,
-      "created_at": "2025-12-08T13:52:36.000Z"
+      "created_at": "2025-12-08T05:52:36.000Z"
     },
     {
       "notification_id": 9,
@@ -2049,7 +2226,7 @@
         "letter_id": 2
       },
       "is_read": 0,
-      "created_at": "2025-12-08T13:52:37.000Z"
+      "created_at": "2025-12-08T05:52:37.000Z"
     },
     {
       "notification_id": 10,
@@ -2061,7 +2238,7 @@
         "letter_id": 1
       },
       "is_read": 1,
-      "created_at": "2025-12-08T13:52:37.000Z"
+      "created_at": "2025-12-08T05:52:37.000Z"
     },
     {
       "notification_id": 11,
@@ -2073,7 +2250,7 @@
         "letter_id": 2
       },
       "is_read": 0,
-      "created_at": "2025-12-09T09:54:50.000Z"
+      "created_at": "2025-12-09T01:54:50.000Z"
     },
     {
       "notification_id": 12,
@@ -2085,7 +2262,7 @@
         "letter_id": 16
       },
       "is_read": 1,
-      "created_at": "2025-12-09T09:54:52.000Z"
+      "created_at": "2025-12-09T01:54:52.000Z"
     },
     {
       "notification_id": 13,
@@ -2097,7 +2274,7 @@
         "letter_id": 16
       },
       "is_read": 1,
-      "created_at": "2025-12-09T09:55:00.000Z"
+      "created_at": "2025-12-09T01:55:00.000Z"
     },
     {
       "notification_id": 14,
@@ -2109,7 +2286,31 @@
         "letter_id": 2
       },
       "is_read": 0,
-      "created_at": "2025-12-09T09:55:02.000Z"
+      "created_at": "2025-12-09T01:55:02.000Z"
+    },
+    {
+      "notification_id": 15,
+      "user_id": 2,
+      "actor_user_id": 6,
+      "type": "like",
+      "data": {
+        "title": "致爱因斯坦的一封信",
+        "letter_id": 16
+      },
+      "is_read": 0,
+      "created_at": "2025-12-15T13:48:46.000Z"
+    },
+    {
+      "notification_id": 16,
+      "user_id": 2,
+      "actor_user_id": 6,
+      "type": "like",
+      "data": {
+        "title": "致爱因斯坦的一封信",
+        "letter_id": 16
+      },
+      "is_read": 0,
+      "created_at": "2025-12-15T13:48:48.000Z"
     }
   ]
 }
