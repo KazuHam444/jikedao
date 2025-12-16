@@ -1,59 +1,49 @@
 <template>
   <div class="write-page">
     <el-container>
-      // 防止重复提交
-      if (loading.value) return
-
-      try {
-        // 使用 await 风格的验证，避免回调嵌套导致的竞态
-        await writeFormRef.value.validate()
-      } catch (err) {
-        return
-      }
-
-      loading.value = true
-      // 生成本次提交 id（可用于跟踪/忽略延迟响应）
-      const submitId = Date.now() + '-' + Math.random().toString(36).slice(2, 8)
-      submitCompleted.value = false
-
-      try {
-        const response = await api.post('/letters', writeForm, { headers: { 'X-Request-Id': submitId } })
-        // 仅在尚未标记为完成时处理响应
-        if (!submitCompleted.value) {
-          if (response.data.success) {
-            submitCompleted.value = true
-            // 填充已发送信件数据并显示发送后预览对话（保留查看详情按钮）
-            const letterId = response.data.data.letter_id
-            sentLetter.letter_id = letterId
-            sentLetter.title = writeForm.title
-            sentLetter.content = writeForm.content
-            sentLetter.paper = currentPaper.value
-            sentLetter.font = currentFont.value
-            sentLetter.border = currentBorder.value
-            sentLetter.figureName = (figures.value.find(f => f.figure_id === writeForm.figure_id) || {}).name || ''
-            sentPreviewVisible.value = true
-          } else {
-            ElMessage.error(response.data.message || '发送失败')
-          }
-        }
-      } catch (error) {
-        // 如果已在其他请求中成功完成，则忽略后续错误提示
-        if (submitCompleted.value) {
-          return
-        }
-
-        if (error && error.response && error.response.status === 409) {
-          ElMessage.warning(error.response.data?.message || '请勿重复提交')
-        } else {
-          ElMessage.error('发送失败')
-        }
-      } finally {
-        loading.value = false
-        previewVisible.value = false
-      }
+      <el-main>
+        <el-form
+          ref="writeFormRef"
+          :model="writeForm"
+          :rules="rules"
+          label-width="120px"
+        >
+          <el-form-item>
             <el-button type="info" @click="openPreview" style="margin-top: 8px;">预览信纸</el-button>
           </el-form-item>
-          
+
+          <el-form-item label="写信对象" prop="figure_id">
+            <el-select
+              v-model="writeForm.figure_id"
+              placeholder="选择角色"
+              filterable
+              remote
+              :remote-method="filterFigures"
+              @visible-change="handleSelectVisible"
+              style="width: 100%"
+            >
+              <el-option
+                v-for="f in filteredFigures"
+                :key="f.figure_id"
+                :label="f.name"
+                :value="f.figure_id"
+              >
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <img
+                    v-if="f.avatar_url"
+                    :src="getImageUrl(f.avatar_url)"
+                    style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px; border: 1px solid #dcdfe6;"
+                    @error="handleImageError"
+                  />
+                  <div style="display:flex;flex-direction:column;min-width:0;">
+                    <strong style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.name }}</strong>
+                    <span style="font-size:12px;color:#909399;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.era }}</span>
+                  </div>
+                </div>
+              </el-option>
+            </el-select>
+          </el-form-item>
+
           <el-form-item label="信件标题" prop="title">
             <el-input
               v-model="writeForm.title"
@@ -345,26 +335,8 @@ async function handleSubmit(returnHome = false) {
   // 防止重复提交
   if (loading.value) return
 
-<<<<<<< Updated upstream
-  await writeFormRef.value.validate(async (valid) => {
-    if (valid) {
-      loading.value = true
-      try {
-        const response = await api.post('/letters', writeForm)
-        if (response.data.success) {
-          ElMessage.success('信件发送成功！')
-          const letterId = response.data.data.letter_id
-          // 跳转到信件详情页面
-          router.push({ name: 'letter-detail', params: { id: letterId } })
-        }
-      } catch (error) {
-        ElMessage.error('发送失败')
-      } finally {
-        loading.value = false
-        previewVisible.value = false
-=======
+  // 使用 await 风格的验证，避免回调嵌套导致的并发问题
   try {
-    // 使用 await 风格的验证，避免回调嵌套导致的并发问题
     await writeFormRef.value.validate()
   } catch (err) {
     return
@@ -377,18 +349,25 @@ async function handleSubmit(returnHome = false) {
 
   try {
     const response = await api.post('/letters', writeForm, { headers: { 'X-Request-Id': submitId } })
-    // 仅在尚未标记为完成时显示成功提示并导航
+    // 仅在尚未标记为完成时处理响应
     if (!submitCompleted.value) {
       if (response.data.success) {
         submitCompleted.value = true
-        ElMessage.success('信件发送成功！')
+        // 保持原有 UX：显示发送成功的预览对话，而非直接跳转
         const letterId = response.data.data.letter_id
-        router.push({ name: 'letter-detail', params: { id: letterId } })
+        sentLetter.letter_id = letterId
+        sentLetter.title = writeForm.title
+        sentLetter.content = writeForm.content
+        sentLetter.paper = currentPaper.value
+        sentLetter.font = currentFont.value
+        sentLetter.border = currentBorder.value
+        sentLetter.figureName = (figures.value.find(f => f.figure_id === writeForm.figure_id) || {}).name || ''
+        sentPreviewVisible.value = true
       } else {
         ElMessage.error(response.data.message || '发送失败')
->>>>>>> Stashed changes
       }
     }
+
   } catch (error) {
     // 如果已在其他请求中成功完成，则忽略后续错误提示
     if (submitCompleted.value) {
