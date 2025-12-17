@@ -9,7 +9,7 @@
       </template>
       
       <el-table
-        :data="figures"
+        :data="paginatedFigures"
         v-loading="loading"
         style="width: 100%"
       >
@@ -30,6 +30,14 @@
           </template>
         </el-table-column>
       </el-table>
+      
+      <el-pagination
+        v-model:current-page="currentPage"
+        :page-size="pageSize"
+        :total="figures.length"
+        layout="total, prev, pager, next"
+        style="margin-top: 20px; justify-content: center;"
+      />
     </el-card>
     
     <!-- 添加/编辑对话框 -->
@@ -79,7 +87,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted, computed } from 'vue'
 import { ElMessage } from 'element-plus'
 import api from '../../utils/api'
 
@@ -89,6 +97,14 @@ const showDialog = ref(false)
 const editingFigure = ref(null)
 const saving = ref(false)
 const figureFormRef = ref(null)
+const currentPage = ref(1)
+const pageSize = ref(12)
+
+const paginatedFigures = computed(() => {
+  const start = (currentPage.value - 1) * pageSize.value
+  const end = start + pageSize.value
+  return figures.value.slice(start, end)
+})
 
 const figureForm = reactive({
   name: '',
