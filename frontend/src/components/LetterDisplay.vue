@@ -1,12 +1,16 @@
 <template>
   <div class="letter-display">
-    <div class="paper" :style="paperStyleComputed">
-      <div class="content" :style="fontStyleComputed" v-html="formattedContent"></div>
-      <div class="footer" v-if="figureName">
-        <div class="signature-text">致：{{ figureName }} · {{ date }}</div>
-        <div class="seal-container">
-          <div class="seal-paper">
-            <img src="/1.png" alt="印章" />
+    <!-- 外层边框容器：使用管理员上传的边框图片 -->
+    <div class="border-wrapper" :style="borderStyleComputed">
+      <!-- 内层信纸本体：使用信纸样式图片 -->
+      <div class="paper" :style="paperStyleComputed">
+        <div class="content" :style="fontStyleComputed" v-html="formattedContent"></div>
+        <div class="footer" v-if="figureName">
+          <div class="signature-text">致：{{ figureName }} · {{ date }}</div>
+          <div class="seal-container">
+            <div class="seal-paper">
+              <img src="/1.png" alt="印章" />
+            </div>
           </div>
         </div>
       </div>
@@ -43,6 +47,9 @@ const paperStyles = ref([])
 const fontStyles = ref([])
 const borderStyles = ref([])
 
+// 边框图片宽高比（用于控制默认展示比例）
+const borderAspectRatio = ref(null)
+
 onMounted(async () => {
   try {
     const response = await api.get('/styles')
@@ -56,6 +63,45 @@ onMounted(async () => {
     console.error('获取样式配置失败:', error)
   }
 })
+
+// 根据当前选中的边框样式，读取其图片尺寸并计算宽高比
+function updateBorderAspectRatio() {
+  const border = borderStyles.value.find(b => b.style_value === props.borderStyle)
+  if (!border || !border.preview_url) {
+    borderAspectRatio.value = null
+    return
+  }
+
+  let imageUrl = border.preview_url
+  if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
+    imageUrl = `${baseUrl}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`
+  }
+
+  const img = new Image()
+  img.onload = () => {
+    if (img.naturalWidth && img.naturalHeight) {
+      // 按“横板”规则：以长边为水平、短边为垂直，得到 >= 1 的宽高比
+      const rawRatio = img.naturalWidth / img.naturalHeight
+      borderAspectRatio.value = rawRatio >= 1 ? rawRatio : 1 / rawRatio
+    } else {
+      borderAspectRatio.value = null
+    }
+  }
+  img.onerror = () => {
+    borderAspectRatio.value = null
+  }
+  img.src = imageUrl
+}
+
+// 当边框样式或样式列表变化时，更新宽高比
+watch(
+  [borderStyles, () => props.borderStyle],
+  () => {
+    updateBorderAspectRatio()
+  },
+  { immediate: true }
+)
 
 const paperStyleComputed = computed(() => {
   // 先尝试从已加载的样式配置中查找预览图
@@ -178,6 +224,33 @@ const fontStyleComputed = computed(() => {
 })
 
 const borderStyleComputed = computed(() => {
+  // 优先从已加载的边框样式配置中，使用管理员上传的边框图片（preview_url）
+  const border = borderStyles.value.find(b => b.style_value === props.borderStyle)
+  if (border && border.preview_url) {
+    let imageUrl = border.preview_url
+    if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
+      imageUrl = `${baseUrl}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`
+    }
+    const style = {
+      backgroundImage: `url(${imageUrl})`,
+      /* 只缩放，不裁剪边框图片 */
+      backgroundSize: 'contain',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      padding: '32px', // 通过内边距让信纸整体缩小，从而露出一圈边框
+      boxSizing: 'border-box',
+      borderRadius: '8px'
+    }
+
+    // 如果已成功计算出边框图片的宽高比，则作为默认展示比例；
+    // 否则默认按照横板比例（4:3）展示
+    style.aspectRatio = borderAspectRatio.value || (4 / 3)
+
+    return style
+  }
+
+  // 兼容旧的纯 CSS 边框方案
   const value = props.borderStyle || 'none'
   
   const map = {
@@ -202,8 +275,7 @@ const borderStyleComputed = computed(() => {
       padding: '24px',
       borderRadius: '4px',
       backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(227, 215, 193, 0.3) 10px, rgba(227, 215, 193, 0.3) 20px)'
-    }
-    ,
+    },
     'pattern-border': {
       border: '8px solid #e3d7c1',
       padding: '24px',
@@ -224,9 +296,18 @@ const date = computed(() => {
   width: 100%;
 }
 
+.border-wrapper {
+  /* 外层容器：让边框背景撑开，并在内部放入信纸 */
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
 .paper {
   width: 100%;
-  min-height: 400px;
+  /* 在有边框时，外层通过 aspect-ratio 控制整体比例，这里填满内部区域 */
+  height: 100%;
   padding: 32px;
   border-radius: 8px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);

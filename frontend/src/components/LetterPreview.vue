@@ -1,12 +1,16 @@
 <template>
   <div class="preview-wrap">
-    <div class="paper" :style="paperStyle">
-      <div class="content" :style="fontStyleComputed" v-html="formattedContent"></div>
-      <div class="footer" v-if="figureName">
-        <div class="signature-text">致：{{ figureName }} · {{ date }}</div>
-        <div class="seal-container">
-          <div class="seal-paper">
-            <img src="/1.png" alt="印章" />
+    <!-- 外层边框容器：使用管理员上传的边框图片 -->
+    <div class="border-wrapper" :style="borderStyle">
+      <!-- 内层信纸本体：使用信纸样式图片 -->
+      <div class="paper" :style="paperStyle">
+        <div class="content" :style="fontStyleComputed" v-html="formattedContent"></div>
+        <div class="footer" v-if="figureName">
+          <div class="signature-text">致：{{ figureName }} · {{ date }}</div>
+          <div class="seal-container">
+            <div class="seal-paper">
+              <img src="/1.png" alt="印章" />
+            </div>
           </div>
         </div>
       </div>
@@ -149,6 +153,24 @@ const fontStyleComputed = computed(() => {
 })
 
 const borderStyle = computed(() => {
+  // 优先使用管理员上传的边框样式图片（preview_url）
+  if (props.border && props.border.preview_url) {
+    let imageUrl = props.border.preview_url
+    if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
+      imageUrl = `${baseUrl}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`
+    }
+    return {
+      backgroundImage: `url(${imageUrl})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      padding: '40px', // 通过内边距让信纸整体缩小，从而露出一圈边框
+      boxSizing: 'border-box'
+    }
+  }
+
+  // 兼容旧的纯 CSS 边框方案
   const value = props.border?.style_value || 'none'
   const map = {
     none: { 
@@ -193,6 +215,14 @@ const date = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'l
   height: 100vh;
   align-items: center;
   justify-content: center;
+}
+
+.border-wrapper {
+  /* 外层容器：控制整体宽高和居中 */
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .paper {
