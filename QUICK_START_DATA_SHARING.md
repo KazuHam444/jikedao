@@ -55,10 +55,14 @@ copy .env.example .env
 # 编辑 .env，修改 DB_HOST/DB_PORT/DB_USER/DB_PASSWORD
 
 # 4. 创建并初始化数据库表结构
+# 方式 A：一键初始化（如果是新项目）
+mysql -u root -p --default-character-set=utf8mb4 < complete-schema.sql
+
+# 方式 B：使用迁移脚本
 npm run migrate:likes
 npm run migrate:comments
 
-# 5. 导入你分享的数据
+# 5. 导入你分享的数据（⚠️ 注意：需要先完成步骤4创建表结构）
 npm run import-db
 
 # 6. 启动应用
@@ -92,8 +96,9 @@ npm run dev
 |------|------|
 | `database-export.json` | 导出的数据文件（包含 9 个表的所有数据，约 50-500KB） |
 | `scripts/export-database.js` | 导出脚本 |
-| `scripts/import-database.js` | 导入脚本 |
-| `schema.sql` | 完整的数据库表结构定义 |
+| `scripts/import-database.js` | 导入脚本（⚠️ 使用前必须先有表结构） |
+| `complete-schema.sql` | 新项目初始化模板（表结构 + 示例数据） |
+| `schema.sql` | 当前项目的完整备份（表结构 + 真实数据） |
 | `.env.example` | 环境变量示例（协作者需要复制并填写） |
 | `DATA_SHARING.md` | 详细的数据分享文档 |
 

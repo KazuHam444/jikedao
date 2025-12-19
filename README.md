@@ -55,7 +55,21 @@ AI_API_URL=https://api.openai.com/v1/chat/completions
 
 ### 3. 初始化数据库
 
-确保MySQL数据库已创建并运行，执行建表语句创建所有表。
+**方式 A：一键初始化（推荐新项目）**
+
+```bash
+# 导入完整数据库结构和示例数据
+mysql -u root -p --default-character-set=utf8mb4 < complete-schema.sql
+```
+
+**方式 B：使用迁移脚本**
+
+```bash
+npm run migrate:likes
+npm run migrate:comments
+```
+
+详细说明请参考 [DATABASE_SETUP.md](DATABASE_SETUP.md)。
 
 ### 4. 初始化数据（可选）
 
